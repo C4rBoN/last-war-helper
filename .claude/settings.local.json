@@ -1,0 +1,35 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm create:*)",
+      "Read(//c/Program Files/**)",
+      "Read(//c/Users/c4rbo/AppData/Roaming/**)",
+      "Read(//c/Users/c4rbo/AppData/Local/Programs/**)",
+      "Bash(powershell.exe -Command \"Get-Command node | Select-Object -ExpandProperty Source\")",
+      "Bash(powershell.exe -Command \"where.exe node; where.exe npm\")",
+      "Bash(powershell.exe -Command 'Get-ChildItem '\\\\''C:\\\\Program Files\\\\'\\\\'' -Directory | Where-Object { $_.Name -like '\\\\''*node*'\\\\'' -or $_.Name -like '\\\\''*nvm*'\\\\'' }')",
+      "Bash(powershell.exe -Command 'Get-ChildItem '\\\\''C:\\\\Users\\\\c4rbo\\\\AppData\\\\Roaming\\\\'\\\\'' -Directory | Where-Object { $_.Name -like '\\\\''*node*'\\\\'' -or $_.Name -like '\\\\''*nvm*'\\\\'' }')",
+      "Bash(powershell.exe -Command 'Get-ChildItem '\\\\''C:\\\\Users\\\\c4rbo\\\\AppData\\\\Local\\\\'\\\\'' -Directory | Where-Object { $_.Name -like '\\\\''*node*'\\\\'' -or $_.Name -like '\\\\''*nvm*'\\\\'' }')",
+      "Bash(powershell.exe -Command \"node --version; npm --version\")",
+      "WebFetch(domain:last-war-survival.fandom.com)",
+      "WebFetch(domain:lastwarhandbook.com)",
+      "WebSearch",
+      "WebFetch(domain:www.pocketgamer.com)",
+      "WebFetch(domain:www.ldshop.gg)",
+      "WebFetch(domain:www.bluestacks.com)",
+      "WebFetch(domain:www.lastwartutorial.com)",
+      "WebFetch(domain:theriagames.com)",
+      "WebFetch(domain:www.allclash.com)",
+      "WebFetch(domain:en.namu.wiki)",
+      "WebFetch(domain:www.lastwargame.online)",
+      "WebFetch(domain:www.u7buy.com)",
+      "Bash(npm run:*)",
+      "WebFetch(domain:lastwar.wiki)",
+      "WebFetch(domain:cpt-hedge.com)",
+      "Bash(gh repo *)",
+      "Bash(where gh *)",
+      "Bash(where git *)",
+      "Bash(where curl *)"
+    ]
+  }
+}

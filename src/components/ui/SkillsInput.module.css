@@ -1,0 +1,170 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px;
+  background: var(--bg-tertiary);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+}
+
+.wrapper.locked {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.title {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.lockHint {
+  font-size: 11px;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+.maxHint {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.skillList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.skillRow {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.skillHeader {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.skillName {
+  font-size: 12px;
+  color: var(--text-secondary);
+  flex: 1;
+}
+
+.skillType {
+  font-size: 11px;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+.prioTag {
+  font-size: 10px;
+  font-weight: 700;
+  padding: 1px 5px;
+  border-radius: 8px;
+}
+
+.prio_high {
+  background: var(--accent);
+  color: var(--bg-primary);
+}
+
+.prio_low {
+  background: var(--bg-elevated);
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+}
+
+.skillValue {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-primary);
+  min-width: 38px;
+  text-align: right;
+}
+
+.skillMax {
+  font-size: 10px;
+  font-weight: 400;
+  color: var(--text-muted);
+}
+
+/* ── Slider ── */
+.sliderRow {
+  display: flex;
+  align-items: center;
+}
+
+.slider {
+  flex: 1;
+  -webkit-appearance: none;
+  height: 5px;
+  border-radius: 3px;
+  background: linear-gradient(
+    to right,
+    var(--accent) 0%,
+    var(--accent) var(--fill-pct, 0%),
+    var(--bg-elevated) var(--fill-pct, 0%),
+    var(--bg-elevated) 100%
+  );
+  outline: none;
+  cursor: pointer;
+}
+
+.slider:disabled {
+  cursor: default;
+  opacity: 0.5;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--accent);
+  cursor: grab;
+  border: 2px solid var(--bg-primary);
+}
+
+.slider::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--accent);
+  cursor: grab;
+  border: 2px solid var(--bg-primary);
+}
+
+/* ── Milestones ── */
+.milestoneRow {
+  position: relative;
+  height: 16px;
+  margin-top: 2px;
+}
+
+.milestoneTick {
+  position: absolute;
+  transform: translateX(-50%);
+  font-size: 9px;
+  color: var(--text-muted);
+  line-height: 1;
+}
+
+.milestoneReached {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.milestoneEW {
+  transform: translateX(-100%);
+  color: var(--text-secondary);
+}

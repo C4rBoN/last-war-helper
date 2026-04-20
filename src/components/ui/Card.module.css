@@ -1,0 +1,31 @@
+.card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: var(--sp-4);
+}
+
+.clickable {
+  cursor: pointer;
+  transition: border-color var(--transition), background var(--transition);
+}
+
+.clickable:hover {
+  border-color: var(--accent-dim);
+  background: var(--bg-tertiary);
+}
+
+.urgent {
+  border-color: rgba(192, 57, 43, 0.4);
+  background: rgba(192, 57, 43, 0.05);
+}
+
+.accent {
+  border-color: var(--border-accent);
+  background: var(--accent-glow);
+}
+
+.success {
+  border-color: rgba(39, 174, 96, 0.4);
+  background: rgba(39, 174, 96, 0.05);
+}

@@ -1,0 +1,128 @@
+.wrapper {
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: var(--sp-2) var(--sp-3);
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  transition: border-color var(--transition);
+}
+
+.wrapper:focus-within {
+  border-color: var(--accent-dim);
+}
+
+.maxed {
+  border-color: rgba(39, 174, 96, 0.4);
+  background: rgba(39, 174, 96, 0.04);
+}
+
+.topRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-2);
+}
+
+.labelGroup {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.label {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+.priorityDot {
+  font-size: 10px;
+}
+
+.priorityDot[data-priority="1"] { color: var(--danger); }
+.priorityDot[data-priority="2"] { color: var(--accent); }
+
+.displayValue {
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--text-primary);
+  min-width: 44px;
+  text-align: right;
+}
+
+.tierValue { color: var(--rarity-ur); }
+.maxValue  { color: var(--success); }
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+}
+
+.stepBtn {
+  width: 24px;
+  height: 24px;
+  border-radius: 4px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  font-size: 14px;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition);
+  flex-shrink: 0;
+}
+
+.stepBtn:not(:disabled):hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.stepBtn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.progressBar {
+  flex: 1;
+  height: 8px;
+  background: var(--bg-elevated);
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+}
+
+.progressFill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent-dim), var(--accent), var(--rarity-ur));
+  border-radius: 4px;
+  transition: width 0.25s ease;
+}
+
+/* Separator at level 40 (66.7% of 60) */
+.phaseSep {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--bg-secondary);
+  opacity: 0.8;
+  transform: translateX(-50%);
+}
+
+.tierInfo, .levelInfo {
+  font-size: 10px;
+  color: var(--text-muted);
+}
+
+.tierInfo { color: var(--rarity-ur); }
+
+.promoteHint {
+  color: var(--accent);
+  font-weight: 600;
+}

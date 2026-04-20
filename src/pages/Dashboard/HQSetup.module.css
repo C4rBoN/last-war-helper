@@ -1,0 +1,96 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(13, 15, 20, 0.95);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 200;
+  padding: var(--sp-4);
+}
+
+.modal {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-accent);
+  border-radius: var(--radius-lg);
+  padding: var(--sp-8);
+  max-width: 400px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--sp-4);
+  box-shadow: 0 0 60px rgba(232, 160, 32, 0.1);
+}
+
+.icon {
+  font-size: 48px;
+  line-height: 1;
+}
+
+.title {
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--accent);
+  text-align: center;
+}
+
+.subtitle {
+  font-size: 13px;
+  color: var(--text-secondary);
+  text-align: center;
+  line-height: 1.6;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.levelPicker {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-4);
+}
+
+.stepBtn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border);
+  font-size: 22px;
+  color: var(--text-primary);
+  transition: all var(--transition);
+}
+
+.stepBtn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.levelDisplay {
+  font-size: 56px;
+  font-weight: 900;
+  color: var(--accent);
+  min-width: 80px;
+  text-align: center;
+  line-height: 1;
+}
+
+.slider {
+  width: 100%;
+  accent-color: var(--accent);
+  cursor: pointer;
+}
+
+.sliderLabels {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  color: var(--text-muted);
+}

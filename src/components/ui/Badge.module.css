@@ -1,0 +1,41 @@
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.small {
+  padding: 1px 5px;
+  font-size: 10px;
+}
+
+/* Tiers */
+.tier-s  { background: rgba(255, 215, 0, 0.15); color: var(--tier-s);  border: 1px solid rgba(255,215,0,0.3); }
+.tier-a  { background: rgba(192, 192, 192, 0.1); color: var(--tier-a); border: 1px solid rgba(192,192,192,0.25); }
+.tier-b  { background: rgba(205, 127, 50, 0.1);  color: var(--tier-b); border: 1px solid rgba(205,127,50,0.25); }
+
+/* Rarities */
+.rarity-ur  { background: rgba(224, 64, 251, 0.12); color: var(--rarity-ur);  border: 1px solid rgba(224,64,251,0.3); }
+.rarity-ssr { background: rgba(255, 152, 0, 0.12);  color: var(--rarity-ssr); border: 1px solid rgba(255,152,0,0.3); }
+.rarity-sr  { background: rgba(33, 150, 243, 0.12); color: var(--rarity-sr);  border: 1px solid rgba(33,150,243,0.3); }
+
+/* Types */
+.type-tank     { background: rgba(231, 76, 60, 0.12);  color: var(--type-tank);     border: 1px solid rgba(231,76,60,0.3); }
+.type-missile  { background: rgba(52, 152, 219, 0.12); color: var(--type-missile);  border: 1px solid rgba(52,152,219,0.3); }
+.type-aircraft { background: rgba(46, 204, 113, 0.12); color: var(--type-aircraft); border: 1px solid rgba(46,204,113,0.3); }
+
+/* Priority */
+.urgent      { background: var(--danger-dim);  color: var(--danger);          border: 1px solid rgba(192,57,43,0.3); }
+.recommended { background: var(--accent-glow); color: var(--accent);          border: 1px solid rgba(232,160,32,0.3); }
+.optional    { background: rgba(72,82,100,0.2); color: var(--text-secondary); border: 1px solid rgba(72,82,100,0.3); }
+
+/* Category */
+.hero     { background: rgba(224,64,251,0.1);  color: #e040fb; border: 1px solid rgba(224,64,251,0.25); }
+.building { background: rgba(232,160,32,0.1);  color: var(--accent); border: 1px solid var(--border-accent); }
+.research { background: rgba(52,152,219,0.1);  color: #3498db; border: 1px solid rgba(52,152,219,0.25); }

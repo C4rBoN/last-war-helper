@@ -1,0 +1,112 @@
+:root {
+  /* Backgrounds */
+  --bg-primary:    #0d0f14;
+  --bg-secondary:  #161a23;
+  --bg-tertiary:   #1e2535;
+  --bg-elevated:   #242c3d;
+
+  /* Accent */
+  --accent:        #e8a020;
+  --accent-dim:    #7a5210;
+  --accent-glow:   rgba(232, 160, 32, 0.15);
+
+  /* Status */
+  --danger:        #c0392b;
+  --danger-dim:    rgba(192, 57, 43, 0.15);
+  --success:       #27ae60;
+  --success-dim:   rgba(39, 174, 96, 0.15);
+  --warning:       #f39c12;
+  --warning-dim:   rgba(243, 156, 18, 0.15);
+  --info:          #2980b9;
+
+  /* Text */
+  --text-primary:   #e8eaf0;
+  --text-secondary: #8892a4;
+  --text-muted:     #4a5568;
+
+  /* Border */
+  --border:         #2a3245;
+  --border-accent:  rgba(232, 160, 32, 0.3);
+
+  /* Tier colors */
+  --tier-s:  #ffd700;
+  --tier-a:  #c0c0c0;
+  --tier-b:  #cd7f32;
+
+  /* Rarity colors */
+  --rarity-ur:  #e040fb;
+  --rarity-ssr: #ff9800;
+  --rarity-sr:  #2196f3;
+
+  /* Priority colors */
+  --priority-urgent:      var(--danger);
+  --priority-recommended: var(--accent);
+  --priority-optional:    var(--text-secondary);
+
+  /* Type colors */
+  --type-tank:     #e74c3c;
+  --type-missile:  #3498db;
+  --type-aircraft: #2ecc71;
+
+  /* Spacing */
+  --sp-1: 4px;
+  --sp-2: 8px;
+  --sp-3: 12px;
+  --sp-4: 16px;
+  --sp-5: 20px;
+  --sp-6: 24px;
+  --sp-8: 32px;
+
+  /* Border radius */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+
+  /* Transition */
+  --transition: 0.18s ease;
+
+  /* Nav */
+  --nav-height: 64px;
+  --topbar-height: 56px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font: inherit;
+  color: inherit;
+}
+
+input[type="number"],
+input[type="range"] {
+  font: inherit;
+}
+
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--bg-primary); }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }

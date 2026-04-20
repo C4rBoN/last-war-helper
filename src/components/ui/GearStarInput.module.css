@@ -1,0 +1,216 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 8px;
+  background: var(--bg-tertiary);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  transition: opacity 0.2s, border-color 0.2s;
+}
+
+.wrapper.useless { opacity: 0.4; }
+.wrapper.alert   { border-color: var(--danger); }
+
+/* ── Header ── */
+.header {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.icon  { font-size: 13px; line-height: 1; flex-shrink: 0; }
+
+.label {
+  font-size: 11px;
+  color: var(--text-secondary);
+  flex: 1;
+  font-weight: 600;
+}
+
+.priorityTag {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--bg-primary);
+  background: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 2px 6px;
+  border-radius: 8px;
+}
+
+.alertIcon { font-size: 11px; color: var(--danger); }
+
+.maxTag {
+  font-size: 9px;
+  font-weight: 700;
+  color: var(--success);
+  background: var(--success-dim);
+  padding: 1px 5px;
+  border-radius: 8px;
+}
+
+/* ── Slider section ── */
+.sliderSection {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding-bottom: 16px; /* espace pour les labels */
+  position: relative;
+}
+
+.sliderDisabled { pointer-events: none; }
+
+.sliderRow {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* ── Range slider ── */
+.slider {
+  flex: 1;
+  -webkit-appearance: none;
+  appearance: none;
+  height: 6px;
+  border-radius: 3px;
+  outline: none;
+  cursor: pointer;
+  /* Remplissage via custom property --fill-pct */
+  background: linear-gradient(
+    to right,
+    var(--accent) 0%,
+    var(--accent) var(--fill-pct, 0%),
+    var(--bg-elevated) var(--fill-pct, 0%),
+    var(--bg-elevated) 100%
+  );
+  transition: background 0.1s;
+}
+
+/* Thumb webkit */
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--accent);
+  cursor: grab;
+  border: 2px solid var(--bg-primary);
+  box-shadow: 0 0 0 2px var(--accent-dim);
+  transition: transform 0.1s, box-shadow 0.1s;
+}
+
+.slider::-webkit-slider-thumb:active {
+  cursor: grabbing;
+  transform: scale(1.25);
+  box-shadow: 0 0 0 4px var(--accent-glow);
+}
+
+/* Thumb firefox */
+.slider::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--accent);
+  cursor: grab;
+  border: 2px solid var(--bg-primary);
+}
+
+.slider::-moz-range-progress {
+  background: var(--accent);
+  height: 6px;
+  border-radius: 3px 0 0 3px;
+}
+
+.slider:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.slider:disabled::-webkit-slider-thumb { cursor: not-allowed; }
+
+.levelValue {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--accent);
+  min-width: 30px;
+  text-align: right;
+  flex-shrink: 0;
+  font-feature-settings: 'tnum';
+}
+
+.levelMax {
+  font-size: 10px;
+  font-weight: 400;
+  color: var(--text-muted);
+}
+
+/* ── Marqueurs de palier (10, 20, 30, 40) ── */
+.milestoneRow {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 36px; /* largeur de levelValue */
+  height: 16px;
+}
+
+.milestoneTick {
+  position: absolute;
+  transform: translateX(-50%);
+  font-size: 9px;
+  color: var(--text-muted);
+  white-space: nowrap;
+  font-feature-settings: 'tnum';
+  transition: color 0.2s;
+}
+
+.milestoneTickReached { color: var(--accent); }
+
+/* ── Stars row ── */
+.starsRow {
+  display: flex;
+  align-items: center;
+  gap: 1px;
+  padding-top: 4px;
+  border-top: 1px solid var(--border);
+}
+
+.starsLocked { opacity: 0.4; }
+
+.star {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  color: var(--border);
+  padding: 1px;
+  line-height: 1;
+  transition: color 0.15s, transform 0.1s;
+}
+
+.star:not(:disabled):hover { transform: scale(1.2); color: var(--accent); }
+.star:active:not(:disabled) { transform: scale(0.9); }
+.star.starFilled { color: var(--accent); }
+.star:disabled { cursor: not-allowed; pointer-events: none; }
+
+.starsValue {
+  font-size: 11px;
+  color: var(--text-secondary);
+  margin-left: 3px;
+  font-feature-settings: 'tnum';
+}
+
+.starsHint {
+  font-size: 10px;
+  color: var(--text-muted);
+  font-style: italic;
+  margin-left: 4px;
+}
+
+/* ── Useless note ── */
+.uselessNote {
+  font-size: 10px;
+  color: var(--text-muted);
+  font-style: italic;
+}
