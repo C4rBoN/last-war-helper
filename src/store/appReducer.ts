@@ -105,6 +105,9 @@ export function appReducer(state: PlayerState, action: AppAction): PlayerState {
     case 'RESET_ALL':
       return { ...DEFAULT_STATE, language: state.language };
 
+    case 'LOAD_ALL':
+      return { ...action.payload };
+
     default:
       return state;
   }

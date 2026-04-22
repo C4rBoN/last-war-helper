@@ -1,4 +1,5 @@
 import { HashRouter, Routes, Route } from 'react-router-dom';
+import { AuthProvider } from './store/AuthContext';
 import { AppProvider } from './store/AppContext';
 import { AppShell } from './components/layout/AppShell';
 import { Dashboard } from './pages/Dashboard/Dashboard';
@@ -10,6 +11,7 @@ import './styles/tokens.css';
 
 export default function App() {
   return (
+    <AuthProvider>
     <AppProvider>
       <HashRouter>
         <AppShell>
@@ -23,5 +25,6 @@ export default function App() {
         </AppShell>
       </HashRouter>
     </AppProvider>
+    </AuthProvider>
   );
 }

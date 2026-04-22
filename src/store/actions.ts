@@ -17,4 +17,6 @@ export type AppAction =
   | { type: 'TOGGLE_RESEARCH_COMPLETE'; payload: { nodeId: string } }
   | { type: 'SET_RESEARCH_IN_PROGRESS'; payload: { nodeId: string; inProgress: boolean } }
   // Reset
-  | { type: 'RESET_ALL' };
+  | { type: 'RESET_ALL' }
+  // Sync cloud
+  | { type: 'LOAD_ALL'; payload: import('../types/player.types').PlayerState };
