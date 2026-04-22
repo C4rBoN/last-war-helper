@@ -223,7 +223,7 @@ const SECTIONS: Section[] = [
             headers={['Jour', 'Thème', 'Objectif de zone de guerre']}
             rows={[
               ['J1', 'Anciens Clans', 'Tuer 1 000 zombies'],
-              ['J2', 'War Merits & Alliance Pacts', '500 améliorations de bâtiments'],
+              ['J2', 'Mérites de Guerre & Pactes d\'Alliance', '500 améliorations de bâtiments'],
               ['J3', 'Ruines Rainforest', '500 tâches Radar'],
               ['J4', 'Power Breakthrough', '10 000 recrutements de héros'],
               ['J5', 'Faction Clash', 'Entraîner 50 000 unités'],
@@ -342,8 +342,8 @@ const SECTIONS: Section[] = [
           <InfoRow label="Fenêtre de capture Autel" value="1 heure (mardi 12h00 serveur)" />
           <InfoRow label="Délai du Pacte d'Alliance" value="3 jours" />
         </Block>
-        <Block title="Altar Conquest (chaque mardi)">
-          <Img src={`${BASE}/2026-03/image-87.png`} alt="Règles Altar Conquest" caption="Règles de l'Altar Conquest" />
+        <Block title="Conquête des Autels (chaque mardi)">
+          <Img src={`${BASE}/2026-03/image-87.png`} alt="Règles Conquête des Autels" caption="Règles de la Conquête des Autels" />
           <ul className={styles.list}>
             <li>Réservé aux alliances — limite de 3 autels simultanés</li>
             <li>Snake / Gust Autels : mutuellement exclusifs</li>
@@ -353,8 +353,8 @@ const SECTIONS: Section[] = [
             <li>R4+ peuvent invoquer le «&nbsp;Gift of the Great River Clan&nbsp;»</li>
           </ul>
         </Block>
-        <Block title="Faction Clash">
-          <Img src={`${BASE}/2026-03/image-85.png`} alt="Règles Faction Clash" caption="Règles du Faction Clash" />
+        <Block title="Choc des Factions">
+          <Img src={`${BASE}/2026-03/image-85.png`} alt="Règles Choc des Factions" caption="Règles du Choc des Factions" />
           <ul className={styles.list}>
             <li>Après la capture d'une Ville ennemie : elle est <strong>automatiquement détruite</strong></li>
             <li>La ville détruite n'entre pas dans la limite d'alliance, ne peut pas être reconstruite</li>
@@ -364,10 +364,10 @@ const SECTIONS: Section[] = [
           </ul>
           <Warn>Villes de plus haut niveau = plus de Points d'Influence. Le total d'Influence en fin de saison détermine le vainqueur.</Warn>
         </Block>
-        <Block title="Alliance Pacts">
+        <Block title="Pactes d'Alliance">
           <ImgRow images={[
-            { src: `${BASE}/2026-03/image-73.png`, alt: 'Formulaire Alliance Pact', caption: 'Former un pacte' },
-            { src: `${BASE}/2026-03/image-75.png`, alt: 'Faction War Rank', caption: 'Faction War Rank' },
+            { src: `${BASE}/2026-03/image-73.png`, alt: 'Formulaire Pacte d\'Alliance', caption: 'Former un pacte' },
+            { src: `${BASE}/2026-03/image-75.png`, alt: 'Rang de Guerre de Faction', caption: 'Rang de Guerre de Faction' },
           ]} />
           <ul className={styles.list}>
             <li>Prérequis : même faction, territoire adjacent, pas de délai actif de 3j, consentement mutuel</li>
@@ -376,25 +376,25 @@ const SECTIONS: Section[] = [
             <li>Annulation unilatérale possible → délai de 3j</li>
           </ul>
         </Block>
-        <Block title="Alliance Safe Time">
+        <Block title="Temps Protégé d'Alliance">
           <ImgRow images={[
-            { src: `${BASE}/2026-03/image-41.png`, alt: 'Alliance Safe Time', caption: 'Alliance Safe Time' },
-            { src: `${BASE}/2026-03/image-42.png`, alt: 'Battle Ready Time slots', caption: 'Battle Ready Time' },
+            { src: `${BASE}/2026-03/image-41.png`, alt: 'Temps Protégé d\'Alliance', caption: 'Temps Protégé d\'Alliance' },
+            { src: `${BASE}/2026-03/image-42.png`, alt: 'Créneaux de Combat', caption: 'Créneaux de Combat' },
           ]} />
           <ul className={styles.list}>
             <li>Un créneau fixe par alliance où les Villes/Forts ne peuvent pas être attaqués</li>
-            <li>Configurable via Alliance → Paramètres → Alliance Safe Time</li>
+            <li>Configurable via Alliance → Paramètres → Temps Protégé d'Alliance</li>
             <li>Les créneaux sont fixes côté serveur (pas dépendants du fuseau horaire)</li>
           </ul>
         </Block>
-        <Block title="War Merit — Sources">
+        <Block title="Mérite de Guerre — Sources">
           <ul className={styles.list}>
             <li>Premiers kills de Doom Elites / Zombies Rainforest</li>
-            <li>Premières captures de Fishing Grounds et Villes</li>
+            <li>Premières captures de Terrains de Pêche et Villes</li>
             <li>Classement Purge Action</li>
             <li>Dons de poissons / renforcement de Villes</li>
-            <li>Batailles Beneath the Ruins</li>
-            <li>Classement éliminations/défense Faction Clash</li>
+            <li>Batailles Sous les Ruines</li>
+            <li>Classement éliminations/défense Choc des Factions</li>
             <li>Destruction de Villes ennemies</li>
           </ul>
         </Block>
@@ -484,8 +484,8 @@ const SECTIONS: Section[] = [
             <span>Rainforest Mushroom</span>
           </div>
           <div className={styles.resourceIcon}>
-            <img src={`${BASE}/2026-03/war-merit.png`} alt="War Merit" />
-            <span>War Merit</span>
+            <img src={`${BASE}/2026-03/war-merit.png`} alt="Mérite de Guerre" />
+            <span>Mérite de Guerre</span>
           </div>
         </div>
         <Table
@@ -493,7 +493,7 @@ const SECTIONS: Section[] = [
           rows={[
             ['Spore', 'Construction/amélioration du Fungus Institute', 'Premiers kills, recrutement héros, quêtes, captures de villes, génération Spore Factory'],
             ['Rainforest Mushroom', 'Construction/amélioration Spore Factory', 'Kills de zombies, kills Doom Elite, visiteurs, quêtes, battle pass, captures villes/forts'],
-            ['War Merit', 'Achats War Merit Shop (ressource rare)', 'Kills zombies/Doom Elite, génération horaire via villes'],
+            ['Mérite de Guerre', 'Achats Boutique des Mérites (ressource rare)', 'Éliminations zombies/Doom Elite, génération horaire via villes'],
           ]}
         />
         <Tip>Les Spores et Rainforest Mushrooms se convertissent en Profession EXP à la fin de la saison.</Tip>
@@ -566,7 +566,7 @@ const SECTIONS: Section[] = [
           <ul className={styles.list}>
             <li>La Résistance aux Virus du <strong>leader du rallye</strong> s'applique à tous les participants</li>
             <li>Le Weekly Pass octroie +250 de bonus instantané</li>
-            <li>À réparer dès le niveau 4 pour débloquer le War Merit Shop</li>
+            <li>À réparer dès le niveau 4 pour débloquer la Boutique des Mérites</li>
           </ul>
         </Block>
         <Block title="🍄 Spore Factory (I / II / III / IV + Weekly)">
@@ -583,18 +583,18 @@ const SECTIONS: Section[] = [
           <InfoRow label="Rôle" value="Nouveau bâtiment saisonnier — prérequis pour la compétence Summon Mummies" />
           <InfoRow label="Niveau requis pour Summon Mummies" value="25" />
         </Block>
-        <Block title="🛒 War Merit Shop">
+        <Block title="🛒 Boutique des Mérites de Guerre">
           <ImgRow images={[
-            { src: `${BASE}/2026-04/image-154.png`, alt: 'War Merit Shop 1', caption: 'War Merit Shop (1)' },
-            { src: `${BASE}/2026-04/image-155.png`, alt: 'War Merit Shop 2', caption: 'War Merit Shop (2)' },
+            { src: `${BASE}/2026-04/image-154.png`, alt: 'Boutique des Mérites 1', caption: 'Boutique des Mérites (1)' },
+            { src: `${BASE}/2026-04/image-155.png`, alt: 'Boutique des Mérites 2', caption: 'Boutique des Mérites (2)' },
           ]} />
-          <InfoRow label="Rôle" value="Échange de War Merit contre des ressources et objets exclusifs" />
+          <InfoRow label="Rôle" value="Échange de Mérites de Guerre contre des ressources et objets exclusifs" />
           <InfoRow label="Déblocage" value="Fungus Institute niveau 4" />
           <ul className={styles.list}>
             <li>Certains objets conditionnés par le niveau de Faction War Rank</li>
           </ul>
         </Block>
-        <Tip>Priorisé dès J1 : construire le Fungi Institute et la Mushroom Seed Factory, puis monter la Mushroom Factory au niveau 4 pour réparer le War Merit Shop.</Tip>
+        <Tip>Priorisé dès J1 : construire le Fungi Institute et la Mushroom Seed Factory, puis monter la Mushroom Factory au niveau 4 pour réparer la Boutique des Mérites.</Tip>
       </>
     ) : (
       <>
@@ -706,7 +706,7 @@ const SECTIONS: Section[] = [
             { src: `${BASE}/2026-04/image-90.png`, alt: 'Ruins Expert', caption: 'Ruins Expert (Nv.80, Jour 15)' },
           ]} />
         </Block>
-        <Block title="Jalons de War Merit pour récompenses Profession">
+        <Block title="Jalons de Mérite de Guerre pour récompenses Profession">
           <ImgRow images={[
             { src: `${BASE}/2026-04/image-66.png`, alt: '250k War Merit', caption: '250 000 WM' },
             { src: `${BASE}/2026-04/image-67.png`, alt: '375k War Merit', caption: '375 000 WM' },
@@ -714,7 +714,7 @@ const SECTIONS: Section[] = [
             { src: `${BASE}/2026-04/image-69.png`, alt: '750k War Merit', caption: '700 000 WM' },
           ]} />
           <Table
-            headers={['War Merit', 'Récompense']}
+            headers={['Mérite de Guerre', 'Récompense']}
             rows={[
               ['250 000', 'Livre de réinitialisation de compétences'],
               ['375 000', 'Certificat de changement de profession'],
@@ -811,18 +811,18 @@ const SECTIONS: Section[] = [
     title: { fr: 'Système de Pêche', en: 'Fishing System' },
     content: (lang) => lang === 'fr' ? (
       <>
-        <Block title="Fishing Grounds (Forts)">
+        <Block title="Terrains de Pêche (Forts)">
           <ImgRow images={[
             { src: `${BASE}/2026-04/image-40.png`, alt: 'Shadow Colossus protecteur', caption: 'Shadow Colossus — boss gardien' },
-            { src: `${BASE}/2026-04/image-108.png`, alt: 'Règles Fishing Ground Conquest', caption: 'Règles de capture' },
+            { src: `${BASE}/2026-04/image-108.png`, alt: 'Règles Conquête des Terrains de Pêche', caption: 'Règles de capture' },
           ]} />
           <ul className={styles.list}>
             <li>Lieux de capture — niveau du terrain détermine la qualité des récompenses</li>
             <li>Le <strong>Shadow Colossus</strong> protège les terrains (boss à vaincre)</li>
-            <li><Tag color="danger">Restriction</Tag> Les attaques sur ses propres Fishing Grounds ne sont possibles que les <strong>mercredis et samedis</strong> (créneaux de combat de 1h)</li>
+            <li><Tag color="danger">Restriction</Tag> Les attaques sur ses propres Terrains de Pêche ne sont possibles que les <strong>mercredis et samedis</strong> (créneaux de combat de 1h)</li>
             <li>La capture doit atteindre 100% pendant la fenêtre ou elle échoue</li>
             <li>Objectif de zone de guerre semaine 1 : capturer 20 terrains</li>
-            <li>L'alliance doit contrôler un Fishing Ground adjacent avant de déclarer la guerre à une Ville</li>
+            <li>L'alliance doit contrôler un Terrain de Pêche adjacent avant de déclarer la guerre à une Ville</li>
           </ul>
         </Block>
         <Block title="Fishing Fest (mini-jeu)">
@@ -901,7 +901,7 @@ const SECTIONS: Section[] = [
   {
     id: 'ruins',
     icon: '🏚',
-    title: { fr: 'Beneath the Ruins', en: 'Beneath the Ruins' },
+    title: { fr: 'Sous les Ruines', en: 'Beneath the Ruins' },
     content: (lang) => lang === 'fr' ? (
       <>
         <ImgRow images={[
@@ -1135,7 +1135,7 @@ const SECTIONS: Section[] = [
           <ul className={styles.list}>
             <li>Seuls R4/R5 peuvent déclarer la guerre</li>
             <li>Une seule ville ciblée simultanément par alliance</li>
-            <li>Prérequis : contrôler un Fishing Ground adjacent</li>
+            <li>Prérequis : contrôler un Terrain de Pêche adjacent</li>
             <li>Les membres gagnent des bonus permanents après capture</li>
           </ul>
         </Block>

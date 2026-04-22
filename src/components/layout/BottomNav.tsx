@@ -20,7 +20,7 @@ const S6_SECTIONS = [
   { id: 'buildings',  icon: '🏗', fr: 'Bâtiments',        en: 'Buildings'       },
   { id: 'professions',icon: '🎓', fr: 'Professions',      en: 'Professions'     },
   { id: 'fishing',    icon: '🎣', fr: 'Pêche',            en: 'Fishing'         },
-  { id: 'ruins',      icon: '🏚', fr: 'Beneath the Ruins',en: 'Beneath the Ruins'},
+  { id: 'ruins',      icon: '🏚', fr: 'Sous les Ruines',   en: 'Beneath the Ruins'},
   { id: 'heroes',     icon: '🦸', fr: 'Héros',            en: 'Heroes'          },
   { id: 'week1',      icon: '📅', fr: 'Semaine 1',        en: 'Week 1'          },
   { id: 'strategy',   icon: '🧠', fr: 'Stratégies',       en: 'Strategy'        },
