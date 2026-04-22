@@ -5,6 +5,7 @@ import { Dashboard } from './pages/Dashboard/Dashboard';
 import { Heroes } from './pages/Heroes/Heroes';
 import { Buildings } from './pages/Buildings/Buildings';
 import { Research } from './pages/Research/Research';
+import { Season6 } from './pages/Season6/Season6';
 import './styles/tokens.css';
 
 export default function App() {
@@ -17,6 +18,7 @@ export default function App() {
             <Route path="/heroes"    element={<Heroes />} />
             <Route path="/buildings" element={<Buildings />} />
             <Route path="/research"  element={<Research />} />
+            <Route path="/season6"   element={<Season6 />} />
           </Routes>
         </AppShell>
       </HashRouter>

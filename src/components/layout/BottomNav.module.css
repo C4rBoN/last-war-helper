@@ -42,6 +42,81 @@
   text-transform: uppercase;
 }
 
+/* Season 6 submenu */
+.s6Wrapper {
+  flex: 1;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.submenu {
+  position: absolute;
+  bottom: calc(100% + 6px);
+  right: 0;
+  left: auto;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-accent);
+  border-radius: var(--radius-md);
+  padding: var(--sp-2);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 200px;
+  box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.5);
+  z-index: 200;
+  animation: submenuIn 0.12s ease;
+}
+
+/* Bridge invisible qui comble le gap sous le sous-menu */
+.submenu::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  right: 0;
+  height: 8px;
+}
+
+@keyframes submenuIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.submenuItem {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  padding: var(--sp-2) var(--sp-3);
+  border-radius: var(--radius-sm);
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-secondary);
+  transition: background var(--transition), color var(--transition);
+  text-align: left;
+  width: 100%;
+}
+
+.submenuItem:hover {
+  background: var(--bg-tertiary);
+  color: var(--accent);
+}
+
+.submenuIcon {
+  font-size: 16px;
+  flex-shrink: 0;
+  width: 20px;
+  text-align: center;
+}
+
+.submenuLabel {
+  font-size: 12px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
 /* Desktop: sidebar */
 @media (min-width: 768px) {
   .nav {
@@ -58,5 +133,26 @@
   .tab {
     flex: 0;
     padding: var(--sp-4) var(--sp-2);
+  }
+
+  .s6Wrapper {
+    flex: 0;
+    position: relative;
+  }
+
+  .submenu {
+    bottom: auto;
+    top: 0;
+    left: calc(100% + 6px);
+    right: auto;
+  }
+
+  .submenu::after {
+    bottom: auto;
+    top: 0;
+    left: -8px;
+    right: auto;
+    width: 8px;
+    height: 100%;
   }
 }

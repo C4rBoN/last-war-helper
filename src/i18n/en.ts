@@ -9,6 +9,7 @@ export const EN: Record<string, string> = {
   'nav.heroes': 'Heroes',
   'nav.buildings': 'Buildings',
   'nav.research': 'Research',
+  'nav.season6': 'Season 6',
 
   // Setup
   'setup.title': 'Welcome to Last War Helper',
