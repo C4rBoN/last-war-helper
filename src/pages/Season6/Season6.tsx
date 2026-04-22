@@ -264,7 +264,7 @@ const SECTIONS: Section[] = [
             <li>Garder les Hero Return Tickets de S5 pour les ouvrir au lancement de S6</li>
             <li>Collecter des fragments violets pour monter Braz à 5⭐ (futur héros UR)</li>
             <li>Maxer les compétences Ingénieur avant le début : vitesse construction aux niveaux 10, 15, 30, 35, 95</li>
-            <li>Réserver 1 point de skill pour le jour 15 : <strong>Relic Expert</strong></li>
+            <li>Réserver 1 point de compétence pour le jour 15 : <strong>Relic Expert</strong></li>
           </ul>
         </Block>
       </>
@@ -340,7 +340,7 @@ const SECTIONS: Section[] = [
           <InfoRow label="Jours de déclaration de guerre" value="Mercredi et Samedi" />
           <InfoRow label="Limite d'Autels par alliance" value="3" />
           <InfoRow label="Fenêtre de capture Autel" value="1 heure (mardi 12h00 serveur)" />
-          <InfoRow label="Cooldown Alliance Pact" value="3 jours" />
+          <InfoRow label="Délai du Pacte d'Alliance" value="3 jours" />
         </Block>
         <Block title="Altar Conquest (chaque mardi)">
           <Img src={`${BASE}/2026-03/image-87.png`} alt="Règles Altar Conquest" caption="Règles de l'Altar Conquest" />
@@ -362,7 +362,7 @@ const SECTIONS: Section[] = [
             <li>En cas d'attaquants multiples : celui ayant infligé le plus de dégâts de durabilité reçoit les points</li>
             <li>Tous les membres reçoivent les récompenses de destruction ; les participants reçoivent en plus des récompenses de participation/classement</li>
           </ul>
-          <Warn>Villes de plus haut niveau = plus d'Influence Points. Le total d'Influence en fin de saison détermine le vainqueur.</Warn>
+          <Warn>Villes de plus haut niveau = plus de Points d'Influence. Le total d'Influence en fin de saison détermine le vainqueur.</Warn>
         </Block>
         <Block title="Alliance Pacts">
           <ImgRow images={[
@@ -370,10 +370,10 @@ const SECTIONS: Section[] = [
             { src: `${BASE}/2026-03/image-75.png`, alt: 'Faction War Rank', caption: 'Faction War Rank' },
           ]} />
           <ul className={styles.list}>
-            <li>Prérequis : même faction, territoire adjacent, pas en cooldown 3j, consentement mutuel</li>
+            <li>Prérequis : même faction, territoire adjacent, pas de délai actif de 3j, consentement mutuel</li>
             <li>Impossible à former les jours de déclaration de guerre (mer./sam.)</li>
             <li>Avantages : adjacence partagée, renforcement de troupes, chat 200 membres, notifs synchronisées</li>
-            <li>Annulation unilatérale possible → cooldown 3j</li>
+            <li>Annulation unilatérale possible → délai de 3j</li>
           </ul>
         </Block>
         <Block title="Alliance Safe Time">
@@ -573,10 +573,10 @@ const SECTIONS: Section[] = [
           <InfoRow label="Rôle" value="Génère des Spores en continu" />
           <InfoRow label="Monnaie d'amélioration" value="Rainforest Mushrooms" />
           <InfoRow label="Niveau max par usine" value="30" />
-          <InfoRow label="Factory II déblocage" value="Factory I niveau 15" />
+          <InfoRow label="Usine II déblocage" value="Usine I niveau 15" />
           <ul className={styles.list}>
             <li>5 usines au total (I/II/III/IV via progression, V via Weekly Pass)</li>
-            <li><Tag color="accent">Stratégie optimale</Tag> Monter chaque factory à 15 successivement pour débloquer les suivantes, puis monter toutes de façon équilibrée</li>
+            <li><Tag color="accent">Stratégie optimale</Tag> Monter chaque usine à 15 successivement pour débloquer les suivantes, puis monter toutes de façon équilibrée</li>
           </ul>
         </Block>
         <Block title="🛡 Protector's Field">
@@ -588,7 +588,7 @@ const SECTIONS: Section[] = [
             { src: `${BASE}/2026-04/image-154.png`, alt: 'War Merit Shop 1', caption: 'War Merit Shop (1)' },
             { src: `${BASE}/2026-04/image-155.png`, alt: 'War Merit Shop 2', caption: 'War Merit Shop (2)' },
           ]} />
-          <InfoRow label="Rôle" value="Échange de War Merit contre des ressources et items exclusifs" />
+          <InfoRow label="Rôle" value="Échange de War Merit contre des ressources et objets exclusifs" />
           <InfoRow label="Déblocage" value="Fungus Institute niveau 4" />
           <ul className={styles.list}>
             <li>Certains objets conditionnés par le niveau de Faction War Rank</li>
@@ -653,7 +653,7 @@ const SECTIONS: Section[] = [
         <Block title="Informations générales">
           <InfoRow label="Niveau maximum" value="100" />
           <InfoRow label="Professions disponibles" value="Ingénieur, War Leader" />
-          <InfoRow label="Skills saisonniers" value="20 au total" />
+          <InfoRow label="Compétences saisonnières" value="20 au total" />
           <InfoRow label="Réinitialisation" value="Disponible au début de saison" />
           <p className={styles.note}>Au niveau 100, l'EXP de profession continue à améliorer les Cartes de Tactique plutôt que de monter de niveau.</p>
         </Block>
@@ -669,7 +669,7 @@ const SECTIONS: Section[] = [
             { src: `${BASE}/2026-04/image-76.png`, alt: 'Ingénieur niveaux 95-100', caption: 'Niveaux 95–100' },
           ]} />
         </Block>
-        <Block title="Skills clés — Croissance (début de saison)">
+        <Block title="Compétences clés — Croissance (début de saison)">
           <ImgRow images={[
             { src: `${BASE}/2025-03/image-193.png`, alt: 'Combat Experience', caption: 'Combat Experience (Nv.1)' },
             { src: `${BASE}/2025-03/image-195.png`, alt: 'Building Inspiration I', caption: 'Building Inspiration I (Nv.5)' },
@@ -680,14 +680,14 @@ const SECTIONS: Section[] = [
             { src: `${BASE}/2025-03/image-196.png`, alt: 'Double Exchange', caption: 'Double Exchange (Nv.10)' },
           ]} />
         </Block>
-        <Block title="Skills clés — Pêche">
+        <Block title="Compétences clés — Pêche">
           <ImgRow images={[
             { src: `${BASE}/2026-04/image-80.png`, alt: 'Multi Fishing', caption: 'Multi Fishing (Nv.35)' },
             { src: `${BASE}/2026-04/image-82.png`, alt: 'Golden Bait', caption: 'Golden Bait (Nv.40)' },
             { src: `${BASE}/2026-04/image-87.png`, alt: 'Golden Fish Chest', caption: 'Golden Fish Chest (Nv.55)' },
           ]} />
         </Block>
-        <Block title="Skills clés — Combat / Territoire">
+        <Block title="Compétences clés — Combat / Territoire">
           <ImgRow images={[
             { src: `${BASE}/2026-04/image-88.png`, alt: 'Homeland Attack', caption: 'Homeland Attack (Nv.65)' },
             { src: `${BASE}/2026-04/image-89.png`, alt: 'Homeland Defense', caption: 'Homeland Defense (Nv.70)' },
@@ -695,7 +695,7 @@ const SECTIONS: Section[] = [
             { src: `${BASE}/2026-04/image-102.png`, alt: 'Invasion Defense', caption: 'Invasion Defense (Nv.100)' },
           ]} />
         </Block>
-        <Block title="Skills uniques">
+        <Block title="Compétences uniques">
           <ImgRow images={[
             { src: `${BASE}/2026-04/image-91.png`, alt: 'Summon Mummies', caption: 'Summon Mummies (Nv.85)' },
             { src: `${BASE}/2025-03/image-225.png`, alt: 'Mummy en action', caption: 'Mummy invoquée' },
@@ -706,7 +706,7 @@ const SECTIONS: Section[] = [
             { src: `${BASE}/2026-04/image-90.png`, alt: 'Ruins Expert', caption: 'Ruins Expert (Nv.80, Jour 15)' },
           ]} />
         </Block>
-        <Block title="Jalons de War Merit pour items Profession">
+        <Block title="Jalons de War Merit pour récompenses Profession">
           <ImgRow images={[
             { src: `${BASE}/2026-04/image-66.png`, alt: '250k War Merit', caption: '250 000 WM' },
             { src: `${BASE}/2026-04/image-67.png`, alt: '375k War Merit', caption: '375 000 WM' },
@@ -716,10 +716,10 @@ const SECTIONS: Section[] = [
           <Table
             headers={['War Merit', 'Récompense']}
             rows={[
-              ['250 000', 'Profession Skill Reset Book'],
-              ['375 000', 'Profession Change Certificate'],
-              ['625 000', 'Profession Skill Reset Book'],
-              ['700 000', 'Profession Skill Reset Book'],
+              ['250 000', 'Livre de réinitialisation de compétences'],
+              ['375 000', 'Certificat de changement de profession'],
+              ['625 000', 'Livre de réinitialisation de compétences'],
+              ['700 000', 'Livre de réinitialisation de compétences'],
             ]}
           />
         </Block>
@@ -821,7 +821,7 @@ const SECTIONS: Section[] = [
             <li>Le <strong>Shadow Colossus</strong> protège les terrains (boss à vaincre)</li>
             <li><Tag color="danger">Restriction</Tag> Les attaques sur ses propres Fishing Grounds ne sont possibles que les <strong>mercredis et samedis</strong> (créneaux de combat de 1h)</li>
             <li>La capture doit atteindre 100% pendant la fenêtre ou elle échoue</li>
-            <li>Objectif warzone semaine 1 : capturer 20 terrains</li>
+            <li>Objectif de zone de guerre semaine 1 : capturer 20 terrains</li>
             <li>L'alliance doit contrôler un Fishing Ground adjacent avant de déclarer la guerre à une Ville</li>
           </ul>
         </Block>
@@ -839,16 +839,16 @@ const SECTIONS: Section[] = [
             <li>Les poissons du même type donnent autant d'Énergie quel que soit le poids</li>
             <li>Risque de confiscation si pêche sur les terrains d'une alliance alliée</li>
             <li>Les dons de poissons débloquent les <strong>Technologies de Faction</strong></li>
-            <li>Objectif warzone semaine 1 : 50 000 poissons attrapés</li>
+            <li>Objectif de zone de guerre semaine 1 : 50 000 poissons attrapés</li>
           </ul>
           <ImgRow images={[
             { src: `${BASE}/2026-04/image-110.png`, alt: 'Classement Fishing Fest', caption: 'Classement individuel' },
             { src: `${BASE}/2026-04/image-111.png`, alt: 'Récompenses Fishing Fest', caption: 'Récompenses classement' },
           ]} />
         </Block>
-        <Block title="Skills de pêche (Profession)">
+        <Block title="Compétences de pêche (Profession)">
           <InfoRow label="Nv.35 Multi Fishing" value="Plusieurs poissons par tentative (appât supplémentaire requis)" />
-          <InfoRow label="Nv.40 Golden Bait" value="1 Golden Bait gratuit toutes les 23.5h" />
+          <InfoRow label="Nv.40 Golden Bait" value="1 Appât Doré gratuit toutes les 23.5h" />
           <InfoRow label="Nv.55 Golden Fish Chest" value="+1–5% chance de récompense bonus" />
         </Block>
       </>
@@ -930,12 +930,12 @@ const SECTIONS: Section[] = [
             { src: `${BASE}/2026-04/image-104.png`, alt: 'Récompenses classement', caption: 'Récompenses' },
           ]} />
           <ul className={styles.list}>
-            <li>Objectif warzone : 1 million de pièces collectivement</li>
+            <li>Objectif de zone de guerre : 1 million de pièces collectivement</li>
             <li>Classement basé sur les donations avec récompenses par rang</li>
           </ul>
         </Block>
-        <Block title="Skill Profession lié">
-          <InfoRow label="Nv.80 Ruins Expert (Jour 15)" value="+1 000 dépôt maximum dans Ruins Treasure" />
+        <Block title="Compétence de Profession liée">
+          <InfoRow label="Nv.80 Ruins Expert (Jour 15)" value="+1 000 dépôt maximum dans le Trésor des Ruines" />
         </Block>
       </>
     ) : (
@@ -986,7 +986,7 @@ const SECTIONS: Section[] = [
         <Block title="🌟 Éveil de Kimberly (Awakening)">
           <ImgRow images={[
             { src: `${BASE}/2026-04/image-163.png`, alt: 'Kimberly Awakening apparence', caption: 'Nouvelle apparence' },
-            { src: `${BASE}/2026-04/image-164.png`, alt: 'Kimberly Awakening skill', caption: 'Skill d\'Éveil exclusif' },
+            { src: `${BASE}/2026-04/image-164.png`, alt: 'Kimberly Awakening skill', caption: 'Compétence d\'Éveil exclusive' },
           ]} />
           <InfoRow label="Durée du Battle Pass" value="7 jours (à partir du Jour 4 de la Semaine 1)" />
           <InfoRow label="Prérequis" value="Arme Exclusive niveau ≥ 20 + accès Saison 6" />
@@ -995,12 +995,12 @@ const SECTIONS: Section[] = [
             <div className={styles.subBlockTitle}>Contenu du Battle Pass Éveil</div>
             <Img src={`${BASE}/2026-04/image-158.png`} alt="Contenu Battle Pass Kimberly" caption="Contenu du Battle Pass" />
             <ul className={styles.list}>
-              <li>30 Kimberly Awakening Shards</li>
-              <li>1 Epic Chest Alliance</li>
-              <li>4 Skill Medal Lucky Chests</li>
-              <li>4 Legendary Resource Choice Chests</li>
-              <li>16 Epic Resource Choice Chests</li>
-              <li>7 000 Skill Medals</li>
+              <li>30 Fragments d'Éveil de Kimberly</li>
+              <li>1 Coffre Épique Alliance</li>
+              <li>4 Coffres Chance de Médailles de Compétence</li>
+              <li>4 Coffres de Ressources Légendaires au Choix</li>
+              <li>16 Coffres de Ressources Épiques au Choix</li>
+              <li>7 000 Médailles de Compétence</li>
             </ul>
           </div>
           <div className={styles.subBlock}>
@@ -1009,9 +1009,9 @@ const SECTIONS: Section[] = [
             <Table
               headers={['Niveaux', 'Débloquage', 'Récompense']}
               rows={[
-                ['1–3', 'Jour 4 Semaine 1', '1 shard chacun'],
-                ['4–6', 'Jour 4 Semaine 2', '1 shard chacun'],
-                ['7–10', 'Jour 4 Semaine 3', '1 shard chacun'],
+                ['1–3', 'Jour 4 Semaine 1', '1 fragment chacun'],
+                ['4–6', 'Jour 4 Semaine 2', '1 fragment chacun'],
+                ['7–10', 'Jour 4 Semaine 3', '1 fragment chacun'],
               ]}
             />
           </div>
@@ -1036,7 +1036,7 @@ const SECTIONS: Section[] = [
           <ul className={styles.list}>
             <li>Événement «&nbsp;S6: Legend Returns&nbsp;» — recrutement via tickets</li>
             <li>Invoquer tous les héros saisonniers dès le Jour 1</li>
-            <li>Les boosts liés aux héros se cachent au début de saison et réapparaissent avec l'événement correspondant</li>
+            <li>Les bonus liés aux héros se cachent au début de saison et réapparaissent avec l'événement correspondant</li>
           </ul>
         </Block>
       </>
@@ -1143,7 +1143,7 @@ const SECTIONS: Section[] = [
           <ImgRow images={[
             { src: `${BASE}/2026-04/image-19.png`, alt: 'Purge Action tuile', caption: 'Événement' },
             { src: `${BASE}/2026-04/image-20.png`, alt: 'Purge Action page', caption: 'Page principale' },
-            { src: `${BASE}/2026-04/image-21.png`, alt: 'Kill zombie', caption: 'Kill de zombie' },
+            { src: `${BASE}/2026-04/image-21.png`, alt: 'Élimination zombie', caption: 'Élimination de zombie' },
           ]} />
           <InfoRow label="Durée" value="9 jours" />
           <InfoRow label="Classement" value="Niveau le plus haut de zombie tué (secondaire : vitesse)" />
@@ -1261,17 +1261,17 @@ const SECTIONS: Section[] = [
             <li>Weekly Pass (7j, indisponible semaine 8) : usine supplémentaire + 250 résistance aux virus + 30% vitesse de marche vs zombies + 20k Champignons/jour</li>
           </ul>
         </Block>
-        <Block title="Priorités skills Ingénieur">
+        <Block title="Priorités compétences Ingénieur">
           <ul className={styles.list}>
             <li>Maxer l'arbre vert de bas en haut</li>
             <li>Passer le Rainforest Charm, curses, Enemy Territory Assault en début de saison</li>
-            <li>Skills Architecte en priorité (économie matériaux/temps)</li>
+            <li>Compétences Architecte en priorité (économie matériaux/temps)</li>
             <li>Réserver 1 point pour le <strong>Jour 15 : Relic Expert</strong></li>
           </ul>
         </Block>
         <Block title="Optimisation Spore Factory">
           <ul className={styles.list}>
-            <li>Monter chaque factory à 15 successivement (débloque les suivantes)</li>
+            <li>Monter chaque usine à 15 successivement (débloque les suivantes)</li>
             <li>Ensuite égaliser : toutes à 16, toutes à 17, etc.</li>
             <li>Maximise la production de Spores au fil du temps</li>
           </ul>

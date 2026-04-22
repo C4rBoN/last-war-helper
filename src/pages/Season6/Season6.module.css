@@ -323,12 +323,12 @@
 }
 
 .imgLink {
-  display: block;
+  display: inline-block;
   cursor: zoom-in;
   background: none;
   padding: 0;
   border: none;
-  width: 100%;
+  max-width: 100%;
 }
 
 .imgLink:hover .img {
@@ -337,11 +337,14 @@
 }
 
 .img {
-  width: 100%;
+  max-width: 100%;
+  max-height: 220px;
+  width: auto;
   height: auto;
   border-radius: var(--radius-sm);
   border: 1px solid var(--border);
   display: block;
+  object-fit: contain;
   transition: border-color var(--transition), opacity var(--transition);
 }
 
