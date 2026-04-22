@@ -50,7 +50,7 @@ function migrateHero(raw: Record<string, unknown>): PlayerHero {
   };
 }
 
-function migrateState(parsed: Partial<PlayerState>): PlayerState {
+export function migrateState(parsed: Partial<PlayerState>): PlayerState {
   const heroes = Array.isArray(parsed.heroes)
     ? parsed.heroes.map(h => migrateHero(h as unknown as Record<string, unknown>))
     : [];

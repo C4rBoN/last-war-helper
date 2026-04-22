@@ -1,11 +1,10 @@
 import { useRef, useState } from 'react';
-import { useAppContext } from '../../store/AppContext';
+import { useAppContext, migrateState } from '../../store/AppContext';
 import { useAuth } from '../../store/AuthContext';
 import { LoginModal } from '../auth/LoginModal';
 import { t } from '../../i18n';
 import styles from './TopBar.module.css';
-
-const STORAGE_KEY = 'lastwar_helper_v1';
+import { PlayerState } from '../../types/player.types';
 
 export function TopBar() {
   const { state, dispatch, syncing } = useAppContext();
@@ -20,7 +19,7 @@ export function TopBar() {
   }
 
   function handleExport() {
-    const data = localStorage.getItem(STORAGE_KEY) ?? JSON.stringify(state);
+    const data = JSON.stringify(state);
     const blob = new Blob([data], { type: 'application/json' });
     const url  = URL.createObjectURL(blob);
     const a    = document.createElement('a');
@@ -37,9 +36,8 @@ export function TopBar() {
     reader.onload = () => {
       try {
         const text = reader.result as string;
-        JSON.parse(text);
-        localStorage.setItem(STORAGE_KEY, text);
-        window.location.reload();
+        const parsed = JSON.parse(text) as Partial<PlayerState>;
+        dispatch({ type: 'LOAD_ALL', payload: migrateState(parsed) });
       } catch {
         alert(t(lang, 'topbar.import_error'));
       }
