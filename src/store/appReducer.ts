@@ -41,8 +41,13 @@ function upsertResearch(research: PlayerResearch[], nodeId: string, update: Part
 
 export function appReducer(state: PlayerState, action: AppAction): PlayerState {
   switch (action.type) {
-    case 'SET_HQ_LEVEL':
-      return { ...state, profile: { ...state.profile, hqLevel: action.payload } };
+    case 'SET_HQ_LEVEL': {
+      const newHQLevel = action.payload;
+      const cappedBuildings = state.buildings.map(b =>
+        b.currentLevel > newHQLevel ? { ...b, currentLevel: newHQLevel } : b
+      );
+      return { ...state, profile: { ...state.profile, hqLevel: newHQLevel }, buildings: cappedBuildings };
+    }
 
     case 'SET_LANGUAGE':
       return { ...state, language: action.payload };

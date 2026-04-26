@@ -1,7 +1,8 @@
-﻿import { useState } from 'react';
+﻿import { useState, useEffect } from 'react';
 import { useAppContext } from '../../store/AppContext';
 import { t } from '../../i18n';
 import { BUILDINGS } from '../../data/buildings.data';
+import { getMissingPrereqs } from '../../data/hqPrerequisites.data';
 import { useBuildingPriorities } from '../../hooks/usePriorities';
 import { useHQConstraints } from '../../hooks/useHQConstraints';
 import { getPlayerBuilding } from '../../store/selectors';
@@ -16,19 +17,23 @@ const CATEGORY_ORDER: BuildingCategory[] = ['core', 'military', 'defense', 'econ
 
 // ─── Building Card with draft state ──────────────────────────────────────────
 
-function BuildingCardItem({ building, savedLevel, hqLevel }: {
+function BuildingCardItem({ building, savedLevel, hqLevel, prereq }: {
   building: BuildingDefinition;
   savedLevel: number;
   hqLevel: number;
+  prereq?: { requiredLevel: number; nextHQ: number };
 }) {
   const { state, dispatch } = useAppContext();
   const lang = state.language;
   const [draft, setDraft] = useState(savedLevel);
   const isDirty = draft !== savedLevel;
+
+  useEffect(() => { setDraft(savedLevel); }, [savedLevel]);
   const isHQ = building.id === 'hq';
   const locked = building.hqRequired > hqLevel;
   const gap = savedLevel > 0 ? hqLevel - savedLevel : 0;
   const atCap = savedLevel >= hqLevel && savedLevel > 0;
+  const isPrereqMissing = !locked && prereq !== undefined && savedLevel < prereq.requiredLevel;
 
   function handleSave() {
     if (isHQ) dispatch({ type: 'SET_HQ_LEVEL', payload: draft });
@@ -42,7 +47,7 @@ function BuildingCardItem({ building, savedLevel, hqLevel }: {
   return (
     <Card
       className={`${styles.buildingCard} ${locked ? styles.locked : ''}`}
-      highlight={gap >= 3 && !locked ? 'urgent' : gap >= 1 && !locked ? 'accent' : undefined}
+      highlight={isPrereqMissing || (gap >= 3 && !locked) ? 'urgent' : gap >= 1 && !locked ? 'accent' : undefined}
     >
       <div className={styles.buildingTop}>
         {building.imageUrl
@@ -58,6 +63,11 @@ function BuildingCardItem({ building, savedLevel, hqLevel }: {
           ) : savedLevel > 0 && gap > 0 ? (
             <span className={styles.behindTag}>{t(lang, 'buildings.behind', { gap })}</span>
           ) : null}
+          {isPrereqMissing && (
+            <span className={styles.prereqTag}>
+              {t(lang, 'buildings.hq_prereq_tag', { level: prereq!.requiredLevel, next: prereq!.nextHQ })}
+            </span>
+          )}
           {isDirty && <span className={styles.dirtyDot} title={t(lang, 'buildings.unsaved')}>●</span>}
         </div>
         {!locked && (
@@ -70,14 +80,6 @@ function BuildingCardItem({ building, savedLevel, hqLevel }: {
         )}
       </div>
 
-      {!locked && savedLevel > 0 && gap > 0 && (
-        <div className={styles.gapBar}>
-          <div
-            className={styles.gapBarFill}
-            style={{ width: `${(savedLevel / hqLevel) * 100}%` }}
-          />
-        </div>
-      )}
 
       {isDirty && (
         <div className={styles.draftBar}>
@@ -95,6 +97,10 @@ export function Buildings() {
   const lang = state.language;
   const { hqLevel } = useHQConstraints();
   const priorities = useBuildingPriorities();
+
+  const nextHQ = hqLevel + 1;
+  const getLevel = (id: string) => getPlayerBuilding(state, id).currentLevel;
+  const missingPrereqMap = getMissingPrereqs(hqLevel, getLevel);
 
   const behindCount = BUILDINGS.filter(b => {
     if (b.id === 'hq' || b.hqRequired > hqLevel) return false;
@@ -124,17 +130,18 @@ export function Buildings() {
           <div className={styles.priorityList}>
             {priorities.slice(0, 5).map((item, i) => {
               const buildingId = item.id.replace('building_', '');
-              const building = BUILDINGS.find(b => b.id === buildingId);
-              if (!building) return null;
-              const pb = getPlayerBuilding(state, buildingId);
-              const gap = hqLevel - pb.currentLevel;
+              const isAnyCombat = buildingId === 'any_combat_center';
+              const building = isAnyCombat ? null : BUILDINGS.find(b => b.id === buildingId);
+              if (!isAnyCombat && !building) return null;
+              const pb = building ? getPlayerBuilding(state, buildingId) : null;
+              const gap = pb ? hqLevel - pb.currentLevel : (item.reasonParams?.gap ?? 0);
               return (
-                <Card key={item.id} highlight={i === 0 && item.priorityLevel === 'urgent' ? 'urgent' : undefined} className={styles.priorityItem}>
+                <Card key={item.id} highlight={item.priorityLevel === 'urgent' ? 'urgent' : undefined} className={styles.priorityItem}>
                   <span className={styles.priorityRank}>#{i + 1}</span>
                   <div className={styles.priorityInfo}>
-                    <span className={styles.priorityName}>{t(lang, building.nameKey)}</span>
+                    <span className={styles.priorityName}>{t(lang, item.titleKey)}</span>
                     <span className={styles.priorityReason}>
-                      {t(lang, item.reasonKey, { name: t(lang, building.nameKey), gap, ...(item.reasonParams ?? {}) })}
+                      {t(lang, item.reasonKey, { ...(item.reasonParams ?? {}), name: building ? t(lang, building.nameKey) : '', gap })}
                     </span>
                   </div>
                   <Badge variant={item.priorityLevel} label={t(lang, `priority.${item.priorityLevel}`)} small />
@@ -156,12 +163,14 @@ export function Buildings() {
             <div className={styles.buildingList}>
               {catBuildings.map(building => {
                 const pb = getPlayerBuilding(state, building.id);
+                const reqLevel = missingPrereqMap.get(building.id);
                 return (
                   <BuildingCardItem
                     key={building.id}
                     building={building}
                     savedLevel={pb.currentLevel}
                     hqLevel={hqLevel}
+                    prereq={reqLevel !== undefined ? { requiredLevel: reqLevel, nextHQ } : undefined}
                   />
                 );
               })}

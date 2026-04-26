@@ -38,6 +38,7 @@ export const FR: Record<string, string> = {
   // Priority reasons
   'priority.hero.title': 'Héros — Investissement',
   'priority.hero.reco': '{{label}}',
+  'priority.reason.building.hq_prereq': 'Prérequis manquant pour passer au QG {{next}}',
   'priority.reason.building.behind': '{{name}} est à {{gap}} niveau(x) derrière le QG',
   'priority.reason.building.tech_bottleneck': "Le Centre Tech est le principal goulot d'étranglement — monte-le en priorité",
   'priority.reason.building.gear_factory_stars': "L'Usine de Gear doit atteindre le niveau 20 pour débloquer les étoiles d'équipement",
@@ -114,6 +115,8 @@ export const FR: Record<string, string> = {
   'buildings.unsaved': 'Non enregistré',
   'buildings.cancel': 'Annuler',
   'buildings.save': 'Valider ✓',
+  'buildings.hq_prereq_tag': '⛔ Requis niv. {{level}} → QG {{next}}',
+  'buildings.any_combat_center': 'Centre de Combat (spécialité)',
 
   // Building names
   'building.hq': 'Quartier Général',

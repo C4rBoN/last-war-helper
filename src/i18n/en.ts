@@ -38,6 +38,7 @@ export const EN: Record<string, string> = {
   // Priority reasons
   'priority.hero.title': 'Hero — Investment',
   'priority.hero.reco': '{{label}}',
+  'priority.reason.building.hq_prereq': 'Missing prerequisite for HQ {{next}}',
   'priority.reason.building.behind': '{{name}} is {{gap}} level(s) behind HQ',
   'priority.reason.building.tech_bottleneck': 'Tech Center is the #1 bottleneck — upgrade now',
   'priority.reason.building.gear_factory_stars': 'Gear Factory must reach level 20 to unlock gear stars',
@@ -114,6 +115,8 @@ export const EN: Record<string, string> = {
   'buildings.unsaved': 'Unsaved',
   'buildings.cancel': 'Cancel',
   'buildings.save': 'Save ✓',
+  'buildings.hq_prereq_tag': '⛔ Level {{level}} req. → HQ {{next}}',
+  'buildings.any_combat_center': 'Combat Center (specialty)',
 
   // Building names
   'building.hq': 'Headquarters',

@@ -139,6 +139,17 @@
   font-weight: 600;
 }
 
+.prereqTag {
+  font-size: 10px;
+  background: rgba(192,57,43,0.15);
+  color: var(--danger);
+  border: 1px solid var(--danger);
+  border-radius: 4px;
+  padding: 2px 7px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
 /* Gap bar */
 .gapBar {
   height: 4px;
