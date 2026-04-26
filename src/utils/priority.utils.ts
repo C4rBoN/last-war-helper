@@ -40,7 +40,7 @@ export function computeBuildingPriorities(state: PlayerState): PriorityItem[] {
     const gap = hqLevel - pb.currentLevel;
     if (gap <= 0) continue;
 
-    const rankBonus = (14 - building.priorityRank) * 15; // max rank = 13 (drill_ground)
+    const rankBonus = (13 - building.priorityRank) * 15; // max rank = 12 (builders_hut)
     const baseScore = gap * 10 + rankBonus;
     const priorityLevel: PriorityLevel = gap >= 3 ? 'urgent' : gap >= 1 ? 'recommended' : 'optional';
 
