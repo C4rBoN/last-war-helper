@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import { useAppContext } from '../../store/AppContext';
 import { t } from '../../i18n';
 import { BUILDINGS } from '../../data/buildings.data';
@@ -58,7 +58,7 @@ function BuildingCardItem({ building, savedLevel, hqLevel }: {
           ) : savedLevel > 0 && gap > 0 ? (
             <span className={styles.behindTag}>{t(lang, 'buildings.behind', { gap })}</span>
           ) : null}
-          {isDirty && <span className={styles.dirtyDot} title="Non enregistré">●</span>}
+          {isDirty && <span className={styles.dirtyDot} title={t(lang, 'buildings.unsaved')}>●</span>}
         </div>
         {!locked && (
           <LevelInput
@@ -81,9 +81,9 @@ function BuildingCardItem({ building, savedLevel, hqLevel }: {
 
       {isDirty && (
         <div className={styles.draftBar}>
-          <span className={styles.draftHint}>Non enregistré</span>
-          <button className={styles.cancelBtn} onClick={handleCancel}>Annuler</button>
-          <button className={styles.saveBtn} onClick={handleSave}>Valider ✓</button>
+          <span className={styles.draftHint}>{t(lang, 'buildings.unsaved')}</span>
+          <button className={styles.cancelBtn} onClick={handleCancel}>{t(lang, 'buildings.cancel')}</button>
+          <button className={styles.saveBtn} onClick={handleSave}>{t(lang, 'buildings.save')}</button>
         </div>
       )}
     </Card>
@@ -134,9 +134,7 @@ export function Buildings() {
                   <div className={styles.priorityInfo}>
                     <span className={styles.priorityName}>{t(lang, building.nameKey)}</span>
                     <span className={styles.priorityReason}>
-                      {building.id === 'tech_center'
-                        ? t(lang, 'priority.reason.building.tech_bottleneck')
-                        : t(lang, 'priority.reason.building.behind', { name: t(lang, building.nameKey), gap })}
+                      {t(lang, item.reasonKey, { name: t(lang, building.nameKey), gap, ...(item.reasonParams ?? {}) })}
                     </span>
                   </div>
                   <Badge variant={item.priorityLevel} label={t(lang, `priority.${item.priorityLevel}`)} small />

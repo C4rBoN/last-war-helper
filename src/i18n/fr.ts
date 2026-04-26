@@ -111,6 +111,9 @@ export const FR: Record<string, string> = {
   'buildings.behind_alert': '{{count}} bâtiment(s) en retard sur ton niveau de QG',
   'buildings.all_good': 'Tous les bâtiments sont à jour !',
   'buildings.set_levels': 'Renseigne les niveaux de tes bâtiments pour voir les priorités.',
+  'buildings.unsaved': 'Non enregistré',
+  'buildings.cancel': 'Annuler',
+  'buildings.save': 'Valider ✓',
 
   // Building names
   'building.hq': 'Quartier Général',

@@ -111,6 +111,9 @@ export const EN: Record<string, string> = {
   'buildings.behind_alert': '{{count}} building(s) are behind your HQ level',
   'buildings.all_good': 'All buildings are up to date!',
   'buildings.set_levels': 'Set your building levels to see upgrade priorities.',
+  'buildings.unsaved': 'Unsaved',
+  'buildings.cancel': 'Cancel',
+  'buildings.save': 'Save ✓',
 
   // Building names
   'building.hq': 'Headquarters',
