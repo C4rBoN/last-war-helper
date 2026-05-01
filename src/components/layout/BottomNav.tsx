@@ -13,17 +13,23 @@ const TABS = [
 ];
 
 const S6_SECTIONS = [
-  { id: 'overview',   icon: '🌿', fr: 'Vue d\'ensemble',  en: 'Overview'        },
-  { id: 'preseason',  icon: '🗓', fr: 'Pré-saison',       en: 'Pre-Season'      },
-  { id: 'factions',   icon: '⚔️', fr: 'Factions',         en: 'Factions'        },
-  { id: 'resources',  icon: '💎', fr: 'Ressources',       en: 'Resources'       },
-  { id: 'buildings',  icon: '🏗', fr: 'Bâtiments',        en: 'Buildings'       },
-  { id: 'professions',icon: '🎓', fr: 'Professions',      en: 'Professions'     },
-  { id: 'fishing',    icon: '🎣', fr: 'Pêche',            en: 'Fishing'         },
-  { id: 'ruins',      icon: '🏚', fr: 'Sous les Ruines',   en: 'Beneath the Ruins'},
-  { id: 'heroes',     icon: '🦸', fr: 'Héros',            en: 'Heroes'          },
-  { id: 'week1',      icon: '📅', fr: 'Semaine 1',        en: 'Week 1'          },
-  { id: 'strategy',   icon: '🧠', fr: 'Stratégies',       en: 'Strategy'        },
+  { id: 'overview',     icon: '🌿', fr: 'Vue d\'ensemble',        en: 'Overview'             },
+  { id: 'preseason',    icon: '🗓', fr: 'Pré-saison',             en: 'Pre-Season'           },
+  { id: 'factions',     icon: '⚔️', fr: 'Factions',               en: 'Factions'             },
+  { id: 'cities',       icon: '💥', fr: 'Villes & Territoire',     en: 'Cities & Territory'   },
+  { id: 'altars',       icon: '🏛️', fr: 'Les Autels',             en: 'Altars'               },
+  { id: 'pacts',        icon: '🤝', fr: 'Pactes d\'Alliance',      en: 'Alliance Pacts'       },
+  { id: 'faction_tech', icon: '🔬', fr: 'Techno. de Faction',      en: 'Faction Technology'   },
+  { id: 'resources',    icon: '💎', fr: 'Ressources',              en: 'Resources'            },
+  { id: 'buildings',    icon: '🏗', fr: 'Bâtiments',              en: 'Buildings'            },
+  { id: 'professions',  icon: '🎓', fr: 'Professions',            en: 'Professions'          },
+  { id: 'fishing',      icon: '🎣', fr: 'Pêche',                  en: 'Fishing'              },
+  { id: 'merit',        icon: '🎖️', fr: 'Mérite de Guerre',        en: 'War Merit'            },
+  { id: 'ruins',        icon: '🏚', fr: 'Sous les Ruines',         en: 'Beneath the Ruins'    },
+  { id: 'heroes',       icon: '🦸', fr: 'Héros',                  en: 'Heroes'               },
+  { id: 'expedition',   icon: '🌍', fr: 'Expédition Mondiale',     en: 'Global Expedition'    },
+  { id: 'calendar',     icon: '📅', fr: 'Calendrier S6',           en: 'Full Calendar'        },
+  { id: 'strategy',     icon: '🧠', fr: 'Stratégies',             en: 'Strategy'             },
 ];
 
 export function BottomNav() {
