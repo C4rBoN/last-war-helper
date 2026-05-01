@@ -231,9 +231,9 @@ const SECTIONS: Section[] = [
             rows={[
               ['J1', 'Anciens Clans', 'Tuer 1 000 zombies'],
               ['J2', 'Mérites de Guerre & Pactes d\'Alliance', '500 améliorations de bâtiments'],
-              ['J3', 'Ruines Rainforest', '500 tâches Radar'],
-              ['J4', 'Power Breakthrough', '10 000 recrutements de héros'],
-              ['J5', 'Faction Clash', 'Entraîner 50 000 unités'],
+              ['J3', 'Ruines de la Forêt', '500 tâches Radar'],
+              ['J4', 'Percée de Puissance', '10 000 recrutements de héros'],
+              ['J5', 'Affrontement de Factions', 'Entraîner 50 000 unités'],
               ['J6–7', 'Autel & Lancement', 'Connexion'],
             ]}
           />
@@ -241,7 +241,7 @@ const SECTIONS: Section[] = [
         <Block title="Sélection de faction (3 jours)">
           <ImgRow images={[
             { src: `${BASE}/2026-03/image-56.png`, alt: 'Interface sélection de faction', caption: 'Interface de sélection' },
-            { src: `${BASE}/2026-03/image-57.png`, alt: 'Faction Awards', caption: 'Faction Awards' },
+            { src: `${BASE}/2026-03/image-57.png`, alt: 'Récompenses de Faction', caption: 'Récompenses de Faction' },
           ]} />
           <ul className={styles.list}>
             <li>8 zones de guerre divisées en 2 groupes — le plus fort devient <strong>Meneur de faction</strong></li>
@@ -251,10 +251,10 @@ const SECTIONS: Section[] = [
             <li>Les zones de guerre sont ensuite téléportées sur des zones dédiées à leur faction</li>
           </ul>
         </Block>
-        <Block title="Semaine 2 — Capitol Conquest (pré-saison)">
+        <Block title="Semaine 2 — Conquête du Capitole (pré-saison)">
           <ImgRow images={[
             { src: `${BASE}/2026-03/image-99.png`, alt: 'Semaine 2 pré-saison', caption: 'Aperçu Semaine 2' },
-            { src: `${BASE}/2026-03/image-101.png`, alt: 'Règles Capitol Conquest', caption: 'Règles Capitol Conquest' },
+            { src: `${BASE}/2026-03/image-101.png`, alt: 'Règles Conquête du Capitole', caption: 'Règles Conquête du Capitole' },
           ]} />
           <ul className={styles.list}>
             <li><Tag color="accent">Règle spéciale pré-saison</Tag> Les alliances peuvent attaquer le Capitol sans territoire adjacent</li>
@@ -266,12 +266,12 @@ const SECTIONS: Section[] = [
         </Block>
         <Block title="Préparation recommandée avant la saison">
           <ul className={styles.list}>
-            <li>Maxer les techs d'alliance : <strong>Veteran Craftsman</strong> (réduit coûts bâtiments saisonniers) + <strong>Quick Construction</strong></li>
+            <li>Maxer les techs d'alliance : <strong>Artisan Vétéran</strong> (réduit coûts bâtiments saisonniers) + <strong>Construction Rapide</strong></li>
             <li>Stocker de l'endurance pour les zombies du monde</li>
-            <li>Garder les Hero Return Tickets de S5 pour les ouvrir au lancement de S6</li>
+            <li>Garder les Billets de Retour des Héros S5 pour les ouvrir au lancement de S6</li>
             <li>Collecter des fragments violets pour monter Braz à 5⭐ (futur héros UR)</li>
             <li>Maxer les compétences Ingénieur avant le début : vitesse construction aux niveaux 10, 15, 30, 35, 95</li>
-            <li>Réserver 1 point de compétence pour le jour 15 : <strong>Relic Expert</strong></li>
+            <li>Réserver 1 point de compétence pour le jour 15 : <strong>Expert des Ruines</strong></li>
           </ul>
         </Block>
       </>
@@ -735,8 +735,8 @@ const SECTIONS: Section[] = [
             <span>Spore</span>
           </div>
           <div className={styles.resourceIcon}>
-            <img src={`${BASE}/2026-03/rainforest-mushroom.png`} alt="Rainforest Mushroom" />
-            <span>Rainforest Mushroom</span>
+            <img src={`${BASE}/2026-03/rainforest-mushroom.png`} alt="Champignon de la Forêt" />
+            <span>Champignon de la Forêt</span>
           </div>
           <div className={styles.resourceIcon}>
             <img src={`${BASE}/2026-03/war-merit.png`} alt="Mérite de Guerre" />
@@ -746,19 +746,19 @@ const SECTIONS: Section[] = [
         <Table
           headers={['Ressource', 'Utilisation', 'Sources principales']}
           rows={[
-            ['Spore', 'Construction/amélioration du Fungus Institute', 'Premiers kills, recrutement héros, quêtes, captures de villes, génération Spore Factory'],
-            ['Rainforest Mushroom', 'Construction/amélioration Spore Factory', 'Kills de zombies, kills Doom Elite, visiteurs, quêtes, battle pass, captures villes/forts'],
+            ['Spore', 'Construction/amélioration de l\'Institut Fongique', 'Premiers kills, recrutement héros, quêtes, captures de villes, génération Usine à Spores'],
+            ['Champignon de la Forêt', 'Construction/amélioration Usine à Spores', 'Kills de zombies, kills Élite Maudite, visiteurs, quêtes, passe de combat, captures villes/forts'],
             ['Mérite de Guerre', 'Achats Boutique des Mérites (ressource rare)', 'Éliminations zombies/Doom Elite, génération horaire via villes'],
           ]}
         />
-        <Tip>Les Spores et Rainforest Mushrooms se convertissent en Profession EXP à la fin de la saison.</Tip>
+        <Tip>Les Spores et Champignons de la Forêt se convertissent en EXP de Profession à la fin de la saison.</Tip>
         <Warn>Il n'y a pas de tuiles de ressources d'alliance pour les ressources saisonnières en S6 — pas de collecte centralisée possible.</Warn>
-        <Block title="Doom Walker — Kill quotidien prioritaire">
-          <p className={styles.lead}>Un Doom Walker de niveau 100 peut récompenser jusqu'à <strong>200 000 Rainforest Mushrooms</strong> par jour pour le premier kill. À prioriser chaque jour.</p>
+        <Block title="Marcheur du Destin — Kill quotidien prioritaire">
+          <p className={styles.lead}>Un Marcheur du Destin de niveau 100 peut récompenser jusqu'à <strong>200 000 Champignons de la Forêt</strong> par jour pour le premier kill. À prioriser chaque jour.</p>
         </Block>
         <Block title="Packs saisonniers (5 premiers jours seulement)">
           <ul className={styles.list}>
-            <li>Packs de Rainforest Mushrooms disponibles uniquement les 5 premiers jours</li>
+            <li>Packs de Champignons de la Forêt disponibles uniquement les 5 premiers jours</li>
             <li>Coût progressif : ≈5€ / 10€ / 20€ / 50€ par pack successif</li>
             <li><Tag color="accent">Conseil</Tag> Acheter dès J1 pour maximiser le retour</li>
           </ul>
@@ -810,23 +810,23 @@ const SECTIONS: Section[] = [
     title: { fr: 'Nouveaux bâtiments', en: 'New Buildings' },
     content: (lang) => lang === 'fr' ? (
       <>
-        <Block title="🧫 Fungus Institute">
+        <Block title="🧫 Institut Fongique">
           <ImgRow images={[
-            { src: `${BASE}/2026-04/image-10.png`, alt: 'Fungus Institute', caption: 'Bâtiment Fungus Institute' },
-            { src: `${BASE}/2026-04/image-11.png`, alt: 'Interface amélioration Fungus Institute', caption: 'Interface d\'amélioration' },
+            { src: `${BASE}/2026-04/image-10.png`, alt: 'Institut Fongique', caption: 'Bâtiment Institut Fongique' },
+            { src: `${BASE}/2026-04/image-11.png`, alt: 'Interface amélioration Institut Fongique', caption: 'Interface d\'amélioration' },
           ]} />
           <InfoRow label="Rôle" value="Améliore la Résistance aux Virus pour le combat contre les zombies et protecteurs de Forts" />
           <InfoRow label="Monnaie d'amélioration" value="Spores" />
           <InfoRow label="Niveau max" value="≈ 60" />
           <ul className={styles.list}>
             <li>La Résistance aux Virus du <strong>leader du rallye</strong> s'applique à tous les participants</li>
-            <li>Le Weekly Pass octroie +250 de bonus instantané</li>
+            <li>Le Passe Hebdomadaire octroie +250 de bonus instantané</li>
             <li>À réparer dès le niveau 4 pour débloquer la Boutique des Mérites</li>
           </ul>
         </Block>
-        <Block title="🍄 Spore Factory (I / II / III / IV + Weekly)">
+        <Block title="🍄 Usine à Spores (I / II / III / IV + Hebdomadaire)">
           <InfoRow label="Rôle" value="Génère des Spores en continu" />
-          <InfoRow label="Monnaie d'amélioration" value="Rainforest Mushrooms" />
+          <InfoRow label="Monnaie d'amélioration" value="Champignons de la Forêt" />
           <InfoRow label="Niveau max par usine" value="30" />
           <InfoRow label="Usine II déblocage" value="Usine I niveau 15" />
           <ul className={styles.list}>
@@ -834,9 +834,9 @@ const SECTIONS: Section[] = [
             <li><Tag color="accent">Stratégie optimale</Tag> Monter chaque usine à 15 successivement pour débloquer les suivantes, puis monter toutes de façon équilibrée</li>
           </ul>
         </Block>
-        <Block title="🛡 Protector's Field">
-          <InfoRow label="Rôle" value="Nouveau bâtiment saisonnier — prérequis pour la compétence Summon Mummies" />
-          <InfoRow label="Niveau requis pour Summon Mummies" value="25" />
+        <Block title="🛡 Champ du Protecteur">
+          <InfoRow label="Rôle" value="Nouveau bâtiment saisonnier — prérequis pour la compétence Invoquer les Momies" />
+          <InfoRow label="Niveau requis pour Invoquer les Momies" value="25" />
         </Block>
         <Block title="🛒 Boutique des Mérites de Guerre">
           <ImgRow images={[
@@ -846,10 +846,10 @@ const SECTIONS: Section[] = [
           <InfoRow label="Rôle" value="Échange de Mérites de Guerre contre des ressources et objets exclusifs" />
           <InfoRow label="Déblocage" value="Fungus Institute niveau 4" />
           <ul className={styles.list}>
-            <li>Certains objets conditionnés par le niveau de Faction War Rank</li>
+            <li>Certains objets conditionnés par le niveau de Rang de Guerre de Faction</li>
           </ul>
         </Block>
-        <Tip>Priorisé dès J1 : construire le Fungi Institute et la Mushroom Seed Factory, puis monter la Mushroom Factory au niveau 4 pour réparer la Boutique des Mérites.</Tip>
+        <Tip>Priorisé dès J1 : construire l'Institut Fongique et l'Usine de Graines de Champignons, puis monter l'Usine à Champignons au niveau 4 pour réparer la Boutique des Mérites.</Tip>
       </>
     ) : (
       <>
@@ -903,11 +903,11 @@ const SECTIONS: Section[] = [
     title: { fr: 'Professions', en: 'Professions' },
     content: (lang) => lang === 'fr' ? (
       <>
-        <Warn>Le Diplomate n'est PAS disponible en Saison 6. Seuls Ingénieur et War Leader sont jouables.</Warn>
-        <Img src={`${BASE}/2025-05/image-178.png`} alt="Profession Hall" caption="Interface de la Profession Hall" />
+        <Warn>Le Diplomate n'est PAS disponible en Saison 6. Seuls Ingénieur et Meneur de Guerre sont jouables.</Warn>
+        <Img src={`${BASE}/2025-05/image-178.png`} alt="Salle des Professions" caption="Interface de la Salle des Professions" />
         <Block title="Informations générales">
           <InfoRow label="Niveau maximum" value="100" />
-          <InfoRow label="Professions disponibles" value="Ingénieur, War Leader" />
+          <InfoRow label="Professions disponibles" value="Ingénieur, Meneur de Guerre" />
           <InfoRow label="Compétences saisonnières" value="20 au total" />
           <InfoRow label="Réinitialisation" value="Disponible au début de saison" />
           <p className={styles.note}>Au niveau 100, l'EXP de profession continue à améliorer les Cartes de Tactique plutôt que de monter de niveau.</p>
@@ -926,39 +926,39 @@ const SECTIONS: Section[] = [
         </Block>
         <Block title="Compétences clés — Croissance (début de saison)">
           <ImgRow images={[
-            { src: `${BASE}/2025-03/image-193.png`, alt: 'Combat Experience', caption: 'Combat Experience (Nv.1)' },
-            { src: `${BASE}/2025-03/image-195.png`, alt: 'Building Inspiration I', caption: 'Building Inspiration I (Nv.5)' },
-            { src: `${BASE}/2025-03/image-199.png`, alt: 'Professional Insights', caption: 'Professional Insights (Nv.20)' },
+            { src: `${BASE}/2025-03/image-193.png`, alt: 'Expérience de Combat', caption: 'Expérience de Combat (Nv.1)' },
+            { src: `${BASE}/2025-03/image-195.png`, alt: 'Inspiration Construction I', caption: 'Inspiration Construction I (Nv.5)' },
+            { src: `${BASE}/2025-03/image-199.png`, alt: 'Connaissances Professionnelles', caption: 'Connaissances Professionnelles (Nv.20)' },
           ]} />
           <ImgRow images={[
-            { src: `${BASE}/2026-04/image-79.png`, alt: 'Extra War Merit', caption: 'Extra War Merit (Nv.30)' },
-            { src: `${BASE}/2025-03/image-196.png`, alt: 'Double Exchange', caption: 'Double Exchange (Nv.10)' },
+            { src: `${BASE}/2026-04/image-79.png`, alt: 'Mérite de Guerre Bonus', caption: 'Mérite de Guerre Bonus (Nv.30)' },
+            { src: `${BASE}/2025-03/image-196.png`, alt: 'Double Échange', caption: 'Double Échange (Nv.10)' },
           ]} />
         </Block>
         <Block title="Compétences clés — Pêche">
           <ImgRow images={[
-            { src: `${BASE}/2026-04/image-80.png`, alt: 'Multi Fishing', caption: 'Multi Fishing (Nv.35)' },
-            { src: `${BASE}/2026-04/image-82.png`, alt: 'Golden Bait', caption: 'Golden Bait (Nv.40)' },
-            { src: `${BASE}/2026-04/image-87.png`, alt: 'Golden Fish Chest', caption: 'Golden Fish Chest (Nv.55)' },
+            { src: `${BASE}/2026-04/image-80.png`, alt: 'Pêche Multiple', caption: 'Pêche Multiple (Nv.35)' },
+            { src: `${BASE}/2026-04/image-82.png`, alt: 'Appât Doré', caption: 'Appât Doré (Nv.40)' },
+            { src: `${BASE}/2026-04/image-87.png`, alt: 'Coffre Poisson Doré', caption: 'Coffre Poisson Doré (Nv.55)' },
           ]} />
         </Block>
         <Block title="Compétences clés — Combat / Territoire">
           <ImgRow images={[
-            { src: `${BASE}/2026-04/image-88.png`, alt: 'Homeland Attack', caption: 'Homeland Attack (Nv.65)' },
-            { src: `${BASE}/2026-04/image-89.png`, alt: 'Homeland Defense', caption: 'Homeland Defense (Nv.70)' },
-            { src: `${BASE}/2026-04/image-101.png`, alt: 'Invasion Attack', caption: 'Invasion Attack (Nv.95)' },
-            { src: `${BASE}/2026-04/image-102.png`, alt: 'Invasion Defense', caption: 'Invasion Defense (Nv.100)' },
+            { src: `${BASE}/2026-04/image-88.png`, alt: 'Attaque Territoriale', caption: 'Attaque Territoriale (Nv.65)' },
+            { src: `${BASE}/2026-04/image-89.png`, alt: 'Défense Territoriale', caption: 'Défense Territoriale (Nv.70)' },
+            { src: `${BASE}/2026-04/image-101.png`, alt: 'Attaque d\'Invasion', caption: 'Attaque d\'Invasion (Nv.95)' },
+            { src: `${BASE}/2026-04/image-102.png`, alt: 'Défense d\'Invasion', caption: 'Défense d\'Invasion (Nv.100)' },
           ]} />
         </Block>
         <Block title="Compétences uniques">
           <ImgRow images={[
-            { src: `${BASE}/2026-04/image-91.png`, alt: 'Summon Mummies', caption: 'Summon Mummies (Nv.85)' },
-            { src: `${BASE}/2025-03/image-225.png`, alt: 'Mummy en action', caption: 'Mummy invoquée' },
+            { src: `${BASE}/2026-04/image-91.png`, alt: 'Invoquer les Momies', caption: 'Invoquer les Momies (Nv.85)' },
+            { src: `${BASE}/2025-03/image-225.png`, alt: 'Momie en action', caption: 'Momie invoquée' },
           ]} />
           <ImgRow images={[
-            { src: `${BASE}/2026-04/image-92.png`, alt: 'Buddy Fortify', caption: 'Buddy Fortify — Ingénieur (Nv.90)' },
-            { src: `${BASE}/2026-04/image-96.png`, alt: 'Wall Fortify', caption: 'Wall Fortify — War Leader (Nv.90)' },
-            { src: `${BASE}/2026-04/image-90.png`, alt: 'Ruins Expert', caption: 'Ruins Expert (Nv.80, Jour 15)' },
+            { src: `${BASE}/2026-04/image-92.png`, alt: 'Fortification Alliée', caption: 'Fortification Alliée — Ingénieur (Nv.90)' },
+            { src: `${BASE}/2026-04/image-96.png`, alt: 'Fortification de Mur', caption: 'Fortification de Mur — Meneur de Guerre (Nv.90)' },
+            { src: `${BASE}/2026-04/image-90.png`, alt: 'Expert des Ruines', caption: 'Expert des Ruines (Nv.80, Jour 15)' },
           ]} />
         </Block>
         <Block title="Jalons de Mérite de Guerre pour récompenses Profession">
@@ -1261,15 +1261,15 @@ const SECTIONS: Section[] = [
     content: (lang) => lang === 'fr' ? (
       <>
         <ImgRow images={[
-          { src: `${BASE}/2026-04/image-106.png`, alt: 'Beneath the Ruins événement', caption: 'Page de l\'événement' },
-          { src: `${BASE}/2026-04/image-107.png`, alt: 'Beneath the Ruins gameplay', caption: 'Aperçu du gameplay' },
+          { src: `${BASE}/2026-04/image-106.png`, alt: 'Sous les Ruines — événement', caption: 'Page de l\'événement' },
+          { src: `${BASE}/2026-04/image-107.png`, alt: 'Sous les Ruines — gameplay', caption: 'Aperçu du gameplay' },
         ]} />
         <p className={styles.lead}>Mini-jeu de plateforme disponible 55 jours, avec 48 jours de durée active.</p>
         <Block title="Mécaniques">
           <ul className={styles.list}>
             <li>Jeu de plateforme avec gestion de la santé et des chutes</li>
             <li>La santé se régénère lentement quand aucun dégât n'est subi</li>
-            <li>Les victoires rapportent des <strong>War Merits</strong></li>
+            <li>Les victoires rapportent des <strong>Mérites de Guerre</strong></li>
             <li>Classement quotidien — seul le dernier passage du jour compte</li>
             <li>Difficulté variable selon les niveaux</li>
           </ul>
@@ -1291,7 +1291,7 @@ const SECTIONS: Section[] = [
           </ul>
         </Block>
         <Block title="Compétence de Profession liée">
-          <InfoRow label="Nv.80 Ruins Expert (Jour 15)" value="+1 000 dépôt maximum dans le Trésor des Ruines" />
+          <InfoRow label="Nv.80 Expert des Ruines (Jour 15)" value="+1 000 dépôt maximum dans le Trésor des Ruines" />
         </Block>
       </>
     ) : (
@@ -1576,25 +1576,25 @@ const SECTIONS: Section[] = [
     content: (lang) => lang === 'fr' ? (
       <>
         <ImgRow images={[
-          { src: `${BASE}/2026-04/image-13.png`, alt: 'Missions Fungus Secrets & Beneath the Ruins', caption: 'Tuiles J1–J2' },
-          { src: `${BASE}/2026-04/image-2.png`, alt: 'Missions pêche', caption: 'Fishing Grounds & Fest' },
-          { src: `${BASE}/2026-04/image-3.png`, alt: 'City Ready for War', caption: 'City Ready for War' },
+          { src: `${BASE}/2026-04/image-13.png`, alt: 'Missions Secrets Fongiques & Sous les Ruines', caption: 'Tuiles J1–J2' },
+          { src: `${BASE}/2026-04/image-2.png`, alt: 'Missions pêche', caption: 'Terrains de Pêche & Fête' },
+          { src: `${BASE}/2026-04/image-3.png`, alt: 'Ville Prête pour la Guerre', caption: 'Ville Prête pour la Guerre' },
         ]} />
         <Table
           headers={['Jour', 'Événements lancés']}
           rows={[
-            ['J1', 'Fungus Secrets, Purge Action (9j), Fishing Ground Conquest (14j)'],
-            ['J2', 'Beneath the Ruins (48j), capture Fishing Grounds, Fishing Fest'],
-            ['J3', 'Level 1 City Ready for War (+12h) — City Clash S6 Nv.1 débloqué'],
-            ['J4', 'Kimberly\'s Awakening Battle Pass (7j)'],
-            ['J6', 'Level 2 City Ready for War (+12h) — City Clash S6 Nv.2 débloqué'],
+            ['J1', 'Secrets Fongiques, Action de Purge (9j), Conquête Terrain de Pêche (14j)'],
+            ['J2', 'Sous les Ruines (48j), capture Terrains de Pêche, Fête de la Pêche'],
+            ['J3', 'Ville Nv.1 Prête pour la Guerre (+12h) — Clash de Villes S6 Nv.1 débloqué'],
+            ['J4', 'Passe de Combat Éveil de Kimberly (7j)'],
+            ['J6', 'Ville Nv.2 Prête pour la Guerre (+12h) — Clash de Villes S6 Nv.2 débloqué'],
           ]}
         />
-        <Block title="City Clash S6">
+        <Block title="Clash de Villes S6">
           <ImgRow images={[
-            { src: `${BASE}/2026-04/image-141.png`, alt: 'City Clash Nv.1', caption: 'City Clash Nv.1' },
-            { src: `${BASE}/2026-04/image-142.png`, alt: 'City Clash Nv.2', caption: 'City Clash Nv.2' },
-            { src: `${BASE}/2026-04/image-146.png`, alt: 'City Clash Nv.3', caption: 'City Clash Nv.3' },
+            { src: `${BASE}/2026-04/image-141.png`, alt: 'Clash de Villes Nv.1', caption: 'Clash de Villes Nv.1' },
+            { src: `${BASE}/2026-04/image-142.png`, alt: 'Clash de Villes Nv.2', caption: 'Clash de Villes Nv.2' },
+            { src: `${BASE}/2026-04/image-146.png`, alt: 'Clash de Villes Nv.3', caption: 'Clash de Villes Nv.3' },
           ]} />
           <InfoRow label="Niveau 1" value="Jour 3 + 12h" />
           <InfoRow label="Niveau 2" value="Jour 6 + 12h" />
@@ -1606,10 +1606,10 @@ const SECTIONS: Section[] = [
             <li>Les membres gagnent des bonus permanents après capture</li>
           </ul>
         </Block>
-        <Block title="Purge Action">
+        <Block title="Action de Purge">
           <ImgRow images={[
-            { src: `${BASE}/2026-04/image-19.png`, alt: 'Purge Action tuile', caption: 'Événement' },
-            { src: `${BASE}/2026-04/image-20.png`, alt: 'Purge Action page', caption: 'Page principale' },
+            { src: `${BASE}/2026-04/image-19.png`, alt: 'Action de Purge — tuile', caption: 'Événement' },
+            { src: `${BASE}/2026-04/image-20.png`, alt: 'Action de Purge — page', caption: 'Page principale' },
             { src: `${BASE}/2026-04/image-21.png`, alt: 'Élimination zombie', caption: 'Élimination de zombie' },
           ]} />
           <InfoRow label="Durée" value="9 jours" />
@@ -1630,7 +1630,7 @@ const SECTIONS: Section[] = [
             <li>Éliminer des Élites Mutantes → accumuler de la Fureur → déclencher la <strong>Flamme Combative</strong></li>
             <li>Système similaire aux Sandworms S3</li>
             <li>Les récompenses tombent sur la carte à la mort de la créature</li>
-            <li>Rangs : Support Leader, Support Officer, Support Vanguard</li>
+            <li>Rangs : Chef de Soutien, Officier de Soutien, Avant-Garde de Soutien</li>
           </ul>
         </Block>
         <Block title="Calendrier complet — Semaines 1 à 8">
