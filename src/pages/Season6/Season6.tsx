@@ -134,8 +134,8 @@ const SECTIONS: Section[] = [
           <InfoRow label="Taille de la carte" value="≈ 9× Saison 0 (équivalent S5)" />
           <InfoRow label="Zones de guerre" value="8 (4 par faction)" />
           <Img
-            src={`${BASE}/2026-04/S6-schedule-1024x796.jpg`}
-            alt="Calendrier officiel Saison 6"
+            src={`${WIKI}/1776998048181-ifei08pf26.jpg`}
+            alt="Calendrier officiel Saison 6 — version française"
             caption="Calendrier officiel de la Saison 6"
           />
         </Block>
@@ -1738,7 +1738,7 @@ const SECTIONS: Section[] = [
           </ul>
         </Block>
         <Block title="Full Calendar — Weeks 1 to 8">
-          <Img src={`${WIKI}/1776998048181-ifei08pf26.jpg`} alt="Official S6 event calendar" caption="Official S6 calendar" />
+          <Img src={`${BASE}/2026-04/S6-schedule-1024x796.jpg`} alt="Official S6 event calendar" caption="Official S6 calendar" />
           <Table
             headers={['Event', 'Description', 'Weeks']}
             rows={[
