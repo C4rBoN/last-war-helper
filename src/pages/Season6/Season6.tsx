@@ -25,6 +25,7 @@ function Lightbox({ src, alt, onClose }: { src: string; alt: string; onClose: ()
 type Lang = 'fr' | 'en';
 
 const BASE = '/season6';
+const WIKI = 'https://wiki.lastwar.com/wiki';
 
 interface Section {
   id: string;
@@ -125,7 +126,7 @@ const SECTIONS: Section[] = [
           src={`${BASE}/2026-03/season-6-main-banner.png`}
           alt="Saison 6 Lost Rainforest banner"
         />
-        <p className={styles.lead}>La Saison 6 se déroule dans la <strong>Shadow Rainforest</strong>. Un virus empoisonne la Grande Rivière, transformant les créatures en monstres. Les joueurs choisissent l'un des <strong>2 clans</strong> — Deepwood ou Wetland — pour mettre fin à la guerre. La zone de la Grande Rivière est un territoire neutre central non jouable.</p>
+        <p className={styles.lead}>La Saison 6 se déroule dans la <strong>Forêt Tropicale Ombragée</strong> (Shadow Rainforest). L'objectif n'est plus d'avancer ensemble, mais de s'<strong>opposer en 4v4</strong>, d'occuper le territoire adverse et de <strong>détruire les villes ennemies</strong> pour gagner des Points d'Influence.</p>
         <Block title="Calendrier">
           <InfoRow label="Pré-saison" value="2 semaines" />
           <InfoRow label="Saison principale" value="8 semaines" />
@@ -140,25 +141,28 @@ const SECTIONS: Section[] = [
         </Block>
         <Block title="Carte officielle">
           <Img
-            src={`${BASE}/2026-03/official-map.png`}
-            alt="Carte officielle Saison 6"
-            caption="Vue d'ensemble de la carte Saison 6 — Shadow Rainforest"
+            src={`${WIKI}/1776414097663-lzho484uyv.jpg`}
+            alt="Carte du monde Saison 6 — Forêt Tropicale Ombragée"
+            caption="Vue d'ensemble de la carte — Shadow Rainforest"
           />
         </Block>
-        <Block title="Les 2 clans jouables">
+        <Block title="Les 3 clans">
           <div className={styles.factionGrid}>
             <div className={styles.factionCard}>
               <Img src={`${BASE}/2026-03/image-49.png`} alt="Sanctuaire Deepwood" />
               <div className={styles.factionName}>🦌 Clan Deepwood</div>
-              <div className={styles.factionDesc}>Axé combat — «&nbsp;Les forts sont les protecteurs&nbsp;». Totem : Cerf.</div>
+              <div className={styles.factionDesc}>Jouable — en conflit permanent. «&nbsp;Les forts sont les protecteurs&nbsp;». Totem : Cerf.</div>
             </div>
             <div className={styles.factionCard}>
               <Img src={`${BASE}/2026-03/image-52.png`} alt="Sanctuaire Wetland" />
               <div className={styles.factionName}>🐊 Clan Wetland</div>
-              <div className={styles.factionDesc}>Axé stratégie — «&nbsp;La survie est la vérité&nbsp;». Totem : Crocodile.</div>
+              <div className={styles.factionDesc}>Jouable — en conflit permanent. «&nbsp;La survie est la vérité&nbsp;». Totem : Crocodile.</div>
+            </div>
+            <div className={styles.factionCard}>
+              <div className={styles.factionName}>🌊 Clan du Grand Fleuve</div>
+              <div className={styles.factionDesc}>Neutre — Région Centrale non jouable. Abrite les Autels et le Temple Ancestral, accessibles aux deux factions.</div>
             </div>
           </div>
-          <p className={styles.note}>La zone Grande Rivière est un territoire neutre central — accessible aux deux factions pour les Autels et le Temple Ancestral, mais non affiliée à un clan jouable.</p>
         </Block>
       </>
     ) : (
@@ -167,7 +171,7 @@ const SECTIONS: Section[] = [
           src={`${BASE}/2026-03/season-6-main-banner.png`}
           alt="Season 6 Lost Rainforest banner"
         />
-        <p className={styles.lead}>Season 6 takes place in the <strong>Shadow Rainforest</strong>. A virus poisons the Great River, turning creatures into monsters. Players choose one of <strong>2 clans</strong> — Deepwood or Wetland — to end the war. The Great River zone is a neutral, non-playable central territory.</p>
+        <p className={styles.lead}>Season 6 takes place in the <strong>Shadow Rainforest</strong>. The goal is no longer to advance together, but to <strong>oppose each other 4v4</strong>, occupy enemy territory, and <strong>destroy enemy cities</strong> to earn Influence Points.</p>
         <Block title="Timeline">
           <InfoRow label="Pre-Season" value="2 weeks" />
           <InfoRow label="Main Season" value="8 weeks" />
@@ -182,25 +186,28 @@ const SECTIONS: Section[] = [
         </Block>
         <Block title="Official map">
           <Img
-            src={`${BASE}/2026-03/official-map.png`}
-            alt="Official Season 6 map"
+            src={`${WIKI}/1776414097663-lzho484uyv.jpg`}
+            alt="Season 6 world map — Shadow Rainforest"
             caption="Season 6 map overview — Shadow Rainforest"
           />
         </Block>
-        <Block title="The 2 playable clans">
+        <Block title="The 3 clans">
           <div className={styles.factionGrid}>
             <div className={styles.factionCard}>
               <Img src={`${BASE}/2026-03/image-49.png`} alt="Deepwood Sanctuary" />
               <div className={styles.factionName}>🦌 Deepwood Clan</div>
-              <div className={styles.factionDesc}>Combat-focused — "Strong are protectors". Totem: Stag.</div>
+              <div className={styles.factionDesc}>Playable — permanent conflict. "Strong are protectors". Totem: Stag.</div>
             </div>
             <div className={styles.factionCard}>
               <Img src={`${BASE}/2026-03/image-52.png`} alt="Wetland Sanctuary" />
               <div className={styles.factionName}>🐊 Wetland Clan</div>
-              <div className={styles.factionDesc}>Strategy-focused — "Survival is truth". Totem: Crocodile.</div>
+              <div className={styles.factionDesc}>Playable — permanent conflict. "Survival is truth". Totem: Crocodile.</div>
+            </div>
+            <div className={styles.factionCard}>
+              <div className={styles.factionName}>🌊 Great River Clan</div>
+              <div className={styles.factionDesc}>Neutral — non-playable Central Region. Home to Altars and the Ancestral Temple, accessible to both factions.</div>
             </div>
           </div>
-          <p className={styles.note}>The Great River zone is a neutral central territory — accessible to both factions for Altars and the Ancestral Temple, but not affiliated with any playable clan.</p>
         </Block>
       </>
     ),
@@ -335,50 +342,285 @@ const SECTIONS: Section[] = [
     title: { fr: 'Système de Factions', en: 'Faction System' },
     content: (lang) => lang === 'fr' ? (
       <>
-        <Img src={`${BASE}/2026-03/image-68.png`} alt="Carte des factions S6" caption="Carte des zones de faction" />
-        <Block title="Règles de guerre">
-          <InfoRow label="Jours de déclaration de guerre" value="Mercredi et Samedi" />
-          <InfoRow label="Limite d'Autels par alliance" value="3" />
-          <InfoRow label="Fenêtre de capture Autel" value="1 heure (mardi 12h00 serveur)" />
-          <InfoRow label="Délai du Pacte d'Alliance" value="3 jours" />
-        </Block>
-        <Block title="Conquête des Autels (chaque mardi)">
-          <Img src={`${BASE}/2026-03/image-87.png`} alt="Règles Conquête des Autels" caption="Règles de la Conquête des Autels" />
+        <Img src={`${WIKI}/1774860445933-wtkhmrbtu.png`} alt="Structure inter-zones S6" caption="Structure 4v4 — Forêt Tropicale Ombragée" />
+        <p className={styles.lead}>Les 8 Zones de Guerre sont réparties en <strong>2 grandes Factions</strong> qui s'affrontent sur une carte symétrique. L'objectif est d'accumuler le plus de <strong>Points d'Influence</strong> (occupation + destruction) pour remporter la saison.</p>
+        <Block title="Choix de faction (Pré-saison)">
+          <Img src={`${WIKI}/1774860572693-nkuyeyiwwpl.png`} alt="Choix stratégique de faction" caption="Sélection de faction" />
           <ul className={styles.list}>
-            <li>Réservé aux alliances — limite de 3 autels simultanés</li>
-            <li>Snake / Gust Autels : mutuellement exclusifs</li>
-            <li>Echo / Feather Autels : mutuellement exclusifs</li>
-            <li>Impossible d'abandonner 1h avant le concours</li>
-            <li>Les Autels accordent des <strong>Compétences d'Alliance</strong></li>
-            <li>R4+ peuvent invoquer le «&nbsp;Gift of the Great River Clan&nbsp;»</li>
+            <li>Les Présidents des Chefs de faction s'affrontent stratégiquement</li>
+            <li>Chaque Zone de Guerre choisit : <strong>Faction Deepwood</strong> ou <strong>Faction Wetland</strong></li>
+            <li>Une fois confirmée, la faction reste <strong>stable toute la saison</strong></li>
+            <li>Tous les joueurs et alliances sont automatiquement rattachés</li>
           </ul>
         </Block>
-        <Block title="Choc des Factions">
-          <Img src={`${BASE}/2026-03/image-85.png`} alt="Règles Choc des Factions" caption="Règles du Choc des Factions" />
-          <ul className={styles.list}>
-            <li>Après la capture d'une Ville ennemie : elle est <strong>automatiquement détruite</strong></li>
-            <li>La ville détruite n'entre pas dans la limite d'alliance, ne peut pas être reconstruite</li>
-            <li>L'alliance gagne définitivement les <strong>Points d'Influence</strong> de destruction</li>
-            <li>En cas d'attaquants multiples : celui ayant infligé le plus de dégâts de durabilité reçoit les points</li>
-            <li>Tous les membres reçoivent les récompenses de destruction ; les participants reçoivent en plus des récompenses de participation/classement</li>
-          </ul>
-          <Warn>Villes de plus haut niveau = plus de Points d'Influence. Le total d'Influence en fin de saison détermine le vainqueur.</Warn>
+        <Block title="Mécanique inter-zones">
+          <InfoRow label="Semaine 1" value="Téléportation dans sa propre Zone de Guerre uniquement" />
+          <InfoRow label="Semaine 2+" value="Téléporteur Avancé disponible → rejoindre les zones alliées" />
         </Block>
-        <Block title="Pactes d'Alliance">
+        <Block title="Gains partagés par Faction">
+          <ul className={styles.list}>
+            <li><strong>Recherche Technologique de Faction</strong> partagée → buffs pour toute la faction</li>
+            <li><strong>Récompenses de règlement</strong> en fin de saison selon performance globale</li>
+            <li><strong>Buff de palier d'Influence</strong> : plus les Points d'Influence sont élevés, plus les buffs sont puissants</li>
+            <li><strong>Dernier Recours</strong> : zone sous pression → Effets de Contre-Attaque supplémentaires (voir section Villes)</li>
+          </ul>
+        </Block>
+        <Block title="Jours de Déclaration de Guerre">
+          <InfoRow label="Jours autorisés" value="Mercredi et Samedi" />
+          <InfoRow label="Maximum d'Autels par alliance" value="3 simultanément" />
+          <InfoRow label="Fenêtre capture Autel" value="Mardi 12h00 (heure serveur) — 1 heure" />
+        </Block>
+      </>
+    ) : (
+      <>
+        <Img src={`${WIKI}/1774860445933-wtkhmrbtu.png`} alt="S6 inter-zone structure" caption="4v4 structure — Shadow Rainforest" />
+        <p className={styles.lead}>The 8 Warzones are split into <strong>2 major Factions</strong> on a mirrored map. The goal is to accumulate the most <strong>Influence Points</strong> (occupation + destruction) to win the season.</p>
+        <Block title="Faction Choice (Pre-Season)">
+          <Img src={`${WIKI}/1774860572693-nkuyeyiwwpl.png`} alt="Strategic faction choice" caption="Faction selection" />
+          <ul className={styles.list}>
+            <li>Faction Leader Presidents compete strategically</li>
+            <li>Each Warzone chooses: <strong>Deepwood Faction</strong> or <strong>Wetland Faction</strong></li>
+            <li>Once confirmed, the faction remains <strong>stable for the entire season</strong></li>
+            <li>All players and alliances are automatically assigned</li>
+          </ul>
+        </Block>
+        <Block title="Inter-Zone Mechanic">
+          <InfoRow label="Week 1" value="Teleportation within your own Warzone only" />
+          <InfoRow label="Week 2+" value="Advanced Teleporter available → join allied zones" />
+        </Block>
+        <Block title="Shared Faction Gains">
+          <ul className={styles.list}>
+            <li><strong>Faction Technology Research</strong> shared → buffs for the whole faction</li>
+            <li><strong>Settlement rewards</strong> at season end based on global performance</li>
+            <li><strong>Influence tier buff</strong>: higher Influence Points = stronger faction buffs</li>
+            <li><strong>Last Resort</strong>: zone under pressure → extra Counter-Attack Effects (see Cities section)</li>
+          </ul>
+        </Block>
+        <Block title="War Declaration Days">
+          <InfoRow label="Allowed days" value="Wednesday and Saturday" />
+          <InfoRow label="Max Altars per alliance" value="3 simultaneously" />
+          <InfoRow label="Altar capture window" value="Tuesday 12:00 (server time) — 1 hour" />
+        </Block>
+      </>
+    ),
+  },
+
+  {
+    id: 'cities',
+    icon: '💥',
+    title: { fr: 'Villes & Territoire', en: 'Cities & Territory' },
+    content: (lang) => lang === 'fr' ? (
+      <>
+        <Img src={`${WIKI}/1775794207091-j0u6xkrobmd.png`} alt="Mécanique de destruction des villes" caption="Destruction des villes ennemies" />
+        <p className={styles.lead}>En S6, l'objectif n'est plus seulement d'<strong>occuper</strong> mais de <strong>détruire</strong> les villes ennemies pour gagner des Points d'Influence de faction.</p>
+        <Block title="Règles de Déclaration de Guerre">
+          <ul className={styles.list}>
+            <li>Uniquement R4/R5 peuvent déclarer la guerre</li>
+            <li>Actions de Ville ouvertes les <strong>mercredis et samedis</strong> uniquement</li>
+            <li>Prérequis : contrôler un <strong>Terrain de Pêche adjacent</strong></li>
+            <li>Une seule ville ciblée simultanément par alliance</li>
+          </ul>
+        </Block>
+        <Block title="Ordre Détruire">
+          <Img src={`${WIKI}/1775794235099-jd82f7r07n.png`} alt="Ordre Détruire automatique" caption="Ordre Détruire" />
+          <ul className={styles.list}>
+            <li>Ville ennemie saisonnière ciblée → ordre <strong>【Détruire】</strong> automatique</li>
+            <li>Après capture : la ville est <strong>automatiquement détruite</strong></li>
+            <li>Ville détruite : ne compte pas dans la limite d'alliance, <strong>ne peut pas être restaurée</strong></li>
+            <li>L'alliance gagne définitivement les <strong>Points d'Influence de Destruction</strong></li>
+            <li>Plusieurs attaquants : celui avec le plus de dégâts de durabilité reçoit les points</li>
+            <li>Villes de plus haut niveau = plus de Points d'Influence</li>
+          </ul>
+          <Warn>Le total d'Influence en fin de saison détermine le vainqueur. Priorisez les villes de haut niveau.</Warn>
+        </Block>
+        <Block title="Dernier Rempart — Système d'équilibre">
+          <Img src={`${WIKI}/1775794245139-mmtul4js2gl.png`} alt="Système Dernier Rempart" caption="Buffs compensateurs automatiques" />
+          <p className={styles.note}>Quand une Zone de Guerre subit trop de destructions, des buffs compensateurs s'activent automatiquement :</p>
+          <Table
+            headers={['Niveau', 'Effets']}
+            rows={[
+              ['Lv1', 'Vitesse de Marche +5%, Production Or +5%'],
+              ['Lv2', 'Vitesse de Marche +10%, Production Or +10%'],
+              ['Lv3', 'Formation +5%, Réduction Dégâts +5%, Marche +15%, Or +15%'],
+              ['Lv4', 'Tous les effets encore renforcés'],
+            ]}
+          />
+          <Tip>Ce mécanisme empêche les écrasements rapides et donne une chance aux zones sous pression de résister.</Tip>
+        </Block>
+        <Block title="Récompenses de capture">
+          <ul className={styles.list}>
+            <li>Tous les membres reçoivent les récompenses de destruction</li>
+            <li>Les participants reçoivent en plus des récompenses de participation/classement</li>
+          </ul>
+        </Block>
+      </>
+    ) : (
+      <>
+        <Img src={`${WIKI}/1775794207091-j0u6xkrobmd.png`} alt="City destruction mechanic" caption="Destroying enemy cities" />
+        <p className={styles.lead}>In S6, the goal is no longer just to <strong>occupy</strong> but to <strong>destroy</strong> enemy cities to earn faction Influence Points.</p>
+        <Block title="War Declaration Rules">
+          <ul className={styles.list}>
+            <li>Only R4/R5 can declare war</li>
+            <li>City actions open on <strong>Wednesdays and Saturdays</strong> only</li>
+            <li>Prerequisite: control an <strong>adjacent Fishing Ground</strong></li>
+            <li>One city targeted simultaneously per alliance</li>
+          </ul>
+        </Block>
+        <Block title="Destroy Order">
+          <Img src={`${WIKI}/1775794235099-jd82f7r07n.png`} alt="Automatic Destroy order" caption="Destroy Order" />
+          <ul className={styles.list}>
+            <li>Enemy seasonal city targeted → automatic <strong>【Destroy】</strong> order</li>
+            <li>After capture: the city is <strong>automatically destroyed</strong></li>
+            <li>Destroyed city: doesn't count toward alliance limit, <strong>cannot be restored</strong></li>
+            <li>Alliance permanently gains <strong>Destruction Influence Points</strong></li>
+            <li>Multiple attackers: highest durability damage dealer receives the points</li>
+            <li>Higher-level cities = more Influence Points</li>
+          </ul>
+          <Warn>Total Influence at season end determines the winner. Prioritize high-level cities.</Warn>
+        </Block>
+        <Block title="Last Bastion — Balance System">
+          <Img src={`${WIKI}/1775794245139-mmtul4js2gl.png`} alt="Last Bastion system" caption="Automatic compensatory buffs" />
+          <p className={styles.note}>When a Warzone suffers too many destructions, compensatory buffs activate automatically:</p>
+          <Table
+            headers={['Level', 'Effects']}
+            rows={[
+              ['Lv1', 'March Speed +5%, Gold Production +5%'],
+              ['Lv2', 'March Speed +10%, Gold Production +10%'],
+              ['Lv3', 'Training +5%, Damage Reduction +5%, March +15%, Gold +15%'],
+              ['Lv4', 'All effects further strengthened'],
+            ]}
+          />
+          <Tip>This mechanic prevents fast steamrolls and gives pressured zones a fighting chance.</Tip>
+        </Block>
+        <Block title="Capture rewards">
+          <ul className={styles.list}>
+            <li>All members receive destruction rewards</li>
+            <li>Participants also receive participation/ranking rewards</li>
+          </ul>
+        </Block>
+      </>
+    ),
+  },
+
+  {
+    id: 'altars',
+    icon: '🏛️',
+    title: { fr: 'Les Autels', en: 'Altars' },
+    content: (lang) => lang === 'fr' ? (
+      <>
+        <Img src={`${WIKI}/1776999123341-me389bg3nkm.png`} alt="Les Autels S6" caption="Vue d'ensemble des Autels" />
+        <p className={styles.lead}>Les Autels sont situés dans la Région Centrale (Clan du Grand Fleuve, neutre). Ils accordent de puissantes <strong>Compétences d'Alliance</strong> et peuvent être capturés <strong>sans territoire adjacent requis</strong>.</p>
+        <Block title="Règles d'ouverture">
+          <InfoRow label="Jour de conquête" value="Chaque mardi à 12h00 (heure serveur)" />
+          <InfoRow label="Durée de la phase" value="1 heure" />
+          <InfoRow label="Maximum par alliance" value="3 Autels simultanément" />
+          <InfoRow label="Abandon" value="Délai de 60 min (annulable) — impossible 1h avant la conquête" />
+        </Block>
+        <Block title="Exclusions mutuelles">
+          <Img src={`${WIKI}/1776998835508-nufyuxzel9p.png`} alt="Exclusions entre Autels" caption="Relations d'exclusion" />
+          <ul className={styles.list}>
+            <li>🐍 <strong>Autel du Serpent</strong> (Barrière de Serpent — <em>Fortifier</em>) ↔ <strong>Autel de la Rafale</strong> (Missile du Seigneur de la Guerre) — mutuellement exclusifs</li>
+            <li>🦅 <strong>Autel de l'Écho</strong> (Armée de la Nuit — <em>Invoquer l'Armée des Momies</em>) ↔ <strong>Autel de Plumes</strong> (Bobine Tesla) — mutuellement exclusifs</li>
+            <li>Capturer plusieurs Autels identiques n'active la compétence qu'<strong>une seule fois</strong></li>
+          </ul>
+        </Block>
+        <Block title="Compétences d'Autel">
+          <Img src={`${WIKI}/1776999316219-hifmzr5awj.png`} alt="Interface capture d'Autel" caption="Interface de capture" />
+          <Table
+            headers={['Autel', 'Compétence accordée']}
+            rows={[
+              ['Autel du Serpent', 'Fortifier'],
+              ['Autel de la Rafale', 'Missile du Seigneur de la Guerre'],
+              ["Autel de l'Écho", "Invoquer l'Armée des Momies"],
+              ['Autel de Plumes', 'Bobine Tesla'],
+            ]}
+          />
+        </Block>
+        <Block title="Cadeau du Clan du Grand Fleuve">
+          <ul className={styles.list}>
+            <li>Après capture, les membres <strong>R4+</strong> peuvent invoquer le cadeau</li>
+            <li>Des <strong>bancs de poissons</strong> apparaissent autour de l'Autel</li>
+          </ul>
+        </Block>
+      </>
+    ) : (
+      <>
+        <Img src={`${WIKI}/1776999123341-me389bg3nkm.png`} alt="S6 Altars overview" caption="Altars overview" />
+        <p className={styles.lead}>Altars are in the Central Region (neutral Great River Clan). They grant powerful <strong>Alliance Skills</strong> and can be captured <strong>without adjacent territory</strong>.</p>
+        <Block title="Opening rules">
+          <InfoRow label="Conquest day" value="Every Tuesday at 12:00 (server time)" />
+          <InfoRow label="Phase duration" value="1 hour" />
+          <InfoRow label="Max per alliance" value="3 Altars simultaneously" />
+          <InfoRow label="Abandon" value="60-minute delay (cancellable) — not possible 1h before conquest" />
+        </Block>
+        <Block title="Mutual exclusions">
+          <Img src={`${WIKI}/1776998835508-nufyuxzel9p.png`} alt="Altar exclusions" caption="Exclusion relationships" />
+          <ul className={styles.list}>
+            <li>🐍 <strong>Serpent Altar</strong> (Serpent Barrier — <em>Fortify</em>) ↔ <strong>Gust Altar</strong> (Warlord Missile) — mutually exclusive</li>
+            <li>🦅 <strong>Echo Altar</strong> (Army of Night — <em>Summon Mummy Army</em>) ↔ <strong>Feather Altar</strong> (Tesla Coil) — mutually exclusive</li>
+            <li>Capturing multiple identical Altars only activates the skill <strong>once</strong></li>
+          </ul>
+        </Block>
+        <Block title="Altar Skills">
+          <Img src={`${WIKI}/1776999316219-hifmzr5awj.png`} alt="Altar capture interface" caption="Capture interface" />
+          <Table
+            headers={['Altar', 'Skill granted']}
+            rows={[
+              ['Serpent Altar', 'Fortify'],
+              ['Gust Altar', 'Warlord Missile'],
+              ['Echo Altar', 'Summon Mummy Army'],
+              ['Feather Altar', 'Tesla Coil'],
+            ]}
+          />
+        </Block>
+        <Block title="Gift of the Great River Clan">
+          <ul className={styles.list}>
+            <li>After capture, <strong>R4+</strong> members can summon the gift</li>
+            <li><strong>Schools of fish</strong> appear around the Altar</li>
+          </ul>
+        </Block>
+      </>
+    ),
+  },
+
+  {
+    id: 'pacts',
+    icon: '🤝',
+    title: { fr: 'Pactes d\'Alliance', en: 'Alliance Pacts' },
+    content: (lang) => lang === 'fr' ? (
+      <>
+        <Img src={`${WIKI}/1774860735013-1316j42zeplf.png`} alt="Mécanisme de Pacte d'Alliance" caption="Pactes d'Alliance" />
+        <Block title="Former un Pacte">
           <ImgRow images={[
-            { src: `${BASE}/2026-03/image-73.png`, alt: 'Formulaire Pacte d\'Alliance', caption: 'Former un pacte' },
+            { src: `${BASE}/2026-03/image-73.png`, alt: "Formulaire Pacte d'Alliance", caption: 'Former un pacte' },
             { src: `${BASE}/2026-03/image-75.png`, alt: 'Rang de Guerre de Faction', caption: 'Rang de Guerre de Faction' },
           ]} />
           <ul className={styles.list}>
-            <li>Prérequis : même faction, territoire adjacent, pas de délai actif de 3j, consentement mutuel</li>
+            <li>Prérequis : même faction, territoire adjacent, consentement mutuel</li>
             <li>Impossible à former les jours de déclaration de guerre (mer./sam.)</li>
             <li>Avantages : adjacence partagée, renforcement de troupes, chat 200 membres, notifs synchronisées</li>
-            <li>Annulation unilatérale possible → délai de 3j</li>
+          </ul>
+        </Block>
+        <Block title="Capacités déverrouillées par Pacte">
+          <Img src={`${WIKI}/1774861303290-3jyopkb5gzx.png`} alt="Avantages tactiques du Pacte" caption="Capacités stratégiques" />
+          <ul className={styles.list}>
+            <li>Avancer en empruntant le <strong>territoire d'un allié</strong></li>
+            <li>Soutien défensif des <strong>villes et du Capitole</strong> allié</li>
+            <li>Participation aux <strong>batailles d'avant-postes</strong></li>
+            <li>Partage de renseignement entre alliés</li>
+          </ul>
+        </Block>
+        <Block title="Dissolution d'un Pacte">
+          <ul className={styles.list}>
+            <li>Abandon proactif : <strong>60 minutes</strong> de délai (annulable)</li>
+            <li>Aucune période de recharge si annulation proactive</li>
+            <li>À la dissolution : Déploiement Rapide de tous les Renforts, fermeture de la Discussion de Groupe</li>
+            <li>Les compétences déjà libérées <strong>continuent leur effet</strong></li>
           </ul>
         </Block>
         <Block title="Temps Protégé d'Alliance">
           <ImgRow images={[
-            { src: `${BASE}/2026-03/image-41.png`, alt: 'Temps Protégé d\'Alliance', caption: 'Temps Protégé d\'Alliance' },
+            { src: `${BASE}/2026-03/image-41.png`, alt: "Temps Protégé d'Alliance", caption: "Temps Protégé d'Alliance" },
             { src: `${BASE}/2026-03/image-42.png`, alt: 'Créneaux de Combat', caption: 'Créneaux de Combat' },
           ]} />
           <ul className={styles.list}>
@@ -387,59 +629,36 @@ const SECTIONS: Section[] = [
             <li>Les créneaux sont fixes côté serveur (pas dépendants du fuseau horaire)</li>
           </ul>
         </Block>
-        <Block title="Mérite de Guerre — Sources">
-          <ul className={styles.list}>
-            <li>Premiers kills de Doom Elites / Zombies Rainforest</li>
-            <li>Premières captures de Terrains de Pêche et Villes</li>
-            <li>Classement Purge Action</li>
-            <li>Dons de poissons / renforcement de Villes</li>
-            <li>Batailles Sous les Ruines</li>
-            <li>Classement éliminations/défense Choc des Factions</li>
-            <li>Destruction de Villes ennemies</li>
-          </ul>
-        </Block>
       </>
     ) : (
       <>
-        <Img src={`${BASE}/2026-03/image-68.png`} alt="S6 faction map" caption="Faction zone map" />
-        <Block title="War rules">
-          <InfoRow label="War Declaration Days" value="Wednesday and Saturday" />
-          <InfoRow label="Max Altars per alliance" value="3" />
-          <InfoRow label="Altar capture window" value="1 hour (Tuesday 12:00 server time)" />
-          <InfoRow label="Alliance Pact cooldown" value="3 days" />
-        </Block>
-        <Block title="Altar Conquest (every Tuesday)">
-          <Img src={`${BASE}/2026-03/image-87.png`} alt="Altar Conquest rules" caption="Altar Conquest rules" />
-          <ul className={styles.list}>
-            <li>Alliance limited to 3 simultaneous altars</li>
-            <li>Snake / Gust Altars: mutually exclusive</li>
-            <li>Echo / Feather Altars: mutually exclusive</li>
-            <li>Cannot abandon 1 hour before contest</li>
-            <li>Altars grant <strong>Alliance Skills</strong></li>
-            <li>R4+ can summon the "Gift of the Great River Clan"</li>
-          </ul>
-        </Block>
-        <Block title="Faction Clash">
-          <Img src={`${BASE}/2026-03/image-85.png`} alt="Faction Clash rules" caption="Faction Clash rules" />
-          <ul className={styles.list}>
-            <li>After capturing an enemy City: it is <strong>automatically destroyed</strong></li>
-            <li>Destroyed city doesn't count toward alliance limit, can't be rebuilt</li>
-            <li>Alliance permanently gains the city's <strong>Destruction Influence Points</strong></li>
-            <li>Multiple attackers: highest durability damage dealer receives the points</li>
-            <li>All members get destruction rewards; participants also get participation/ranking rewards</li>
-          </ul>
-          <Warn>Higher-level cities = more Influence Points. Total Influence at season end determines the winner.</Warn>
-        </Block>
-        <Block title="Alliance Pacts">
+        <Img src={`${WIKI}/1774860735013-1316j42zeplf.png`} alt="Alliance Pact mechanic" caption="Alliance Pacts" />
+        <Block title="Forming a Pact">
           <ImgRow images={[
             { src: `${BASE}/2026-03/image-73.png`, alt: 'Form Alliance Pact', caption: 'Forming a pact' },
             { src: `${BASE}/2026-03/image-75.png`, alt: 'Faction War Rank', caption: 'Faction War Rank' },
           ]} />
           <ul className={styles.list}>
-            <li>Requirements: same faction, adjacent territory, no 3-day cooldown, mutual consent</li>
+            <li>Requirements: same faction, adjacent territory, mutual consent</li>
             <li>Cannot form on War Declaration Days (Wed/Sat)</li>
             <li>Benefits: shared adjacency, troop reinforcement, 200-member chat, synced notifications</li>
-            <li>Unilateral cancellation allowed → 3-day cooldown</li>
+          </ul>
+        </Block>
+        <Block title="Capabilities unlocked by Pact">
+          <Img src={`${WIKI}/1774861303290-3jyopkb5gzx.png`} alt="Pact tactical advantages" caption="Strategic capabilities" />
+          <ul className={styles.list}>
+            <li>Advance through an <strong>ally's territory</strong></li>
+            <li>Defensive support for <strong>allied cities and Capitol</strong></li>
+            <li>Participation in <strong>outpost battles</strong></li>
+            <li>Intelligence sharing between allies</li>
+          </ul>
+        </Block>
+        <Block title="Dissolving a Pact">
+          <ul className={styles.list}>
+            <li>Proactive abandonment: <strong>60-minute</strong> delay (cancellable)</li>
+            <li>No cooldown if proactive cancellation</li>
+            <li>On dissolution: Rapid Deployment of all Reinforcements, Group Discussion closed</li>
+            <li>Already-released skills <strong>continue their effects</strong></li>
           </ul>
         </Block>
         <Block title="Alliance Safe Time">
@@ -453,16 +672,52 @@ const SECTIONS: Section[] = [
             <li>Slots are server-fixed (not timezone-dependent)</li>
           </ul>
         </Block>
-        <Block title="War Merit — Sources">
+      </>
+    ),
+  },
+
+  {
+    id: 'faction_tech',
+    icon: '🔬',
+    title: { fr: 'Technologie de Faction', en: 'Faction Technology' },
+    content: (lang) => lang === 'fr' ? (
+      <>
+        <Img src={`${WIKI}/1775530283202-l5063nsl3ce.png`} alt="Technologie de Faction" caption="Interface Technologie de Faction" />
+        <p className={styles.lead}>Système de croissance <strong>partagé par toute la Faction</strong>. Les membres investissent des ressources (poissons, matériaux) pour améliorer la Puissance de Combat globale de leur camp.</p>
+        <Block title="Ce que ça déverrouille">
           <ul className={styles.list}>
-            <li>First kills of Doom Elites / Rainforest Zombies</li>
-            <li>First captures of Fishing Grounds and Cities</li>
-            <li>Purge Action rankings</li>
-            <li>Fish donations / City reinforcements</li>
-            <li>Beneath the Ruins battles</li>
-            <li>Kill/defense rankings in Faction Clash</li>
-            <li>Destroying enemy faction Cities</li>
+            <li><strong>Fonctions de faction</strong> : mécanismes de coopération entre alliances alliées</li>
+            <li><strong>Effets de bonus globaux</strong> : buffs de combat pour toute la faction</li>
+            <li><strong>Capacités de Pacte</strong> : fonctionnalités avancées entre alliances partenaires</li>
           </ul>
+        </Block>
+        <Block title="Lien avec les Points d'Influence">
+          <ul className={styles.list}>
+            <li>Points d'influence <strong>occupés</strong> (contrôle territorial) → bonus faction</li>
+            <li>Points d'influence <strong>détruits</strong> (villes ennemies détruites) → bonus supplémentaires</li>
+            <li>Plus les Points d'Influence sont élevés, plus les buffs de faction sont puissants</li>
+          </ul>
+          <Tip>Donner des prises de pêche dans la Technologie de Faction génère de l'Énergie d'Alliance — un des moyens de contribuer sans combattre directement.</Tip>
+        </Block>
+      </>
+    ) : (
+      <>
+        <Img src={`${WIKI}/1775530283202-l5063nsl3ce.png`} alt="Faction Technology" caption="Faction Technology interface" />
+        <p className={styles.lead}><strong>Faction-wide</strong> growth system. Members invest resources (fish, materials) to boost their side's global Combat Power.</p>
+        <Block title="What it unlocks">
+          <ul className={styles.list}>
+            <li><strong>Faction functions</strong>: cooperation mechanics between allied alliances</li>
+            <li><strong>Global bonus effects</strong>: combat buffs for the entire faction</li>
+            <li><strong>Pact capabilities</strong>: advanced features between partner alliances</li>
+          </ul>
+        </Block>
+        <Block title="Link with Influence Points">
+          <ul className={styles.list}>
+            <li><strong>Occupied</strong> Influence Points (territorial control) → faction bonuses</li>
+            <li><strong>Destroyed</strong> Influence Points (enemy cities destroyed) → additional bonuses</li>
+            <li>Higher Influence Points = stronger faction buffs</li>
+          </ul>
+          <Tip>Donating fish catches to Faction Technology generates Alliance Energy — a way to contribute without direct combat.</Tip>
         </Block>
       </>
     ),
@@ -811,6 +1066,7 @@ const SECTIONS: Section[] = [
     title: { fr: 'Système de Pêche', en: 'Fishing System' },
     content: (lang) => lang === 'fr' ? (
       <>
+        <Img src={`${WIKI}/20260424-fr.gif`} alt="Guide Pêche S6" caption="Aperçu du système de pêche S6" />
         <Block title="Terrains de Pêche (Forts)">
           <ImgRow images={[
             { src: `${BASE}/2026-04/image-40.png`, alt: 'Shadow Colossus protecteur', caption: 'Shadow Colossus — boss gardien' },
@@ -821,6 +1077,7 @@ const SECTIONS: Section[] = [
             <li>Le <strong>Shadow Colossus</strong> protège les terrains (boss à vaincre)</li>
             <li><Tag color="danger">Restriction</Tag> Les attaques sur ses propres Terrains de Pêche ne sont possibles que les <strong>mercredis et samedis</strong> (créneaux de combat de 1h)</li>
             <li>La capture doit atteindre 100% pendant la fenêtre ou elle échoue</li>
+            <li>Plus proche de la Région Centrale → prise plus lourde (affecte les classements, pas le Taux de Chute ni l'Énergie)</li>
             <li>Objectif de zone de guerre semaine 1 : capturer 20 terrains</li>
             <li>L'alliance doit contrôler un Terrain de Pêche adjacent avant de déclarer la guerre à une Ville</li>
           </ul>
@@ -833,12 +1090,14 @@ const SECTIONS: Section[] = [
           ]} />
           <ul className={styles.list}>
             <li>Mini-jeu interactif disponible dans les terrains capturés</li>
-            <li>Consomme des appâts à chaque tentative</li>
+            <li>Appât Normal (via Visiteur ou Boutique du Mérite) ou Appât Or (Compétence Profession, recharge 23,5h)</li>
+            <li>1 poisson ou 3 poissons par session au choix</li>
+            <li>Après morsure : <strong>5 secondes</strong> pour remonter la prise</li>
             <li>Type de poisson dépend de la faction d'origine / niveau du terrain</li>
             <li>La barre de timing affecte le poids (pas la probabilité)</li>
             <li>Les poissons du même type donnent autant d'Énergie quel que soit le poids</li>
-            <li>Risque de confiscation si pêche sur les terrains d'une alliance alliée</li>
-            <li>Les dons de poissons débloquent les <strong>Technologies de Faction</strong></li>
+            <li>Pêche sur terrain d'un allié de faction → chance de déclencher <strong>Collecter</strong> (ne compte pas dans le coffre individuel)</li>
+            <li>Donner des prises dans la <strong>Technologie de Faction</strong> → génère de l'Énergie d'Alliance</li>
             <li>Objectif de zone de guerre semaine 1 : 50 000 poissons attrapés</li>
           </ul>
           <ImgRow images={[
@@ -854,6 +1113,7 @@ const SECTIONS: Section[] = [
       </>
     ) : (
       <>
+        <Img src={`${WIKI}/20260424-fr.gif`} alt="S6 Fishing guide" caption="Season 6 fishing system overview" />
         <Block title="Fishing Grounds (Strongholds)">
           <ImgRow images={[
             { src: `${BASE}/2026-04/image-40.png`, alt: 'Shadow Colossus protector', caption: 'Shadow Colossus — guardian boss' },
@@ -864,6 +1124,7 @@ const SECTIONS: Section[] = [
             <li><strong>Shadow Colossus</strong> guards the grounds (boss to defeat)</li>
             <li><Tag color="danger">Restriction</Tag> Attacks on own Fishing Grounds only allowed on <strong>Wednesdays and Saturdays</strong> (1-hour Battle-Ready Time windows)</li>
             <li>Capture must reach 100% during the window or it fails</li>
+            <li>Closer to the Central Region → heavier catch (affects rankings, not Drop Rate or Energy)</li>
             <li>Warzone goal week 1: capture 20 grounds</li>
             <li>Alliance must control an adjacent Fishing Ground before declaring war on a City</li>
           </ul>
@@ -876,12 +1137,14 @@ const SECTIONS: Section[] = [
           ]} />
           <ul className={styles.list}>
             <li>Interactive mini-game available in captured grounds</li>
-            <li>Consumes bait per attempt</li>
+            <li>Normal bait (via Visitor or War Merit Shop) or Golden bait (Profession skill, 23.5h cooldown)</li>
+            <li>1 fish or 3 fish per session, your choice</li>
+            <li>After a bite: <strong>5 seconds</strong> to reel in</li>
             <li>Fish type depends on original faction / ground level</li>
             <li>Timing bar affects catch weight (not probability)</li>
             <li>Same-type fish yield equal Energy regardless of weight</li>
-            <li>Risk of confiscation when fishing at allied alliance grounds</li>
-            <li>Fish donations unlock <strong>Faction Technologies</strong></li>
+            <li>Fishing at an allied faction ground → chance to trigger <strong>Collect</strong> (doesn't count in individual chest)</li>
+            <li>Donating catches to <strong>Faction Technology</strong> → generates Alliance Energy</li>
             <li>Warzone goal week 1: 50,000 fish caught</li>
           </ul>
           <ImgRow images={[
@@ -893,6 +1156,99 @@ const SECTIONS: Section[] = [
           <InfoRow label="Lv.35 Multi Fishing" value="Multiple fish per attempt (extra bait required)" />
           <InfoRow label="Lv.40 Golden Bait" value="1 free Golden Bait every 23.5h" />
           <InfoRow label="Lv.55 Golden Fish Chest" value="+1–5% chance of bonus reward" />
+        </Block>
+      </>
+    ),
+  },
+
+  {
+    id: 'merit',
+    icon: '🎖️',
+    title: { fr: 'Mérite de Guerre', en: 'War Merit' },
+    content: (lang) => lang === 'fr' ? (
+      <>
+        <Img src={`${WIKI}/1775530865739-tx8lx0r3kj.png`} alt="Interface du Mérite de Guerre" caption="Mérite de Guerre — interface" />
+        <p className={styles.lead}>Le <strong>Mérite de Guerre</strong> enregistre les contributions individuelles et stimule la progression des grades personnels tout au long de la saison.</p>
+        <Block title="Grades & Récompenses">
+          <ul className={styles.list}>
+            <li>Chaque grade déverrouille : <strong>Titre</strong> / <strong>Cadre d'Avatar</strong> / <strong>Plaque</strong></li>
+            <li>En Phase de Règlement : le Mérite n'augmente plus, les Boosts de Grade ne sont plus effectifs</li>
+          </ul>
+        </Block>
+        <Block title="Sources d'obtention">
+          <div className={styles.subBlock}>
+            <div className={styles.subBlockTitle}>⚔️ Combat & Progression</div>
+            <ul className={styles.list}>
+              <li>Première élimination d'une Élite Maudite / Zombie de la Forêt Tropicale</li>
+              <li>Participation à la Première Capture des Terrains de Pêche / Villes</li>
+            </ul>
+          </div>
+          <div className={styles.subBlock}>
+            <div className={styles.subBlockTitle}>🏆 Activités & Classements</div>
+            <ul className={styles.list}>
+              <li>Classement de l'Action de Purge</li>
+              <li>Combat et classement dans Sous les Ruines</li>
+            </ul>
+          </div>
+          <div className={styles.subBlock}>
+            <div className={styles.subBlockTitle}>💥 Affrontement de Factions</div>
+            <ul className={styles.list}>
+              <li>Renforcer les Villes sur la carte</li>
+              <li>Participer à la Destruction des Villes adverses</li>
+              <li>Classement Tuerie dans le Clash de Factions</li>
+              <li>Classement Défense Coopérative dans le Clash de Factions</li>
+            </ul>
+          </div>
+          <div className={styles.subBlock}>
+            <div className={styles.subBlockTitle}>🤝 Contribution & Construction</div>
+            <ul className={styles.list}>
+              <li>Donner des prises dans les Compétences de l'Alliance</li>
+              <li>Génération horaire via les villes contrôlées</li>
+            </ul>
+          </div>
+        </Block>
+      </>
+    ) : (
+      <>
+        <Img src={`${WIKI}/1775530865739-tx8lx0r3kj.png`} alt="War Merit interface" caption="War Merit — interface" />
+        <p className={styles.lead}><strong>War Merit</strong> tracks individual contributions and drives personal rank progression throughout the season.</p>
+        <Block title="Ranks & Rewards">
+          <ul className={styles.list}>
+            <li>Each rank unlocks: <strong>Title</strong> / <strong>Avatar Frame</strong> / <strong>Plaque</strong></li>
+            <li>During Settlement Phase: Merit stops increasing, Rank Boosts no longer effective</li>
+          </ul>
+        </Block>
+        <Block title="Merit sources">
+          <div className={styles.subBlock}>
+            <div className={styles.subBlockTitle}>⚔️ Combat & Progression</div>
+            <ul className={styles.list}>
+              <li>First kill of a Doom Elite / Rainforest Zombie</li>
+              <li>First capture of Fishing Grounds / Cities</li>
+            </ul>
+          </div>
+          <div className={styles.subBlock}>
+            <div className={styles.subBlockTitle}>🏆 Activities & Rankings</div>
+            <ul className={styles.list}>
+              <li>Purge Action rankings</li>
+              <li>Combat and ranking in Beneath the Ruins</li>
+            </ul>
+          </div>
+          <div className={styles.subBlock}>
+            <div className={styles.subBlockTitle}>💥 Faction Clash</div>
+            <ul className={styles.list}>
+              <li>Reinforcing Cities on the map</li>
+              <li>Participating in enemy City Destruction</li>
+              <li>Kill rankings in Faction Clash</li>
+              <li>Cooperative Defense rankings in Faction Clash</li>
+            </ul>
+          </div>
+          <div className={styles.subBlock}>
+            <div className={styles.subBlockTitle}>🤝 Contribution & Construction</div>
+            <ul className={styles.list}>
+              <li>Donating catches to Alliance Skills</li>
+              <li>Hourly generation via controlled cities</li>
+            </ul>
+          </div>
         </Block>
       </>
     ),
@@ -983,6 +1339,31 @@ const SECTIONS: Section[] = [
     title: { fr: 'Héros — Nouveautés S6', en: 'Heroes — S6 Updates' },
     content: (lang) => lang === 'fr' ? (
       <>
+        <Block title="🔴 Système d'Éveil — Vue d'ensemble">
+          <Img src={`${WIKI}/1776130046114-0kx64nljvon9.jpg`} alt="Présentation de l'Éveil des Héros" caption="Nouveau palier : l'Éveil" />
+          <p className={styles.lead}>L'Éveil est un <strong>nouveau palier de progression</strong> au-delà des 5 étoiles classiques, disponible à partir de la S6.</p>
+          <InfoRow label="Héros par saison" value="~3 héros avec Éveil disponible" />
+          <InfoRow label="Calendrier d'apparition" value="Semaine 1, Semaine 3, Semaine 5" />
+          <InfoRow label="Prérequis" value="Arme Exclusive niveau ≥ 20 + accès Saison 6" />
+          <div className={styles.subBlock}>
+            <div className={styles.subBlockTitle}>Ce qui change après l'Éveil</div>
+            <Img src={`${WIKI}/1776130177812-8lnkc9gl9ly.jpg`} alt="Compétences et attributs après Éveil" caption="Nouvelles compétences et attributs" />
+            <ul className={styles.list}>
+              <li>⭐ <strong>Étoiles rouges</strong> : nouveau tier de progression au-delà des étoiles normales</li>
+              <li>📈 <strong>Bonus d'attributs de base</strong> supplémentaires</li>
+              <li>🔮 <strong>Compétence d'Éveil (4ème compétence)</strong> débloquée — puissante et unique</li>
+              <li>🎨 <strong>Nouveau look</strong> : avatar, illustrations et effets dynamiques</li>
+            </ul>
+          </div>
+          <div className={styles.subBlock}>
+            <div className={styles.subBlockTitle}>Comment obtenir les Fragments d'Éveil</div>
+            <Img src={`${WIKI}/1776130378617-l9rvycd4rb.jpg`} alt="Source des fragments d'Éveil" caption="Tour du Monde — source principale" />
+            <ul className={styles.list}>
+              <li>Fragments <strong>exclusifs</strong> du héros via Battle Pass et Hero Trial</li>
+              <li>Fragments <strong>universels</strong> via l'Expédition Mondiale (sem.2→7, 3 périodes de 14j)</li>
+            </ul>
+          </div>
+        </Block>
         <Block title="🌟 Éveil de Kimberly (Awakening)">
           <ImgRow images={[
             { src: `${BASE}/2026-04/image-163.png`, alt: 'Kimberly Awakening apparence', caption: 'Nouvelle apparence' },
@@ -1042,6 +1423,31 @@ const SECTIONS: Section[] = [
       </>
     ) : (
       <>
+        <Block title="🔴 Awakening System — Overview">
+          <Img src={`${WIKI}/1776130046114-0kx64nljvon9.jpg`} alt="Hero Awakening presentation" caption="New tier: Awakening" />
+          <p className={styles.lead}>Awakening is a <strong>new progression tier</strong> beyond the classic 5 stars, available from S6 onwards.</p>
+          <InfoRow label="Heroes per season" value="~3 heroes with Awakening available" />
+          <InfoRow label="Unlock schedule" value="Week 1, Week 3, Week 5" />
+          <InfoRow label="Requirements" value="Exclusive Weapon level ≥ 20 + Season 6 access" />
+          <div className={styles.subBlock}>
+            <div className={styles.subBlockTitle}>What changes after Awakening</div>
+            <Img src={`${WIKI}/1776130177812-8lnkc9gl9ly.jpg`} alt="Skills and attributes after Awakening" caption="New skills and attributes" />
+            <ul className={styles.list}>
+              <li>⭐ <strong>Red stars</strong>: new progression tier beyond normal stars</li>
+              <li>📈 Additional <strong>base attribute bonuses</strong></li>
+              <li>🔮 <strong>Awakening Skill (4th skill)</strong> unlocked — powerful and unique</li>
+              <li>🎨 <strong>New look</strong>: avatar, artwork and dynamic effects</li>
+            </ul>
+          </div>
+          <div className={styles.subBlock}>
+            <div className={styles.subBlockTitle}>How to get Awakening Shards</div>
+            <Img src={`${WIKI}/1776130378617-l9rvycd4rb.jpg`} alt="Awakening shard sources" caption="Global Expedition — main source" />
+            <ul className={styles.list}>
+              <li>Hero-<strong>exclusive</strong> shards via Battle Pass and Hero Trial</li>
+              <li><strong>Universal</strong> shards via Global Expedition (wk 2→7, 3 periods of 14d)</li>
+            </ul>
+          </div>
+        </Block>
         <Block title="🌟 Kimberly's Awakening">
           <ImgRow images={[
             { src: `${BASE}/2026-04/image-163.png`, alt: "Kimberly Awakening appearance", caption: 'New appearance' },
@@ -1103,9 +1509,70 @@ const SECTIONS: Section[] = [
   },
 
   {
-    id: 'week1',
+    id: 'expedition',
+    icon: '🌍',
+    title: { fr: 'Expédition Mondiale', en: 'Global Expedition' },
+    content: (lang) => lang === 'fr' ? (
+      <>
+        <Img src={`${WIKI}/1776665649259-308ix5o36hj.jpg`} alt="Entrée de l'Expédition Mondiale" caption="Accès via le Tour d'Alerte" />
+        <p className={styles.lead}>Nouveau mode disponible à partir de la <strong>Semaine 2 de la S6</strong>, accessible via le <strong>Tour d'Alerte</strong>. Récompense principale : les <strong>Fragments d'Éveil</strong>.</p>
+        <Block title="Structure">
+          <Img src={`${WIKI}/1776665677758-vliuqr8h61e.png`} alt="Gameplay Expédition Mondiale" caption="Progression par étapes" />
+          <InfoRow label="Périodes" value="3 périodes de 14 jours chacune" />
+          <InfoRow label="Zones par période" value="4 zones indépendantes à traverser" />
+          <InfoRow label="Puissance minimum (Nv.1)" value="33 000 000" />
+          <ul className={styles.list}>
+            <li>Déployez votre équipe principale et progressez sur les Étapes</li>
+            <li>Chaque zone doit être traversée pour accéder à la suivante</li>
+            <li>Maximisez les Points pour obtenir le maximum de récompenses</li>
+          </ul>
+          <Warn>Le niveau 1 de l'Expédition Mondiale requiert 33 millions de puissance minimum.</Warn>
+        </Block>
+        <Block title="Récompenses (Points Totaux)">
+          <Table
+            headers={['Récompense', 'Quantité']}
+            rows={[
+              ["Fragment d'Éveil Exclusif Tesla", '×30'],
+              ["Fragment d'Éveil Universel", '×60'],
+            ]}
+          />
+          <Tip>Les Fragments universels peuvent être utilisés sur n'importe quel héros éveillé — à utiliser stratégiquement.</Tip>
+        </Block>
+      </>
+    ) : (
+      <>
+        <Img src={`${WIKI}/1776665649259-308ix5o36hj.jpg`} alt="Global Expedition entry" caption="Access via Alert Tower" />
+        <p className={styles.lead}>New mode available from <strong>Week 2 of S6</strong>, accessed via the <strong>Alert Tower</strong>. Main reward: <strong>Awakening Shards</strong>.</p>
+        <Block title="Structure">
+          <Img src={`${WIKI}/1776665677758-vliuqr8h61e.png`} alt="Global Expedition gameplay" caption="Stage progression" />
+          <InfoRow label="Periods" value="3 periods of 14 days each" />
+          <InfoRow label="Zones per period" value="4 independent zones to traverse" />
+          <InfoRow label="Minimum power (Lv.1)" value="33,000,000" />
+          <ul className={styles.list}>
+            <li>Deploy your main team and progress through Stages</li>
+            <li>Each zone must be cleared to access the next</li>
+            <li>Maximize Points for maximum rewards</li>
+          </ul>
+          <Warn>Global Expedition level 1 requires 33 million power minimum.</Warn>
+        </Block>
+        <Block title="Rewards (Total Points)">
+          <Table
+            headers={['Reward', 'Amount']}
+            rows={[
+              ['Tesla Exclusive Awakening Shard', '×30'],
+              ['Universal Awakening Shard', '×60'],
+            ]}
+          />
+          <Tip>Universal shards can be used on any awakened hero — use them strategically.</Tip>
+        </Block>
+      </>
+    ),
+  },
+
+  {
+    id: 'calendar',
     icon: '📅',
-    title: { fr: 'Semaine 1 — Calendrier', en: 'Week 1 — Timeline' },
+    title: { fr: 'Calendrier Complet S6', en: 'Full S6 Calendar' },
     content: (lang) => lang === 'fr' ? (
       <>
         <ImgRow images={[
@@ -1153,17 +1620,60 @@ const SECTIONS: Section[] = [
             <li>Classement réinitialisé quotidiennement (récompenses par mail)</li>
           </ul>
         </Block>
-        <Block title="Rainforest's Wrath">
+        <Block title="Rainforest's Wrath / Fureur de la Jungle">
           <ImgRow images={[
             { src: `${BASE}/2026-04/image-112.png`, alt: 'Rainforest Wrath', caption: 'Événement' },
             { src: `${BASE}/2026-04/image-115.png`, alt: 'Devouring Flower déclenchée', caption: 'Devouring Flower' },
             { src: `${BASE}/2026-04/image-128.png`, alt: 'Apparence Devouring Flower', caption: 'Apparence sur la carte' },
           ]} />
           <ul className={styles.list}>
-            <li>Système de déclenchement via Devouring Flower (similaire aux Sandworms S3)</li>
-            <li>Accumuler des points via actions spécifiées pour faire apparaître la créature</li>
+            <li>Éliminer des Élites Mutantes → accumuler de la Fureur → déclencher la <strong>Flamme Combative</strong></li>
+            <li>Système similaire aux Sandworms S3</li>
             <li>Les récompenses tombent sur la carte à la mort de la créature</li>
             <li>Rangs : Support Leader, Support Officer, Support Vanguard</li>
+          </ul>
+        </Block>
+        <Block title="Calendrier complet — Semaines 1 à 8">
+          <Img src={`${WIKI}/1776998048181-ifei08pf26.jpg`} alt="Calendrier officiel des événements S6" caption="Calendrier officiel S6" />
+          <Table
+            headers={['Événement', 'Description', 'Semaines']}
+            rows={[
+              ['Action de Purge', 'Tuer zombies, classement élimination', '1–8'],
+              ['Guerre Forteresse Pêcherie', 'Terrains de Pêche à capturer', '1–8'],
+              ['Fureur de la Jungle', 'Élites Mutantes → Fureur → Flamme Combative', '1–8'],
+              ['Compétition de Pêche', 'Classement pêche individuel et faction', '1–8'],
+              ['Clash de Villes S6', "Pts d'Influence via captures, classement Saison", '1–8'],
+              ['Boutique du Mérite', 'Mérites → récompenses, renouvelée chaque semaine', '1–8'],
+              ['Sous les Ruines', 'Progression par étages en chute continue', '1–8'],
+              ['Conflit de Faction', 'Alliances alliées avancent ensemble', '1–8'],
+              ["Capturer l'Avant-Poste", 'Bataille offensive/défensive des avant-postes', '1–8'],
+              ['Promotion de Héros', 'SSR Braz → 5⭐ → promotion UR', '1–8'],
+              ['Concours du Sanctuaire', 'Ouverture Sanctuaire — dimanche Semaine 2', 'Sem. 2'],
+              ["Guerre Terres Rares de l'Autel", 'Conquête Autel chaque mardi dès Sem. 3', 'Sem. 3–8'],
+              ['Poste de Commerce', 'Niveaux 1–4 ouverts toutes les 2 semaines', 'Alternées'],
+              ['Duel du Sanctuaire', 'Conquête Sanctuaire ennemi — samedis Sem. 5, 6, 7', 'Sem. 5–7'],
+              ['Duel de Factions', 'Grande bataille finale entre les deux factions', 'Sem. 8'],
+              ['Conclusion de la Saison', "Récompenses selon classement Pts d'Influence", 'Fin'],
+            ]}
+          />
+        </Block>
+        <Block title="Concours du Sanctuaire (Semaine 2)">
+          <ul className={styles.list}>
+            <li>Ouverture le <strong>dimanche de la Semaine 2</strong></li>
+            <li>Accès au Sanctuaire de faction</li>
+          </ul>
+        </Block>
+        <Block title="Duel du Sanctuaire (Semaines 5–7)">
+          <ul className={styles.list}>
+            <li>Chaque <strong>samedi des Semaines 5, 6 et 7</strong></li>
+            <li>Conquête du Sanctuaire ennemi</li>
+          </ul>
+        </Block>
+        <Block title="Duel de Factions (Semaine 8 — Finale)">
+          <ul className={styles.list}>
+            <li>Grande bataille finale entre les deux factions</li>
+            <li>Le classement final détermine les récompenses de <strong>Conclusion de Saison</strong></li>
+            <li>Récompenses distribuées selon le classement des Points d'Influence d'Alliance</li>
           </ul>
         </Block>
       </>
@@ -1214,17 +1724,60 @@ const SECTIONS: Section[] = [
             <li>Rankings reset daily (rewards sent by mail)</li>
           </ul>
         </Block>
-        <Block title="Rainforest's Wrath">
+        <Block title="Jungle Fury (Rainforest's Wrath)">
           <ImgRow images={[
             { src: `${BASE}/2026-04/image-112.png`, alt: "Rainforest's Wrath", caption: 'Event' },
             { src: `${BASE}/2026-04/image-115.png`, alt: 'Devouring Flower triggered', caption: 'Devouring Flower' },
             { src: `${BASE}/2026-04/image-128.png`, alt: 'Devouring Flower appearance', caption: 'Map appearance' },
           ]} />
           <ul className={styles.list}>
-            <li>Devouring Flower trigger system (similar to S3 Sandworms)</li>
-            <li>Accumulate points via specified actions to spawn the creature</li>
+            <li>Eliminate Mutant Elites → accumulate Fury → trigger <strong>Combat Flame</strong></li>
+            <li>Similar trigger system to S3 Sandworms</li>
             <li>Rewards drop on the map upon creature defeat</li>
             <li>Ranks: Support Leader, Support Officer, Support Vanguard</li>
+          </ul>
+        </Block>
+        <Block title="Full Calendar — Weeks 1 to 8">
+          <Img src={`${WIKI}/1776998048181-ifei08pf26.jpg`} alt="Official S6 event calendar" caption="Official S6 calendar" />
+          <Table
+            headers={['Event', 'Description', 'Weeks']}
+            rows={[
+              ['Purge Action', 'Kill zombies, elimination ranking', '1–8'],
+              ['Fishing Fortress War', 'Fishing Grounds to capture', '1–8'],
+              ['Jungle Fury', 'Mutant Elites → Fury → Combat Flame', '1–8'],
+              ['Fishing Competition', 'Individual and faction fishing ranking', '1–8'],
+              ['City Clash S6', 'Influence Points via city captures', '1–8'],
+              ['Merit Shop', 'War Merit → rewards, refreshed weekly', '1–8'],
+              ['Beneath the Ruins', 'Continuous falling stage progression', '1–8'],
+              ['Faction Conflict', 'Allied alliances advance together', '1–8'],
+              ['Outpost Capture', 'Offensive/defensive outpost battles', '1–8'],
+              ['Hero Promotion', 'SSR Braz → 5⭐ → UR promotion', '1–8'],
+              ['Sanctuary Contest', 'Sanctuary opens — Sunday of Week 2', 'Wk. 2'],
+              ['Altar Rare Resource War', 'Altar conquest every Tuesday from Wk. 3', 'Wk. 3–8'],
+              ['Trading Post', 'Levels 1–4 open every 2 weeks', 'Alternating'],
+              ['Sanctuary Duel', 'Enemy Sanctuary conquest — Saturdays Wk. 5, 6, 7', 'Wk. 5–7'],
+              ['Faction Duel', 'Grand final battle between both factions', 'Wk. 8'],
+              ['Season End', 'Rewards by Alliance Influence Point ranking', 'End'],
+            ]}
+          />
+        </Block>
+        <Block title="Sanctuary Contest (Week 2)">
+          <ul className={styles.list}>
+            <li>Opens <strong>Sunday of Week 2</strong></li>
+            <li>Access to your faction's Sanctuary</li>
+          </ul>
+        </Block>
+        <Block title="Sanctuary Duel (Weeks 5–7)">
+          <ul className={styles.list}>
+            <li>Every <strong>Saturday of Weeks 5, 6 and 7</strong></li>
+            <li>Conquest of the enemy faction's Sanctuary</li>
+          </ul>
+        </Block>
+        <Block title="Faction Duel (Week 8 — Grand Finale)">
+          <ul className={styles.list}>
+            <li>Grand final battle between both factions</li>
+            <li>Final ranking determines <strong>Season End</strong> rewards</li>
+            <li>Rewards distributed by Alliance Influence Point ranking</li>
           </ul>
         </Block>
       </>
