@@ -143,7 +143,7 @@ const SECTIONS: Section[] = [
           <Img
             src={`${WIKI}/1776414097663-lzho484uyv.jpg`}
             alt="Carte du monde Saison 6 — Forêt Tropicale Ombragée"
-            caption="Vue d'ensemble de la carte — Shadow Rainforest"
+            caption="Vue d'ensemble de la carte — Forêt Tropicale Ombragée"
           />
         </Block>
         <Block title="Les 3 clans">
@@ -1359,15 +1359,15 @@ const SECTIONS: Section[] = [
             <div className={styles.subBlockTitle}>Comment obtenir les Fragments d'Éveil</div>
             <Img src={`${WIKI}/1776130378617-l9rvycd4rb.jpg`} alt="Source des fragments d'Éveil" caption="Tour du Monde — source principale" />
             <ul className={styles.list}>
-              <li>Fragments <strong>exclusifs</strong> du héros via Battle Pass et Hero Trial</li>
+              <li>Fragments <strong>exclusifs</strong> du héros via Battle Pass et Essai du Héros</li>
               <li>Fragments <strong>universels</strong> via l'Expédition Mondiale (sem.2→7, 3 périodes de 14j)</li>
             </ul>
           </div>
         </Block>
-        <Block title="🌟 Éveil de Kimberly (Awakening)">
+        <Block title="🌟 Éveil de Kimberly">
           <ImgRow images={[
-            { src: `${BASE}/2026-04/image-163.png`, alt: 'Kimberly Awakening apparence', caption: 'Nouvelle apparence' },
-            { src: `${BASE}/2026-04/image-164.png`, alt: 'Kimberly Awakening skill', caption: 'Compétence d\'Éveil exclusive' },
+            { src: `${BASE}/2026-04/image-163.png`, alt: 'Kimberly Éveil apparence', caption: 'Nouvelle apparence' },
+            { src: `${BASE}/2026-04/image-164.png`, alt: 'Kimberly Éveil compétence', caption: 'Compétence d\'Éveil exclusive' },
           ]} />
           <InfoRow label="Durée du Battle Pass" value="7 jours (à partir du Jour 4 de la Semaine 1)" />
           <InfoRow label="Prérequis" value="Arme Exclusive niveau ≥ 20 + accès Saison 6" />
@@ -1385,8 +1385,8 @@ const SECTIONS: Section[] = [
             </ul>
           </div>
           <div className={styles.subBlock}>
-            <div className={styles.subBlockTitle}>Accès gratuit (Hero Trial)</div>
-            <Img src={`${BASE}/2026-04/image-167.png`} alt="Hero Trial Kimberly" caption="Hero Trial — accès gratuit" />
+            <div className={styles.subBlockTitle}>Accès gratuit (Essai du Héros)</div>
+            <Img src={`${BASE}/2026-04/image-167.png`} alt="Essai du Héros — Kimberly" caption="Essai du Héros — accès gratuit" />
             <Table
               headers={['Niveaux', 'Débloquage', 'Récompense']}
               rows={[
@@ -1397,10 +1397,10 @@ const SECTIONS: Section[] = [
             />
           </div>
           <div className={styles.subBlock}>
-            <div className={styles.subBlockTitle}>Global Expedition (Semaine 2)</div>
+            <div className={styles.subBlockTitle}>Expédition Mondiale (Semaine 2)</div>
             <ImgRow images={[
-              { src: `${BASE}/2026-04/image-169.png`, alt: 'Global Expedition', caption: 'Global Expedition' },
-              { src: `${BASE}/2026-04/image-170.png`, alt: 'Détails Global Expedition', caption: 'Détails' },
+              { src: `${BASE}/2026-04/image-169.png`, alt: 'Expédition Mondiale', caption: 'Expédition Mondiale' },
+              { src: `${BASE}/2026-04/image-170.png`, alt: 'Détails Expédition Mondiale', caption: 'Détails' },
             ]} />
           </div>
         </Block>
@@ -1620,11 +1620,11 @@ const SECTIONS: Section[] = [
             <li>Classement réinitialisé quotidiennement (récompenses par mail)</li>
           </ul>
         </Block>
-        <Block title="Rainforest's Wrath / Fureur de la Jungle">
+        <Block title="Fureur de la Jungle">
           <ImgRow images={[
-            { src: `${BASE}/2026-04/image-112.png`, alt: 'Rainforest Wrath', caption: 'Événement' },
-            { src: `${BASE}/2026-04/image-115.png`, alt: 'Devouring Flower déclenchée', caption: 'Devouring Flower' },
-            { src: `${BASE}/2026-04/image-128.png`, alt: 'Apparence Devouring Flower', caption: 'Apparence sur la carte' },
+            { src: `${BASE}/2026-04/image-112.png`, alt: 'Fureur de la Jungle', caption: 'Événement' },
+            { src: `${BASE}/2026-04/image-115.png`, alt: 'Fleur Dévorante déclenchée', caption: 'Fleur Dévorante' },
+            { src: `${BASE}/2026-04/image-128.png`, alt: 'Fleur Dévorante sur la carte', caption: 'Apparence sur la carte' },
           ]} />
           <ul className={styles.list}>
             <li>Éliminer des Élites Mutantes → accumuler de la Fureur → déclencher la <strong>Flamme Combative</strong></li>
