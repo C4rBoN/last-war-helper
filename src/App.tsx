@@ -8,6 +8,8 @@ import { Buildings } from './pages/Buildings/Buildings';
 // import { Research } from './pages/Research/Research';
 import { ResearchWIP } from './pages/Research/ResearchWIP';
 import { Season6 } from './pages/Season6/Season6';
+import { PrivacyPolicy } from './pages/Legal/PrivacyPolicy';
+import { DataDeletion } from './pages/Legal/DataDeletion';
 import './styles/tokens.css';
 
 export default function App() {
@@ -15,15 +17,24 @@ export default function App() {
     <AuthProvider>
     <AppProvider>
       <HashRouter>
-        <AppShell>
-          <Routes>
-            <Route path="/"          element={<Dashboard />} />
-            <Route path="/heroes"    element={<Heroes />} />
-            <Route path="/buildings" element={<Buildings />} />
-            <Route path="/research"  element={<ResearchWIP />} />
-            <Route path="/season6"   element={<Season6 />} />
-          </Routes>
-        </AppShell>
+        <Routes>
+          {/* Pages légales — sans navigation */}
+          <Route path="/privacy"       element={<PrivacyPolicy />} />
+          <Route path="/data-deletion" element={<DataDeletion />} />
+
+          {/* App principale */}
+          <Route path="*" element={
+            <AppShell>
+              <Routes>
+                <Route path="/"          element={<Dashboard />} />
+                <Route path="/heroes"    element={<Heroes />} />
+                <Route path="/buildings" element={<Buildings />} />
+                <Route path="/research"  element={<ResearchWIP />} />
+                <Route path="/season6"   element={<Season6 />} />
+              </Routes>
+            </AppShell>
+          } />
+        </Routes>
       </HashRouter>
     </AppProvider>
     </AuthProvider>
