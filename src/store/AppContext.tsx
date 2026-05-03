@@ -38,6 +38,7 @@ function migrateHero(raw: Record<string, unknown>): PlayerHero {
   const gear = (raw.gear ?? {}) as Record<string, unknown>;
   return {
     heroId: raw.heroId as string,
+    level:  typeof raw.level === 'number' ? Math.max(0, Math.min(175, raw.level)) : 0,
     stars:  typeof raw.stars === 'number' ? Math.max(0, Math.min(5,  raw.stars)) : 0,
     ew:     typeof raw.ew    === 'number' ? Math.max(0, Math.min(30, raw.ew))    : 0,
     gear: {

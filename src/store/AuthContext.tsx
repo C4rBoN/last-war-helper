@@ -7,6 +7,7 @@ interface AuthContextValue {
   authLoading: boolean;
   signInWithEmail: (email: string) => Promise<{ error: Error | null }>;
   signInWithGoogle: () => Promise<{ error: Error | null }>;
+  signInWithFacebook: () => Promise<{ error: Error | null }>;
   signOut: () => Promise<void>;
 }
 
@@ -47,12 +48,20 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     return { error: error as Error | null };
   }
 
+  async function signInWithFacebook() {
+    const { error } = await supabase.auth.signInWithOAuth({
+      provider: 'facebook',
+      options: { redirectTo: window.location.href },
+    });
+    return { error: error as Error | null };
+  }
+
   async function signOut() {
     await supabase.auth.signOut();
   }
 
   return (
-    <AuthContext.Provider value={{ user, authLoading, signInWithEmail, signInWithGoogle, signOut }}>
+    <AuthContext.Provider value={{ user, authLoading, signInWithEmail, signInWithGoogle, signInWithFacebook, signOut }}>
       {children}
     </AuthContext.Provider>
   );

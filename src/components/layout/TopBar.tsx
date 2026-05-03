@@ -1,4 +1,5 @@
 import { useRef, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useAppContext, migrateState } from '../../store/AppContext';
 import { useAuth } from '../../store/AuthContext';
 import { LoginModal } from '../auth/LoginModal';
@@ -9,6 +10,7 @@ import { PlayerState } from '../../types/player.types';
 export function TopBar() {
   const { state, dispatch, syncing } = useAppContext();
   const { user, signOut }            = useAuth();
+  const navigate = useNavigate();
   const lang     = state.language;
   const hqLevel  = state.profile.hqLevel;
   const importRef = useRef<HTMLInputElement>(null);
@@ -57,12 +59,10 @@ export function TopBar() {
         </div>
 
         <div className={styles.right}>
-          {state.profile.setupComplete && (
-            <div className={styles.hqBadge}>
-              <span className={styles.hqLabel}>{t(lang, 'dashboard.hq')}</span>
-              <span className={styles.hqLevel}>{hqLevel}</span>
-            </div>
-          )}
+          <button className={styles.hqBadge} onClick={() => navigate('/')}>
+            <span className={styles.hqLabel}>{t(lang, 'dashboard.hq')}</span>
+            <span className={styles.hqLevel}>{hqLevel}</span>
+          </button>
 
           {/* Export / Import */}
           <button className={styles.iconBtn} onClick={handleExport} title={t(lang, 'topbar.export')}>↓</button>
@@ -85,7 +85,11 @@ export function TopBar() {
           )}
 
           <button className={styles.langToggle} onClick={toggleLang} title="Change language">
-            {lang === 'fr' ? '🇫🇷 FR' : '🇬🇧 EN'}
+            <img
+              src={lang === 'fr' ? 'https://flagcdn.com/fr.svg' : 'https://flagcdn.com/gb.svg'}
+              alt={lang === 'fr' ? 'Français' : 'English'}
+              className={styles.flagImg}
+            />
           </button>
         </div>
       </header>

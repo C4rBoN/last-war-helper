@@ -50,7 +50,7 @@ export const FR: Record<string, string> = {
   // Heroes — étoiles héros
   'heroes.stars.label': '★ Grade',
   'heroes.stars.hint.2': '2★ : skills débloqués',
-  'heroes.stars.hint.4': '4★ : Super Sensing (+20% HP/ATK/DEF)',
+  'heroes.stars.hint.4': '4★ : Hyper-Perception (+20% HP/ATK/DEF)',
   'heroes.stars.hint.5': '5★ : prérequis Arme Exclusive',
 
   // Heroes page

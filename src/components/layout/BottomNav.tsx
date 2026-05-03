@@ -6,10 +6,10 @@ import styles from './BottomNav.module.css';
 
 const TABS = [
   { path: '/',          icon: '🏠', labelKey: 'nav.dashboard' },
+  { path: '/season6',   icon: '🌿',  labelKey: 'nav.season6'   },
   { path: '/heroes',    icon: '⚔',  labelKey: 'nav.heroes'    },
   { path: '/buildings', icon: '🏗',  labelKey: 'nav.buildings' },
   { path: '/research',  icon: '🔬',  labelKey: 'nav.research'  },
-  { path: '/season6',   icon: '🌿',  labelKey: 'nav.season6'   },
 ];
 
 const S6_SECTIONS = [

@@ -8,34 +8,25 @@ interface Props {
 }
 
 export function LoginModal({ onClose }: Props) {
-  const { signInWithEmail, signInWithGoogle } = useAuth();
+  const { signInWithGoogle, signInWithFacebook } = useAuth();
   const { state } = useAppContext();
   const lang = state.language as 'fr' | 'en';
 
-  const [email,   setEmail]   = useState('');
-  const [sent,    setSent]    = useState(false);
   const [loading, setLoading] = useState(false);
   const [error,   setError]   = useState('');
-
-  async function handleEmail(e: React.FormEvent) {
-    e.preventDefault();
-    setLoading(true);
-    setError('');
-    const { error } = await signInWithEmail(email);
-    setLoading(false);
-    if (error) setError(error.message);
-    else setSent(true);
-  }
 
   async function handleGoogle() {
     setLoading(true);
     setError('');
     const { error } = await signInWithGoogle();
-    if (error) {
-      setLoading(false);
-      setError(error.message);
-    }
-    // Google redirige la page, pas besoin de setLoading(false)
+    if (error) { setLoading(false); setError(error.message); }
+  }
+
+  async function handleFacebook() {
+    setLoading(true);
+    setError('');
+    const { error } = await signInWithFacebook();
+    if (error) { setLoading(false); setError(error.message); }
   }
 
   return (
@@ -55,18 +46,7 @@ export function LoginModal({ onClose }: Props) {
           </p>
         </div>
 
-        {sent ? (
-          <div className={styles.sent}>
-            <div className={styles.sentIcon}>📬</div>
-            <p className={styles.sentText}>
-              {lang === 'fr'
-                ? 'Lien envoyé ! Vérifie ta boîte mail puis reviens ici.'
-                : 'Link sent! Check your inbox then come back here.'}
-            </p>
-            <button className={styles.primaryBtn} onClick={onClose}>OK</button>
-          </div>
-        ) : (
-          <>
+        <>
             {/* Google */}
             <button className={styles.googleBtn} onClick={handleGoogle} disabled={loading}>
               <svg className={styles.googleIcon} viewBox="0 0 24 24" aria-hidden="true">
@@ -78,27 +58,13 @@ export function LoginModal({ onClose }: Props) {
               {lang === 'fr' ? 'Continuer avec Google' : 'Continue with Google'}
             </button>
 
-            <div className={styles.divider}>
-              <span>{lang === 'fr' ? 'ou par e-mail' : 'or by email'}</span>
-            </div>
-
-            {/* Magic link */}
-            <form onSubmit={handleEmail} className={styles.form}>
-              <input
-                type="email"
-                className={styles.input}
-                placeholder={lang === 'fr' ? 'ton@email.com' : 'your@email.com'}
-                value={email}
-                onChange={e => setEmail(e.target.value)}
-                required
-                autoFocus
-              />
-              <button type="submit" className={styles.primaryBtn} disabled={loading || !email}>
-                {loading
-                  ? (lang === 'fr' ? 'Envoi…' : 'Sending…')
-                  : (lang === 'fr' ? 'Recevoir un lien de connexion' : 'Receive a login link')}
-              </button>
-            </form>
+            {/* Facebook */}
+            <button className={styles.facebookBtn} onClick={handleFacebook} disabled={loading}>
+              <svg className={styles.facebookIcon} viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M24 12.073C24 5.404 18.627 0 12 0S0 5.404 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.41c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.236 2.686.236v2.97h-1.514c-1.491 0-1.956.93-1.956 1.886v2.267h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z" fill="#fff"/>
+              </svg>
+              {lang === 'fr' ? 'Continuer avec Facebook' : 'Continue with Facebook'}
+            </button>
 
             {error && <p className={styles.error}>{error}</p>}
 
@@ -108,7 +74,6 @@ export function LoginModal({ onClose }: Props) {
                 : 'Without an account, your data is saved locally on this device only.'}
             </p>
           </>
-        )}
       </div>
     </div>
   );

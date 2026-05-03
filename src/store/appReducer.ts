@@ -7,7 +7,7 @@ import { defaultPlayerHero } from '../utils/hero.utils';
 
 export const DEFAULT_STATE: PlayerState = {
   schemaVersion: 6,
-  profile: { hqLevel: 1, setupComplete: false },
+  profile: { hqLevel: 1, setupComplete: true },
   language: 'fr',
   heroes: [],
   buildings: [],

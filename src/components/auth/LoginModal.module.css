@@ -114,6 +114,38 @@
   flex-shrink: 0;
 }
 
+/* Facebook button */
+.facebookBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-3);
+  width: 100%;
+  padding: var(--sp-3);
+  background: #1877f2;
+  border: 1px solid #1877f2;
+  border-radius: var(--radius-sm);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  transition: opacity var(--transition);
+}
+
+.facebookBtn:hover:not(:disabled) {
+  opacity: 0.88;
+}
+
+.facebookBtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.facebookIcon {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
 /* Divider */
 .divider {
   display: flex;

@@ -3,7 +3,6 @@ import { useAppContext } from '../../store/AppContext';
 import { t } from '../../i18n';
 import { useTopPriorities } from '../../hooks/usePriorities';
 import { useHQConstraints } from '../../hooks/useHQConstraints';
-import { HQSetup } from './HQSetup';
 import { Card } from '../../components/ui/Card';
 import { Badge } from '../../components/ui/Badge';
 import { Button } from '../../components/ui/Button';
@@ -24,8 +23,6 @@ export function Dashboard() {
   const topPriorities = useTopPriorities();
   const [editingHQ, setEditingHQ] = useState(false);
   const [pendingHQ, setPendingHQ] = useState(hqLevel);
-
-  if (!state.profile.setupComplete) return <HQSetup />;
 
   return (
     <div className={styles.page}>

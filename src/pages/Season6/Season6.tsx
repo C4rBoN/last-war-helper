@@ -1892,7 +1892,7 @@ export function Season6() {
   useEffect(() => {
     function onOpen(e: Event) {
       const id = (e as CustomEvent<string>).detail;
-      setOpenSections(prev => new Set([...prev, id]));
+      setOpenSections(new Set([id]));
       setTimeout(() => {
         document.getElementById(`s6-${id}`)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }, 80);
@@ -1903,10 +1903,8 @@ export function Season6() {
 
   function toggle(id: string) {
     setOpenSections(prev => {
-      const next = new Set(prev);
-      if (next.has(id)) next.delete(id);
-      else next.add(id);
-      return next;
+      if (prev.has(id)) return new Set();
+      return new Set([id]);
     });
   }
 

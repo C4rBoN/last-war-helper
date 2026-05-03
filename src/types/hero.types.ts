@@ -55,7 +55,8 @@ export const DEFAULT_SKILLS: SkillLevels = { tactics: 0, autoAttack: 0, passive:
 
 export interface PlayerHero {
   heroId: string;
-  stars: number;      // 1–5 (0 = inconnu) | 2★ débloque skills | 4★ Super Sensing | 5★ prérequis EW
+  level: number;      // 1–175 (0 = non défini), cap = hqLevel × 5
+  stars: number;      // 1–5 (0 = inconnu) | 2★ débloque skills | 4★ Hyper-Perception | 5★ prérequis EW
   ew: number;         // 0–30
   gear: GearLevels;
   skills: SkillLevels;

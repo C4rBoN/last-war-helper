@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useAppContext } from '../../store/AppContext';
+import { useHQConstraints } from '../../hooks/useHQConstraints';
 import { t } from '../../i18n';
 import { HEROES } from '../../data/heroes.data';
 import { useHeroData } from '../../hooks/usePriorities';
@@ -104,6 +105,9 @@ function ActionsSection({ actions, lang }: { actions: Record<ActionCategory, Uni
 
 function HeroCard({ hero }: { hero: HeroDefinition }) {
   const { state, dispatch } = useAppContext();
+  const { cap, hqLevel } = useHQConstraints();
+  const maxStars = cap.maxHeroStarLevel;
+  const maxHeroLevel = hqLevel * 5;
   const lang = state.language;
   const ph = getPlayerHero(state, hero.id);
   const [open, setOpen] = useState(false);
@@ -137,6 +141,7 @@ function HeroCard({ hero }: { hero: HeroDefinition }) {
         }
         <span className={styles.heroName}>{hero.name}</span>
         <span className={`${styles.roleTag} ${roleClass}`}>{t(lang, `heroes.role.${hero.role}`)}</span>
+        {ph.level > 0 && <span className={styles.levelBadge}>Nv.{ph.level}</span>}
         {ph.stars > 0 && <span className={styles.starsBadge}>{'★'.repeat(ph.stars)}</span>}
         <span className={styles.ewBadge}>⚔ {ph.ew}/30</span>
         <span className={styles.gearBadge}>
@@ -153,18 +158,56 @@ function HeroCard({ hero }: { hero: HeroDefinition }) {
 
       {open && (
         <div className={styles.heroBody}>
+          {/* ── Niveau héros ── */}
+          <div className={styles.levelSection}>
+            <span className={styles.starsLabel}>{lang === 'fr' ? 'Niveau' : 'Level'}</span>
+            <div className={styles.levelInputRow}>
+              <input
+                type="range"
+                min={0}
+                max={maxHeroLevel}
+                value={draft.level}
+                onChange={e => setDraft(d => ({ ...d, level: parseInt(e.target.value) }))}
+                className={styles.levelSlider}
+              />
+              <input
+                type="number"
+                min={0}
+                max={maxHeroLevel}
+                value={draft.level === 0 ? '' : draft.level}
+                placeholder="0"
+                onChange={e => {
+                  const v = Math.max(0, Math.min(maxHeroLevel, parseInt(e.target.value) || 0));
+                  setDraft(d => ({ ...d, level: v }));
+                }}
+                className={styles.levelNumber}
+              />
+              <span className={styles.levelCap}>/ {maxHeroLevel}</span>
+            </div>
+          </div>
+
           {/* ── Étoiles héros ── */}
           <div className={styles.starsSection}>
             <span className={styles.starsLabel}>{t(lang, 'heroes.stars.label')}</span>
             <div className={styles.starsButtons}>
-              {[1, 2, 3, 4, 5].map(s => (
-                <button
-                  key={s}
-                  className={`${styles.starBtn} ${s <= draft.stars ? styles.starBtnActive : ''}`}
-                  onClick={() => setDraft(d => ({ ...d, stars: d.stars === s ? s - 1 : s }))}
-                >★</button>
-              ))}
+              {[1, 2, 3, 4, 5].map(s => {
+                const locked = s > maxStars;
+                return (
+                  <button
+                    key={s}
+                    className={`${styles.starBtn} ${s <= draft.stars ? styles.starBtnActive : ''} ${locked ? styles.starBtnLocked : ''}`}
+                    onClick={() => !locked && setDraft(d => ({ ...d, stars: d.stars === s ? s - 1 : s }))}
+                    disabled={locked}
+                    title={locked ? (lang === 'fr' ? `Nécessite QG ${s === 2 ? 6 : s === 3 ? 11 : s === 4 ? 16 : 22}` : `Requires HQ ${s === 2 ? 6 : s === 3 ? 11 : s === 4 ? 16 : 22}`) : undefined}
+                  >★</button>
+                );
+              })}
             </div>
+            {maxStars < 5 && (
+              <span className={styles.starsCapHint}>
+                {lang === 'fr' ? `QG ${cap.hqLevel} → max ${maxStars}★` : `HQ ${cap.hqLevel} → max ${maxStars}★`}
+              </span>
+            )}
             {draft.stars >= 2 && draft.stars < 4 && <span className={styles.starsHint}>{t(lang, 'heroes.stars.hint.2')}</span>}
             {draft.stars >= 4 && draft.stars < 5 && <span className={styles.starsHint}>{t(lang, 'heroes.stars.hint.4')}</span>}
             {draft.stars >= 5 && <span className={styles.starsHintMax}>{t(lang, 'heroes.stars.hint.5')}</span>}

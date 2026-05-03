@@ -69,7 +69,7 @@ export interface T1ThresholdResult {
 }
 
 function getHero(heroes: PlayerHero[], id: string): PlayerHero {
-  return heroes.find(h => h.heroId === id) ?? { heroId: id, stars: 0, ew: 0, gear: { ...DEFAULT_GEAR }, skills: { ...DEFAULT_SKILLS } };
+  return heroes.find(h => h.heroId === id) ?? { heroId: id, level: 0, stars: 0, ew: 0, gear: { ...DEFAULT_GEAR }, skills: { ...DEFAULT_SKILLS } };
 }
 
 export function checkT1Thresholds(heroes: PlayerHero[]): T1ThresholdResult {
@@ -349,7 +349,7 @@ export function computeUnifiedActions(
 // ─── Helpers ─────────────────────────────────────────────────────────────────
 
 export function defaultPlayerHero(heroId: string): PlayerHero {
-  return { heroId, stars: 0, ew: 0, gear: { ...DEFAULT_GEAR }, skills: { ...DEFAULT_SKILLS } };
+  return { heroId, level: 0, stars: 0, ew: 0, gear: { ...DEFAULT_GEAR }, skills: { ...DEFAULT_SKILLS } };
 }
 
 /** Niveau max de skill selon l'EW (base 30, +1 par tranche de 3 EW au-delà, max 40). */
