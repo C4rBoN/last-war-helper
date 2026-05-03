@@ -212,6 +212,104 @@ const SECTIONS: Section[] = [
       </>
     ),
   },
+  {
+    id: 'strategy',
+    icon: '🧠',
+    title: { fr: 'Stratégies & Priorités', en: 'Strategy & Priorities' },
+    content: (lang) => lang === 'fr' ? (
+      <>
+        <Block title="Actions Jour 1 — Liste de démarrage">
+          <ul className={styles.list}>
+            <li>Acheter le <strong>Battle Pass saisonnier</strong> et le <strong>Weekly Pass</strong> immédiatement</li>
+            <li>Acheter les <strong>packs de Rainforest Mushrooms</strong> (disponibles 5 premiers jours seulement)</li>
+            <li>Construire le <strong>Fungi Institute</strong> et la <strong>Mushroom Seed Factory</strong></li>
+            <li>Monter la Mushroom Factory au niveau 4 → réparer le <strong>War Merit Shop</strong></li>
+            <li>Récupérer les cadeaux aux portes NPC</li>
+            <li>Invoquer immédiatement tous les héros saisonniers</li>
+            <li>Tuer un Doom Walker (niveau 100 → 200k Rainforest Mushrooms)</li>
+            <li>Vaincre le Doom Envoy et les Poison Swamp Zombies pour les récompenses de ressources</li>
+          </ul>
+        </Block>
+        <Block title="Battle Pass — Timing critique">
+          <ImgRow images={[
+            { src: `${BASE}/2026-03/image-125.png`, alt: 'Battle Pass saisonnier', caption: 'Season Battle Pass' },
+            { src: `${BASE}/2026-03/image-126.png`, alt: 'Weekly Pass', caption: 'Weekly Pass' },
+          ]} />
+          <ul className={styles.list}>
+            <li><Tag color="danger">Acheter le Jour 1</Tag> pour maximiser les doubles récompenses des tâches quotidiennes</li>
+            <li>Advanced (≈11.99€) : double les récompenses des tâches quotidiennes</li>
+            <li>Luxury (≈23.99€) : récompenses supplémentaires</li>
+            <li>Weekly Pass (7j, indisponible semaine 8) : usine supplémentaire + 250 résistance aux virus + 30% vitesse de marche vs zombies + 20k Champignons/jour</li>
+          </ul>
+        </Block>
+        <Block title="Priorités compétences Ingénieur">
+          <ul className={styles.list}>
+            <li>Maxer l'arbre vert de bas en haut</li>
+            <li>Passer le Rainforest Charm, curses, Enemy Territory Assault en début de saison</li>
+            <li>Compétences Architecte en priorité (économie matériaux/temps)</li>
+            <li>Réserver 1 point pour le <strong>Jour 15 : Relic Expert</strong></li>
+          </ul>
+        </Block>
+        <Block title="Optimisation Spore Factory">
+          <ul className={styles.list}>
+            <li>Monter chaque usine à 15 successivement (débloque les suivantes)</li>
+            <li>Ensuite égaliser : toutes à 16, toutes à 17, etc.</li>
+            <li>Maximise la production de Spores au fil du temps</li>
+          </ul>
+        </Block>
+        <Block title="Boutique Saisonnière">
+          <Img src={`${BASE}/2026-03/image-32.png`} alt="Boutique Saisonnière" caption="Boutique Saisonnière" />
+          <Warn>La Boutique Saisonnière ne ferme jamais et se réinitialise chaque saison. Acheter tous les Mythic Gear Blueprints avant les nouvelles saisons. Ne pas acheter en urgence.</Warn>
+        </Block>
+      </>
+    ) : (
+      <>
+        <Block title="Day 1 Actions — Launch checklist">
+          <ul className={styles.list}>
+            <li>Buy the <strong>Season Battle Pass</strong> and <strong>Weekly Pass</strong> immediately</li>
+            <li>Buy <strong>Rainforest Mushroom packs</strong> (available first 5 days only)</li>
+            <li>Build the <strong>Fungi Institute</strong> and <strong>Mushroom Seed Factory</strong></li>
+            <li>Upgrade Mushroom Factory to level 4 → repair the <strong>War Merit Shop</strong></li>
+            <li>Claim NPC gate gifts</li>
+            <li>Summon all seasonal heroes immediately</li>
+            <li>Kill a Doom Walker (level 100 → 200k Rainforest Mushrooms)</li>
+            <li>Defeat Doom Envoy and Poison Swamp Zombies for resource rewards</li>
+          </ul>
+        </Block>
+        <Block title="Battle Pass — Critical timing">
+          <ImgRow images={[
+            { src: `${BASE}/2026-03/image-125.png`, alt: 'Season Battle Pass', caption: 'Season Battle Pass' },
+            { src: `${BASE}/2026-03/image-126.png`, alt: 'Weekly Pass', caption: 'Weekly Pass' },
+          ]} />
+          <ul className={styles.list}>
+            <li><Tag color="danger">Buy on Day 1</Tag> to maximize double-reward daily tasks</li>
+            <li>Advanced (≈$11.99): doubles daily task rewards</li>
+            <li>Luxury (≈$23.99): additional rewards</li>
+            <li>Weekly Pass (7d, unavailable week 8): extra factory + 250 virus resistance + 30% march speed vs zombies + 20k Mushrooms/day</li>
+          </ul>
+        </Block>
+        <Block title="Engineer skill priorities">
+          <ul className={styles.list}>
+            <li>Max the green skill tree bottom-to-top</li>
+            <li>Skip Rainforest Charm, curses, Enemy Territory Assault early</li>
+            <li>Prioritize Architect skills (material/time savings)</li>
+            <li>Reserve 1 point for <strong>Day 15: Relic Expert</strong></li>
+          </ul>
+        </Block>
+        <Block title="Spore Factory optimization">
+          <ul className={styles.list}>
+            <li>Level each factory to 15 sequentially (unlocks the next ones)</li>
+            <li>Then equalize: all to 16, all to 17, etc.</li>
+            <li>Maximizes Spore output over time</li>
+          </ul>
+        </Block>
+        <Block title="Season Store">
+          <Img src={`${BASE}/2026-03/image-32.png`} alt="Season Store" caption="Season Store" />
+          <Warn>The Season Store never closes and resets each season. Buy all Mythic Gear Blueprints before new seasons. Don't rush purchases.</Warn>
+        </Block>
+      </>
+    ),
+  },
 
   {
     id: 'preseason',
@@ -1784,104 +1882,6 @@ const SECTIONS: Section[] = [
     ),
   },
 
-  {
-    id: 'strategy',
-    icon: '🧠',
-    title: { fr: 'Stratégies & Priorités', en: 'Strategy & Priorities' },
-    content: (lang) => lang === 'fr' ? (
-      <>
-        <Block title="Actions Jour 1 — Liste de démarrage">
-          <ul className={styles.list}>
-            <li>Acheter le <strong>Battle Pass saisonnier</strong> et le <strong>Weekly Pass</strong> immédiatement</li>
-            <li>Acheter les <strong>packs de Rainforest Mushrooms</strong> (disponibles 5 premiers jours seulement)</li>
-            <li>Construire le <strong>Fungi Institute</strong> et la <strong>Mushroom Seed Factory</strong></li>
-            <li>Monter la Mushroom Factory au niveau 4 → réparer le <strong>War Merit Shop</strong></li>
-            <li>Récupérer les cadeaux aux portes NPC</li>
-            <li>Invoquer immédiatement tous les héros saisonniers</li>
-            <li>Tuer un Doom Walker (niveau 100 → 200k Rainforest Mushrooms)</li>
-            <li>Vaincre le Doom Envoy et les Poison Swamp Zombies pour les récompenses de ressources</li>
-          </ul>
-        </Block>
-        <Block title="Battle Pass — Timing critique">
-          <ImgRow images={[
-            { src: `${BASE}/2026-03/image-125.png`, alt: 'Battle Pass saisonnier', caption: 'Season Battle Pass' },
-            { src: `${BASE}/2026-03/image-126.png`, alt: 'Weekly Pass', caption: 'Weekly Pass' },
-          ]} />
-          <ul className={styles.list}>
-            <li><Tag color="danger">Acheter le Jour 1</Tag> pour maximiser les doubles récompenses des tâches quotidiennes</li>
-            <li>Advanced (≈11.99€) : double les récompenses des tâches quotidiennes</li>
-            <li>Luxury (≈23.99€) : récompenses supplémentaires</li>
-            <li>Weekly Pass (7j, indisponible semaine 8) : usine supplémentaire + 250 résistance aux virus + 30% vitesse de marche vs zombies + 20k Champignons/jour</li>
-          </ul>
-        </Block>
-        <Block title="Priorités compétences Ingénieur">
-          <ul className={styles.list}>
-            <li>Maxer l'arbre vert de bas en haut</li>
-            <li>Passer le Rainforest Charm, curses, Enemy Territory Assault en début de saison</li>
-            <li>Compétences Architecte en priorité (économie matériaux/temps)</li>
-            <li>Réserver 1 point pour le <strong>Jour 15 : Relic Expert</strong></li>
-          </ul>
-        </Block>
-        <Block title="Optimisation Spore Factory">
-          <ul className={styles.list}>
-            <li>Monter chaque usine à 15 successivement (débloque les suivantes)</li>
-            <li>Ensuite égaliser : toutes à 16, toutes à 17, etc.</li>
-            <li>Maximise la production de Spores au fil du temps</li>
-          </ul>
-        </Block>
-        <Block title="Boutique Saisonnière">
-          <Img src={`${BASE}/2026-03/image-32.png`} alt="Boutique Saisonnière" caption="Boutique Saisonnière" />
-          <Warn>La Boutique Saisonnière ne ferme jamais et se réinitialise chaque saison. Acheter tous les Mythic Gear Blueprints avant les nouvelles saisons. Ne pas acheter en urgence.</Warn>
-        </Block>
-      </>
-    ) : (
-      <>
-        <Block title="Day 1 Actions — Launch checklist">
-          <ul className={styles.list}>
-            <li>Buy the <strong>Season Battle Pass</strong> and <strong>Weekly Pass</strong> immediately</li>
-            <li>Buy <strong>Rainforest Mushroom packs</strong> (available first 5 days only)</li>
-            <li>Build the <strong>Fungi Institute</strong> and <strong>Mushroom Seed Factory</strong></li>
-            <li>Upgrade Mushroom Factory to level 4 → repair the <strong>War Merit Shop</strong></li>
-            <li>Claim NPC gate gifts</li>
-            <li>Summon all seasonal heroes immediately</li>
-            <li>Kill a Doom Walker (level 100 → 200k Rainforest Mushrooms)</li>
-            <li>Defeat Doom Envoy and Poison Swamp Zombies for resource rewards</li>
-          </ul>
-        </Block>
-        <Block title="Battle Pass — Critical timing">
-          <ImgRow images={[
-            { src: `${BASE}/2026-03/image-125.png`, alt: 'Season Battle Pass', caption: 'Season Battle Pass' },
-            { src: `${BASE}/2026-03/image-126.png`, alt: 'Weekly Pass', caption: 'Weekly Pass' },
-          ]} />
-          <ul className={styles.list}>
-            <li><Tag color="danger">Buy on Day 1</Tag> to maximize double-reward daily tasks</li>
-            <li>Advanced (≈$11.99): doubles daily task rewards</li>
-            <li>Luxury (≈$23.99): additional rewards</li>
-            <li>Weekly Pass (7d, unavailable week 8): extra factory + 250 virus resistance + 30% march speed vs zombies + 20k Mushrooms/day</li>
-          </ul>
-        </Block>
-        <Block title="Engineer skill priorities">
-          <ul className={styles.list}>
-            <li>Max the green skill tree bottom-to-top</li>
-            <li>Skip Rainforest Charm, curses, Enemy Territory Assault early</li>
-            <li>Prioritize Architect skills (material/time savings)</li>
-            <li>Reserve 1 point for <strong>Day 15: Relic Expert</strong></li>
-          </ul>
-        </Block>
-        <Block title="Spore Factory optimization">
-          <ul className={styles.list}>
-            <li>Level each factory to 15 sequentially (unlocks the next ones)</li>
-            <li>Then equalize: all to 16, all to 17, etc.</li>
-            <li>Maximizes Spore output over time</li>
-          </ul>
-        </Block>
-        <Block title="Season Store">
-          <Img src={`${BASE}/2026-03/image-32.png`} alt="Season Store" caption="Season Store" />
-          <Warn>The Season Store never closes and resets each season. Buy all Mythic Gear Blueprints before new seasons. Don't rush purchases.</Warn>
-        </Block>
-      </>
-    ),
-  },
 ];
 
 export function Season6() {
