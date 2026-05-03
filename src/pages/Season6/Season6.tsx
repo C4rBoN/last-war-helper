@@ -1894,7 +1894,12 @@ export function Season6() {
       const id = (e as CustomEvent<string>).detail;
       setOpenSections(new Set([id]));
       setTimeout(() => {
-        document.getElementById(`s6-${id}`)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        const el = document.getElementById(`s6-${id}`);
+        if (el) {
+          const topbar = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--topbar-height')) || 56;
+          const y = el.getBoundingClientRect().top + window.scrollY - topbar - 8;
+          window.scrollTo({ top: y, behavior: 'smooth' });
+        }
       }, 80);
     }
     window.addEventListener('s6-open-section', onOpen);
@@ -1904,6 +1909,14 @@ export function Season6() {
   function toggle(id: string) {
     setOpenSections(prev => {
       if (prev.has(id)) return new Set();
+      setTimeout(() => {
+        const el = document.getElementById(`s6-${id}`);
+        if (el) {
+          const topbar = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--topbar-height')) || 56;
+          const y = el.getBoundingClientRect().top + window.scrollY - topbar - 8;
+          window.scrollTo({ top: y, behavior: 'smooth' });
+        }
+      }, 50);
       return new Set([id]);
     });
   }
