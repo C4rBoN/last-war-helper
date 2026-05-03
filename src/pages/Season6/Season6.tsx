@@ -1887,7 +1887,7 @@ const SECTIONS: Section[] = [
 export function Season6() {
   const { state } = useAppContext();
   const lang = state.language as Lang;
-  const [openSections, setOpenSections] = useState<Set<string>>(new Set(['overview']));
+  const [openSections, setOpenSections] = useState<Set<string>>(new Set());
 
   useEffect(() => {
     function onOpen(e: Event) {
