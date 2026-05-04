@@ -14,6 +14,7 @@ const TABS = [
 
 const S6_SECTIONS = [
   { id: 'overview',     icon: '🌿', fr: 'Vue d\'ensemble',        en: 'Overview'             },
+  { id: 'strategy',     icon: '🧠', fr: 'Stratégies',             en: 'Strategy'             },
   { id: 'preseason',    icon: '🗓', fr: 'Pré-saison',             en: 'Pre-Season'           },
   { id: 'factions',     icon: '⚔️', fr: 'Factions',               en: 'Factions'             },
   { id: 'cities',       icon: '💥', fr: 'Villes & Territoire',     en: 'Cities & Territory'   },
@@ -29,7 +30,6 @@ const S6_SECTIONS = [
   { id: 'heroes',       icon: '🦸', fr: 'Héros',                  en: 'Heroes'               },
   { id: 'expedition',   icon: '🌍', fr: 'Expédition Mondiale',     en: 'Global Expedition'    },
   { id: 'calendar',     icon: '📅', fr: 'Calendrier S6',           en: 'Full Calendar'        },
-  { id: 'strategy',     icon: '🧠', fr: 'Stratégies',             en: 'Strategy'             },
 ];
 
 export function BottomNav() {
