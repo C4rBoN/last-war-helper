@@ -10,6 +10,7 @@ export const FR: Record<string, string> = {
   'nav.buildings': 'Bâtiments',
   'nav.research': 'Recherche',
   'nav.season6': 'Saison 6',
+  'nav.tips': 'Astuces',
 
   // Setup
   'setup.title': 'Bienvenue sur Last War Helper',

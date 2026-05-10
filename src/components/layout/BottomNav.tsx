@@ -10,6 +10,7 @@ const TABS = [
   { path: '/heroes',    icon: '⚔',  labelKey: 'nav.heroes'    },
   { path: '/buildings', icon: '🏗',  labelKey: 'nav.buildings' },
   { path: '/research',  icon: '🔬',  labelKey: 'nav.research'  },
+  { path: '/tips',      icon: '💡',  labelKey: 'nav.tips'      },
 ];
 
 const S6_SECTIONS = [
@@ -32,67 +33,112 @@ const S6_SECTIONS = [
   { id: 'calendar',     icon: '📅', fr: 'Calendrier S6',           en: 'Full Calendar'        },
 ];
 
+const TIPS_SECTIONS = [
+  { id: 'alliance', icon: '🤝', fr: 'Alliance', en: 'Alliance' },
+];
+
 export function BottomNav() {
   const { state } = useAppContext();
   const lang = state.language as 'fr' | 'en';
   const navigate = useNavigate();
   const [s6Open, setS6Open] = useState(false);
+  const [tipsOpen, setTipsOpen] = useState(false);
 
   function goToSection(id: string) {
     setS6Open(false);
     navigate('/season6');
-    // Let the page mount then dispatch the section event
     setTimeout(() => {
       window.dispatchEvent(new CustomEvent('s6-open-section', { detail: id }));
+    }, 50);
+  }
+
+  function goToTipsSection(id: string) {
+    setTipsOpen(false);
+    navigate('/tips');
+    setTimeout(() => {
+      window.dispatchEvent(new CustomEvent('tips-open-section', { detail: id }));
     }, 50);
   }
 
   return (
     <nav className={styles.nav}>
       {TABS.map(tab => {
-        if (tab.path !== '/season6') {
+        if (tab.path === '/season6') {
           return (
-            <NavLink
+            <div
               key={tab.path}
-              to={tab.path}
-              end={tab.path === '/'}
-              className={({ isActive }) => `${styles.tab} ${isActive ? styles.active : ''}`}
+              className={styles.s6Wrapper}
+              onMouseEnter={() => setS6Open(true)}
+              onMouseLeave={() => setS6Open(false)}
             >
-              <span className={styles.icon}>{tab.icon}</span>
-              <span className={styles.label}>{t(lang, tab.labelKey)}</span>
-            </NavLink>
+              {s6Open && (
+                <div className={styles.submenu}>
+                  {S6_SECTIONS.map(s => (
+                    <button
+                      key={s.id}
+                      className={styles.submenuItem}
+                      onClick={() => goToSection(s.id)}
+                    >
+                      <span className={styles.submenuIcon}>{s.icon}</span>
+                      <span className={styles.submenuLabel}>{lang === 'fr' ? s.fr : s.en}</span>
+                    </button>
+                  ))}
+                </div>
+              )}
+              <NavLink
+                to={tab.path}
+                className={({ isActive }) => `${styles.tab} ${isActive ? styles.active : ''}`}
+              >
+                <span className={styles.icon}>{tab.icon}</span>
+                <span className={styles.label}>{t(lang, tab.labelKey)}</span>
+              </NavLink>
+            </div>
+          );
+        }
+
+        if (tab.path === '/tips') {
+          return (
+            <div
+              key={tab.path}
+              className={styles.s6Wrapper}
+              onMouseEnter={() => setTipsOpen(true)}
+              onMouseLeave={() => setTipsOpen(false)}
+            >
+              {tipsOpen && (
+                <div className={styles.submenu}>
+                  {TIPS_SECTIONS.map(s => (
+                    <button
+                      key={s.id}
+                      className={styles.submenuItem}
+                      onClick={() => goToTipsSection(s.id)}
+                    >
+                      <span className={styles.submenuIcon}>{s.icon}</span>
+                      <span className={styles.submenuLabel}>{lang === 'fr' ? s.fr : s.en}</span>
+                    </button>
+                  ))}
+                </div>
+              )}
+              <NavLink
+                to={tab.path}
+                className={({ isActive }) => `${styles.tab} ${isActive ? styles.active : ''}`}
+              >
+                <span className={styles.icon}>{tab.icon}</span>
+                <span className={styles.label}>{t(lang, tab.labelKey)}</span>
+              </NavLink>
+            </div>
           );
         }
 
         return (
-          <div
+          <NavLink
             key={tab.path}
-            className={styles.s6Wrapper}
-            onMouseEnter={() => setS6Open(true)}
-            onMouseLeave={() => setS6Open(false)}
+            to={tab.path}
+            end={tab.path === '/'}
+            className={({ isActive }) => `${styles.tab} ${isActive ? styles.active : ''}`}
           >
-            {s6Open && (
-              <div className={styles.submenu}>
-                {S6_SECTIONS.map(s => (
-                  <button
-                    key={s.id}
-                    className={styles.submenuItem}
-                    onClick={() => goToSection(s.id)}
-                  >
-                    <span className={styles.submenuIcon}>{s.icon}</span>
-                    <span className={styles.submenuLabel}>{lang === 'fr' ? s.fr : s.en}</span>
-                  </button>
-                ))}
-              </div>
-            )}
-            <NavLink
-              to={tab.path}
-              className={({ isActive }) => `${styles.tab} ${isActive ? styles.active : ''}`}
-            >
-              <span className={styles.icon}>{tab.icon}</span>
-              <span className={styles.label}>{t(lang, tab.labelKey)}</span>
-            </NavLink>
-          </div>
+            <span className={styles.icon}>{tab.icon}</span>
+            <span className={styles.label}>{t(lang, tab.labelKey)}</span>
+          </NavLink>
         );
       })}
     </nav>

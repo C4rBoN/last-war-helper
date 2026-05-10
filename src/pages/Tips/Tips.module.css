@@ -1,0 +1,277 @@
+.page {
+  padding: var(--sp-4);
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+/* ── Header ── */
+.header {
+  margin-bottom: var(--sp-6);
+}
+
+.title {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: var(--sp-1);
+}
+
+.subtitle {
+  font-size: 12px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* ── Accordion sections ── */
+.section {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  margin-bottom: var(--sp-3);
+  overflow: hidden;
+  background: var(--bg-secondary);
+}
+
+.sectionOpen {
+  border-color: var(--border-accent);
+}
+
+.sectionHeader {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  padding: var(--sp-4);
+  background: none;
+  cursor: pointer;
+  text-align: left;
+  transition: background var(--transition);
+}
+
+.sectionHeader:hover {
+  background: var(--bg-tertiary);
+}
+
+.sectionOpen .sectionHeader {
+  background: var(--bg-tertiary);
+  border-bottom: 1px solid var(--border);
+}
+
+.sectionIcon {
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.sectionTitle {
+  flex: 1;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.sectionChevron {
+  font-size: 10px;
+  color: var(--text-muted);
+  flex-shrink: 0;
+}
+
+.sectionBody {
+  padding: var(--sp-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-4);
+}
+
+/* ── Lead ── */
+.lead {
+  color: var(--text-secondary);
+  line-height: 1.6;
+  font-size: 13px;
+  margin: 0;
+}
+
+/* ── Block ── */
+.block {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+}
+
+.blockTitle {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding-bottom: var(--sp-1);
+  border-bottom: 1px solid var(--border);
+}
+
+/* ── List ── */
+.list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+  margin: 0;
+  padding: 0;
+}
+
+.list li {
+  font-size: 13px;
+  color: var(--text-secondary);
+  padding-left: var(--sp-4);
+  position: relative;
+  line-height: 1.5;
+}
+
+.list li::before {
+  content: '›';
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-weight: 700;
+}
+
+/* ── Tip ── */
+.tip {
+  display: flex;
+  gap: var(--sp-2);
+  padding: var(--sp-3);
+  border-radius: var(--radius-sm);
+  font-size: 12px;
+  line-height: 1.5;
+  background: var(--accent-glow);
+  border: 1px solid var(--border-accent);
+  color: var(--text-secondary);
+}
+
+.tipIcon {
+  flex-shrink: 0;
+  font-size: 14px;
+}
+
+/* ── Table ── */
+.tableWrapper {
+  overflow-x: auto;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+}
+
+.table th {
+  background: var(--bg-elevated);
+  color: var(--text-secondary);
+  font-weight: 600;
+  text-align: left;
+  padding: var(--sp-2) var(--sp-3);
+  border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+}
+
+.table td {
+  padding: var(--sp-2) var(--sp-3);
+  color: var(--text-secondary);
+  border-bottom: 1px solid var(--bg-tertiary);
+  vertical-align: middle;
+  line-height: 1.4;
+}
+
+.table tr:last-child td {
+  border-bottom: none;
+}
+
+.table tr:nth-child(even) td {
+  background: var(--bg-tertiary);
+}
+
+.table td strong {
+  color: var(--text-primary);
+}
+
+/* ── Rank badges ── */
+.rankBadge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  min-width: 32px;
+}
+
+.rank_danger  { background: var(--danger-dim);          color: var(--danger);        border: 1px solid rgba(192, 57, 43, 0.3); }
+.rank_accent  { background: var(--accent-glow);         color: var(--accent);        border: 1px solid var(--border-accent); }
+.rank_success { background: var(--success-dim);         color: var(--success);       border: 1px solid rgba(39, 174, 96, 0.3); }
+.rank_info    { background: rgba(41, 128, 185, 0.1);    color: var(--info);          border: 1px solid rgba(41, 128, 185, 0.3); }
+.rank_muted   { background: var(--bg-elevated);         color: var(--text-muted);    border: 1px solid var(--border); }
+
+/* ── Officer cards ── */
+.officerGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--sp-3);
+}
+
+.officerCard {
+  background: var(--bg-elevated);
+  border-radius: var(--radius-sm);
+  padding: var(--sp-3);
+  border: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-2);
+}
+
+.officerHead {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+}
+
+.officerIcon {
+  font-size: 22px;
+  flex-shrink: 0;
+  width: 32px;
+  text-align: center;
+}
+
+.officerNum {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+.officerName {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.officerDesc {
+  font-size: 12px;
+  color: var(--text-secondary);
+  line-height: 1.55;
+  margin: 0;
+  padding-left: calc(32px + var(--sp-3));
+}
+
+/* ── Desktop ── */
+@media (min-width: 768px) {
+  .page {
+    padding: var(--sp-6);
+  }
+
+  .officerGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+}

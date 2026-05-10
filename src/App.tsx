@@ -8,6 +8,7 @@ import { Buildings } from './pages/Buildings/Buildings';
 // import { Research } from './pages/Research/Research';
 import { ResearchWIP } from './pages/Research/ResearchWIP';
 import { Season6 } from './pages/Season6/Season6';
+import { Tips } from './pages/Tips/Tips';
 import { PrivacyPolicy } from './pages/Legal/PrivacyPolicy';
 import { DataDeletion } from './pages/Legal/DataDeletion';
 import './styles/tokens.css';
@@ -31,6 +32,7 @@ export default function App() {
                 <Route path="/buildings" element={<Buildings />} />
                 <Route path="/research"  element={<ResearchWIP />} />
                 <Route path="/season6"   element={<Season6 />} />
+                <Route path="/tips"      element={<Tips />} />
               </Routes>
             </AppShell>
           } />
