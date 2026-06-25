@@ -11,9 +11,16 @@ import { Season6 } from './pages/Season6/Season6';
 import { Tips } from './pages/Tips/Tips';
 import { PrivacyPolicy } from './pages/Legal/PrivacyPolicy';
 import { DataDeletion } from './pages/Legal/DataDeletion';
+import { AuthCallback } from './pages/AuthCallback/AuthCallback';
 import './styles/tokens.css';
 
 export default function App() {
+  // Route de callback OAuth Supabase : hors HashRouter pour que le SDK
+  // puisse parser #access_token=... sans qu'il soit confondu avec une route.
+  if (window.location.pathname === '/auth/callback') {
+    return <AuthCallback />;
+  }
+
   return (
     <AuthProvider>
     <AppProvider>

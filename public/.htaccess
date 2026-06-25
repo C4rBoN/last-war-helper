@@ -1,0 +1,4 @@
+# Callback OAuth Supabase : route réelle (hors HashRouter) qui doit
+# toujours servir index.html, même en accès direct par le navigateur.
+RewriteEngine On
+RewriteRule ^auth/callback$ /index.html [L]
