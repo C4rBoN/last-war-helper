@@ -29,7 +29,32 @@
       "Bash(gh repo *)",
       "Bash(where gh *)",
       "Bash(where git *)",
-      "Bash(where curl *)"
+      "Bash(where curl *)",
+      "Bash(winget install *)",
+      "Bash(refreshenv)",
+      "Bash(gh auth *)",
+      "Bash(\"C:\\\\Program Files\\\\GitHub CLI\\\\gh.exe\" auth login --web --git-protocol https)",
+      "Bash(\"C:\\\\Program Files\\\\GitHub CLI\\\\gh.exe\" auth status)",
+      "Bash(\"C:\\\\Program Files\\\\GitHub CLI\\\\gh.exe\" repo create C4rBoN/last-war-helper --public --description \"Last War: Survival Helper — suivi héros, bâtiments et recherches\")",
+      "PowerShell(Rename-Item \"C:\\\\www\\\\Appli_LastWar\" \"last-war-helper\" -ErrorAction Stop)",
+      "mcp__Claude_in_Chrome__navigate",
+      "mcp__Claude_in_Chrome__get_page_text",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(git push *)",
+      "Bash(node -e ' *)",
+      "Bash(npm install *)",
+      "Bash(npm list *)",
+      "mcp__Claude_in_Chrome__tabs_context_mcp",
+      "mcp__0de5d56d-491e-4fae-aef6-f6b84fef4e9f__notion-fetch",
+      "Bash(npx tsc *)",
+      "WebFetch(domain:wiki.lastwar.com)",
+      "mcp__Claude_in_Chrome__read_page",
+      "mcp__Claude_in_Chrome__javascript_tool",
+      "mcp__Claude_in_Chrome__computer",
+      "mcp__Claude_in_Chrome__read_network_requests",
+      "mcp__0de5d56d-491e-4fae-aef6-f6b84fef4e9f__notion-create-pages",
+      "mcp__0de5d56d-491e-4fae-aef6-f6b84fef4e9f__notion-update-page"
     ]
   }
 }
