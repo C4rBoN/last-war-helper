@@ -1,5 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { useAppContext } from '../../store/AppContext';
+import { HERO_MAP } from '../../data/heroes.data';
+import { Badge } from '../../components/ui/Badge';
 import styles from './Tips.module.css';
 
 type Lang = 'fr' | 'en';
@@ -333,6 +335,236 @@ function CrystalFactoryContent({ lang }: { lang: Lang }) {
   );
 }
 
+// ─── Boss Recherché (Code 39/64/87) data ───────────────────────────────────────
+
+type TeamType = 'Tank' | 'Aircraft' | 'Missile';
+type BossCode = 39 | 64 | 87;
+
+interface FormationState {
+  avant: string[];
+  arriere: string[];
+}
+
+const FORMATION: Record<BossCode, { weakness: TeamType; teams: Record<TeamType, { sans: FormationState; avec: FormationState }> }> = {
+  39: {
+    weakness: 'Aircraft',
+    teams: {
+      Tank:     { sans: { avant: ['murphy', 'dva'],      arriere: ['kimberly', 'stetmann', 'marshall'] }, avec: { avant: ['dva', 'marshall'],    arriere: ['mason', 'kimberly', 'stetmann'] } },
+      Aircraft: { sans: { avant: ['lucius', 'carlie'],    arriere: ['dva', 'morrison', 'schuyler'] },      avec: { avant: ['lucius', 'schuyler'], arriere: ['mason', 'dva', 'morrison'] } },
+      Missile:  { sans: { avant: ['adam', 'dva'],         arriere: ['tesla', 'fiona', 'swift'] },          avec: { avant: ['dva', 'swift'],       arriere: ['mason', 'tesla', 'fiona'] } },
+    },
+  },
+  64: {
+    weakness: 'Missile',
+    teams: {
+      Missile:  { sans: { avant: ['adam', 'mcgregor'],    arriere: ['tesla', 'fiona', 'swift'] },          avec: { avant: ['adam', 'swift'],      arriere: ['mason', 'tesla', 'fiona'] } },
+      Tank:     { sans: { avant: ['murphy', 'tesla'],     arriere: ['kimberly', 'stetmann', 'marshall'] }, avec: { avant: ['tesla', 'marshall'],  arriere: ['mason', 'kimberly', 'stetmann'] } },
+      Aircraft: { sans: { avant: ['lucius', 'tesla'],     arriere: ['dva', 'morrison', 'schuyler'] },      avec: { avant: ['tesla', 'schuyler'],  arriere: ['mason', 'dva', 'morrison'] } },
+    },
+  },
+  87: {
+    weakness: 'Tank',
+    teams: {
+      Tank:     { sans: { avant: ['murphy', 'williams'],  arriere: ['kimberly', 'stetmann', 'marshall'] }, avec: { avant: ['murphy', 'marshall'], arriere: ['mason', 'kimberly', 'stetmann'] } },
+      Aircraft: { sans: { avant: ['lucius', 'kimberly'],  arriere: ['dva', 'morrison', 'schuyler'] },      avec: { avant: ['kimberly', 'schuyler'], arriere: ['mason', 'dva', 'morrison'] } },
+      Missile:  { sans: { avant: ['adam', 'kimberly'],    arriere: ['tesla', 'fiona', 'swift'] },          avec: { avant: ['kimberly', 'swift'],  arriere: ['mason', 'tesla', 'fiona'] } },
+    },
+  },
+};
+
+const CODE_DAYS: Record<BossCode, Record<Lang, string>> = {
+  39: { fr: 'Mercredi & Samedi', en: 'Wednesday & Saturday' },
+  64: { fr: 'Mardi & Vendredi',  en: 'Tuesday & Friday' },
+  87: { fr: 'Lundi & Jeudi',     en: 'Monday & Thursday' },
+};
+
+function teamLabel(t: TeamType, lang: Lang): string {
+  if (t === 'Aircraft') return lang === 'fr' ? 'Avion' : 'Aircraft';
+  return t;
+}
+
+function badgeVariant(t: TeamType): 'type-tank' | 'type-aircraft' | 'type-missile' {
+  return t === 'Tank' ? 'type-tank' : t === 'Aircraft' ? 'type-aircraft' : 'type-missile';
+}
+
+function HeroSlot({ heroId, lang }: { heroId: string; lang: Lang }) {
+  if (heroId === 'mason') {
+    return (
+      <div className={styles.heroSlot}>
+        <span className={styles.heroSlotAvatarFallback}>MA</span>
+        <div>
+          <div className={styles.heroSlotName}>Mason</div>
+          <span className={styles.heroSlotHint}>{lang === 'fr' ? 'hors roster suivi' : 'not tracked here'}</span>
+        </div>
+      </div>
+    );
+  }
+  const hero = HERO_MAP[heroId];
+  return (
+    <div className={styles.heroSlot}>
+      {hero.imageUrl
+        ? <img src={hero.imageUrl} alt={hero.name} className={styles.heroSlotAvatar} loading="lazy" />
+        : <span className={styles.heroSlotAvatarFallback}>{hero.name.slice(0, 2).toUpperCase()}</span>}
+      <div>
+        <div className={styles.heroSlotName}>{hero.name}</div>
+        <Badge variant={badgeVariant(hero.type)} label={teamLabel(hero.type, lang)} small />
+      </div>
+    </div>
+  );
+}
+
+function BossComposer({ lang }: { lang: Lang }) {
+  const [code, setCode] = useState<BossCode>(39);
+  const [team, setTeam] = useState<TeamType>('Tank');
+  const [mason, setMason] = useState(false);
+
+  const boss = FORMATION[code];
+  const state = boss.teams[team][mason ? 'avec' : 'sans'];
+
+  return (
+    <div>
+      <div className={styles.formationLabel}>{lang === 'fr' ? 'Code boss' : 'Boss code'}</div>
+      <div className={styles.composerChips}>
+        {([39, 64, 87] as BossCode[]).map(c => (
+          <button
+            key={c}
+            className={`${styles.chip} ${code === c ? styles.chipActive : ''}`}
+            onClick={() => setCode(c)}
+          >
+            Code {c}
+            <span className={styles.chipSub}>{teamLabel(FORMATION[c].weakness, lang)}</span>
+          </button>
+        ))}
+      </div>
+
+      <div className={styles.formationLabel}>{lang === 'fr' ? 'Ton équipe' : 'Your team'}</div>
+      <div className={styles.composerChips}>
+        {(['Tank', 'Aircraft', 'Missile'] as TeamType[]).map(t => (
+          <button
+            key={t}
+            className={`${styles.chip} ${team === t ? styles.chipActive : ''}`}
+            onClick={() => setTeam(t)}
+          >
+            {teamLabel(t, lang)}
+            {t === boss.weakness && <span className={styles.chipSub}>{lang === 'fr' ? 'bon type' : 'right type'}</span>}
+          </button>
+        ))}
+      </div>
+
+      <div className={styles.masonToggleRow}>
+        <button className={styles.masonSwitch} onClick={() => setMason(m => !m)}>
+          {mason ? (lang === 'fr' ? 'Avec Mason ⇄' : 'With Mason ⇄') : (lang === 'fr' ? 'Sans Mason ⇄' : 'Without Mason ⇄')}
+        </button>
+      </div>
+
+      <div className={styles.formationLabel}>{lang === 'fr' ? 'Avant' : 'Front'}</div>
+      <div className={styles.formationRow}>
+        {state.avant.map(id => <HeroSlot key={id} heroId={id} lang={lang} />)}
+      </div>
+
+      <div className={styles.formationLabel}>{lang === 'fr' ? 'Arrière' : 'Back'}</div>
+      <div className={styles.formationRow}>
+        {state.arriere.map(id => <HeroSlot key={id} heroId={id} lang={lang} />)}
+      </div>
+    </div>
+  );
+}
+
+const BOSS_TIPS: Record<Lang, string[]> = {
+  fr: [
+    'Full attaque : le boss riposte à peine, inutile de garder un défenseur juste pour encaisser.',
+    'Utilise tes 5 attaques quotidiennes avant le reset — chaque tentative compte pour le classement.',
+    'Cumule les bonus : équipe, héros cross-type, Mason et cartes tactiques adaptés au code du jour.',
+  ],
+  en: [
+    'Go full attack: the boss barely retaliates, no need to keep a defender just to soak hits.',
+    'Use your 5 daily attacks before the reset — every attempt counts toward the ranking.',
+    'Stack every bonus: team, cross-type hero, Mason and tactics cards matched to the day\'s code.',
+  ],
+};
+
+function BossWantedContent({ lang }: { lang: Lang }) {
+  return (
+    <>
+      <p className={styles.lead}>
+        {lang === 'fr'
+          ? 'Le Boss Recherché apparaît sur la carte du monde sous 3 codes (39, 64, 87), chacun avec sa propre faiblesse de type. L\'objectif : infliger un maximum de dégâts en une seule attaque.'
+          : 'The Wanted Boss appears on the world map under 3 codes (39, 64, 87), each with its own type weakness. The goal: deal as much damage as possible in a single attack.'}
+      </p>
+
+      <Block title={lang === 'fr' ? 'Apparition & participation' : 'Spawn & participation'}>
+        <ul className={styles.list}>
+          <li>{lang === 'fr'
+            ? 'Apparaît du lundi au samedi, 4 fois/jour (00h, 06h, 12h, 18h serveur), reste 3h sur la carte'
+            : 'Appears Monday to Saturday, 4 times/day (00:00, 06:00, 12:00, 18:00 server time), stays 3h on the map'}</li>
+          <li>{lang === 'fr'
+            ? 'Base niveau 8+ requise, attaque avec ta propre armée uniquement (pas de Ralliement)'
+            : 'Base level 8+ required, attack with your own army only (no Rally)'}</li>
+          <li>{lang === 'fr' ? 'Maximum 5 attaques par jour' : 'Maximum 5 attacks per day'}</li>
+        </ul>
+      </Block>
+
+      <Block title={lang === 'fr' ? 'Les 3 codes & leur faiblesse' : 'The 3 codes & their weakness'}>
+        <div className={styles.tableWrapper}>
+          <table className={styles.table}>
+            <thead>
+              <tr>
+                <th>Code</th>
+                <th>{lang === 'fr' ? 'Jours' : 'Days'}</th>
+                <th>{lang === 'fr' ? 'Faiblesse' : 'Weakness'}</th>
+              </tr>
+            </thead>
+            <tbody>
+              {([39, 64, 87] as BossCode[]).map(c => (
+                <tr key={c}>
+                  <td><strong>Code {c}</strong></td>
+                  <td>{CODE_DAYS[c][lang]}</td>
+                  <td><Badge variant={badgeVariant(FORMATION[c].weakness)} label={teamLabel(FORMATION[c].weakness, lang)} small /></td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </Block>
+
+      <Block title={lang === 'fr' ? 'Composer sa team' : 'Building your team'}>
+        <p className={styles.lead}>
+          {lang === 'fr'
+            ? 'Choisis le code, ton équipe principale et bascule Mason pour voir la formation avant/arrière recommandée.'
+            : 'Pick the code, your main team and toggle Mason to see the recommended front/back formation.'}
+        </p>
+        <BossComposer lang={lang} />
+      </Block>
+
+      <Block title={lang === 'fr' ? 'Boosts de dégâts supplémentaires' : 'Extra damage boosts'}>
+        <ul className={styles.list}>
+          <li>{lang === 'fr'
+            ? 'Carte tactique cœur « Purgeur - Tueur de Monstres » : le setup PvE de référence contre zombies et boss (résistance + dégâts bonus)'
+            : 'Core tactics card "Purgator - Monster Slayer": the standard PvE setup against zombies and bosses (resistance + bonus damage)'}</li>
+          <li>{lang === 'fr'
+            ? 'Fièvre de Guerre : envoie un éclaireur sur une base abandonnée avant d\'attaquer → +1% Attaque'
+            : 'War Fever: send a scout to an abandoned base before attacking → +1% Attack'}</li>
+          <li>{lang === 'fr'
+            ? 'Skin de base « Champignon enchanté » (si possédé) : bonus de dégâts contre les créatures neutres'
+            : '"Enchanted Fungus" base skin (if owned): damage bonus against neutral creatures'}</li>
+        </ul>
+      </Block>
+
+      <Block title={lang === 'fr' ? 'Récompenses' : 'Rewards'}>
+        <ul className={styles.list}>
+          <li>{lang === 'fr' ? 'Individuelle : les 3 premières attaques de la journée' : 'Individual: the first 3 attacks of the day'}</li>
+          <li>{lang === 'fr' ? 'Classement : dégâts maximum infligés en une seule attaque' : 'Ranking: maximum damage dealt in a single attack'}</li>
+          <li>{lang === 'fr'
+            ? 'Objectifs : paliers de dégâts, chacun réalisable une seule fois par évènement'
+            : 'Goals: damage thresholds, each achievable once per event'}</li>
+        </ul>
+      </Block>
+
+      {BOSS_TIPS[lang].map((tip, i) => <Tip key={i}>{tip}</Tip>)}
+    </>
+  );
+}
+
 // ─── Section registry ──────────────────────────────────────────────────────────
 
 interface Section {
@@ -354,6 +586,12 @@ const SECTIONS: Section[] = [
     icon: '🏭',
     title: { fr: 'Usine de Cristal', en: 'Crystal Factory' },
     content: (lang) => <CrystalFactoryContent lang={lang} />,
+  },
+  {
+    id: 'boss_wanted',
+    icon: '🎯',
+    title: { fr: 'Boss Recherché', en: 'Wanted Boss' },
+    content: (lang) => <BossWantedContent lang={lang} />,
   },
 ];
 
