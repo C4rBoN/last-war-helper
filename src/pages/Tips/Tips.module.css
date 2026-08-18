@@ -376,11 +376,6 @@
   color: var(--text-primary);
 }
 
-.heroSlotHint {
-  font-size: 10px;
-  color: var(--text-muted);
-}
-
 /* ── Desktop ── */
 @media (min-width: 768px) {
   .page {

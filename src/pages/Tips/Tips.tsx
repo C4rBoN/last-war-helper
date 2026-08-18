@@ -387,14 +387,16 @@ function badgeVariant(t: TeamType): 'type-tank' | 'type-aircraft' | 'type-missil
   return t === 'Tank' ? 'type-tank' : t === 'Aircraft' ? 'type-aircraft' : 'type-missile';
 }
 
+const MASON_IMAGE_URL = 'https://cpt-hedge.com/images/items/mason-shard.png';
+
 function HeroSlot({ heroId, lang }: { heroId: string; lang: Lang }) {
   if (heroId === 'mason') {
     return (
       <div className={styles.heroSlot}>
-        <span className={styles.heroSlotAvatarFallback}>MA</span>
+        <img src={MASON_IMAGE_URL} alt="Mason" className={styles.heroSlotAvatar} loading="lazy" />
         <div>
           <div className={styles.heroSlotName}>Mason</div>
-          <span className={styles.heroSlotHint}>{lang === 'fr' ? 'hors roster suivi' : 'not tracked here'}</span>
+          <Badge variant="type-tank" label={teamLabel('Tank', lang)} small />
         </div>
       </div>
     );
