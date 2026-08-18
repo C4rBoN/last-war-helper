@@ -239,7 +239,7 @@ const SHOP_REWARDS: Record<Lang, { reward: string; note: string }[]> = {
 
 const CRYSTAL_TIPS: Record<Lang, string[]> = {
   fr: [
-    'Récupère ton Minerai de Cristal chaque jour via les quêtes — il n\'est boosté par aucune compétence de profession (type « Encore »), donc autant ne pas prendre de retard.',
+    'Récupère ton Minerai de Cristal chaque jour via les quêtes — aucune compétence de profession (comme « Encore », qui donne une chance de dupliquer certains gains de ressources) ne s\'applique dessus, donc autant ne pas prendre de retard.',
     'Compose ton équipe avec 5 héros de la même Faction pour gagner +30% de dégâts contre le Boss de Cristal.',
     'Les troupes envoyées au Boss de Cristal ne peuvent pas être rappelées — vérifie bien ta composition avant de valider l\'attaque, et le Boss n\'est pas défiable en Ralliement.',
     'Utilise tes 3 défis quotidiens contre le Boss avant la réinitialisation hebdomadaire pour maximiser les paliers de récompenses de progression.',
@@ -247,7 +247,7 @@ const CRYSTAL_TIPS: Record<Lang, string[]> = {
     'La Boutique de Cristal se réapprovisionne le 1er de chaque mois avec des limites d\'échange réinitialisées — planifie tes échanges en conséquence.',
   ],
   en: [
-    'Collect your Crystal Ore daily via quests — it gets no bonus from profession skills (like "Encore"), so don\'t fall behind.',
+    'Collect your Crystal Ore daily via quests — no profession skill (like "Encore", which gives a chance to duplicate certain resource gains) applies to it, so don\'t fall behind.',
     'Deploy 5 heroes from the same Faction to gain +30% Attack damage against the Crystal Boss.',
     'Troops sent to the Crystal Boss can\'t be recalled — double-check your squad before confirming the attack, and the Boss can\'t be challenged via Rally.',
     'Use your 3 daily Crystal Boss challenges before the weekly reset to maximize weekly progression reward tiers.',
