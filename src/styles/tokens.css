@@ -70,6 +70,33 @@
   --topbar-height: 56px;
 }
 
+/* ── Light theme ── */
+:root[data-theme="light"] {
+  --bg-primary:    #f4f5f8;
+  --bg-secondary:  #ffffff;
+  --bg-tertiary:   #eceef3;
+  --bg-elevated:   #e3e6ed;
+
+  --accent:        #b9790a;
+  --accent-dim:    #f2dcae;
+  --accent-glow:   rgba(185, 121, 10, 0.12);
+
+  --danger:        #c0392b;
+  --danger-dim:    rgba(192, 57, 43, 0.1);
+  --success:       #1e8449;
+  --success-dim:   rgba(30, 132, 73, 0.1);
+  --warning:       #b9770e;
+  --warning-dim:   rgba(185, 119, 14, 0.1);
+  --info:          #2471a3;
+
+  --text-primary:   #1a1d24;
+  --text-secondary: #4d5566;
+  --text-muted:     #838da0;
+
+  --border:         #dde1e9;
+  --border-accent:  rgba(185, 121, 10, 0.35);
+}
+
 * {
   box-sizing: border-box;
   margin: 0;

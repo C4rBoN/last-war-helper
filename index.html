@@ -22,6 +22,14 @@
     <meta name="theme-color" content="#0d0f14" />
     <meta name="description" content="Last War Survival — Gestionnaire de progression" />
     <title>Last War Helper</title>
+    <script>
+      (function () {
+        try {
+          var saved = JSON.parse(localStorage.getItem('lastwar_helper_v1'));
+          document.documentElement.setAttribute('data-theme', saved && saved.theme === 'light' ? 'light' : 'dark');
+        } catch (e) {}
+      })();
+    </script>
   </head>
   <body>
     <!-- Google Tag Manager (noscript) -->

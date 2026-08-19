@@ -9,6 +9,7 @@ export const DEFAULT_STATE: PlayerState = {
   schemaVersion: 6,
   profile: { hqLevel: 1, setupComplete: true },
   language: 'fr',
+  theme: 'dark',
   heroes: [],
   buildings: [],
   research: [],
@@ -51,6 +52,9 @@ export function appReducer(state: PlayerState, action: AppAction): PlayerState {
 
     case 'SET_LANGUAGE':
       return { ...state, language: action.payload };
+
+    case 'SET_THEME':
+      return { ...state, theme: action.payload };
 
     case 'COMPLETE_SETUP':
       return { ...state, profile: { ...state.profile, setupComplete: true } };
@@ -108,7 +112,7 @@ export function appReducer(state: PlayerState, action: AppAction): PlayerState {
     }
 
     case 'RESET_ALL':
-      return { ...DEFAULT_STATE, language: state.language };
+      return { ...DEFAULT_STATE, language: state.language, theme: state.theme };
 
     case 'LOAD_ALL':
       return { ...action.payload };

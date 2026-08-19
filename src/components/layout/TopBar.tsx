@@ -20,6 +20,10 @@ export function TopBar() {
     dispatch({ type: 'SET_LANGUAGE', payload: lang === 'fr' ? 'en' : 'fr' });
   }
 
+  function toggleTheme() {
+    dispatch({ type: 'SET_THEME', payload: state.theme === 'dark' ? 'light' : 'dark' });
+  }
+
   function handleExport() {
     const data = JSON.stringify(state);
     const blob = new Blob([data], { type: 'application/json' });
@@ -83,6 +87,14 @@ export function TopBar() {
               ☁ Sync
             </button>
           )}
+
+          <button
+            className={styles.iconBtn}
+            onClick={toggleTheme}
+            title={lang === 'fr' ? 'Changer de thème' : 'Change theme'}
+          >
+            {state.theme === 'dark' ? '☀' : '🌙'}
+          </button>
 
           <button className={styles.langToggle} onClick={toggleLang} title="Change language">
             <img

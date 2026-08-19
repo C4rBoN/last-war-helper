@@ -92,6 +92,11 @@ export function AppProvider({ children }: { children: ReactNode }) {
     localStorage.setItem(STORAGE_KEY, JSON.stringify({ ...state, lastUpdated: new Date().toISOString() }));
   }, [state]);
 
+  // ── Appliquer le thème au document ──
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', state.theme);
+  }, [state.theme]);
+
   // ── Quand l'utilisateur se connecte : charger depuis Supabase ──
   useEffect(() => {
     userRef.current = user;
