@@ -562,6 +562,16 @@ function BossWantedContent({ lang }: { lang: Lang }) {
             : 'Pick the code, your main team and toggle Mason to see the recommended front/back formation.'}
         </p>
         <BossComposer lang={lang} />
+        <Tip>
+          {lang === 'fr'
+            ? 'Priorise ta team principale, la plus développée (le plus de niveau/étoiles/équipement), même si elle ne correspond pas à la faiblesse du jour — l\'investissement brut compte souvent plus que le bonus de type.'
+            : 'Prioritize your main, most developed team (the most level/stars/gear invested), even if it doesn\'t match the day\'s weakness — raw investment usually outweighs the type bonus.'}
+        </Tip>
+        <Tip>
+          {lang === 'fr'
+            ? 'Si Mason est monté, utilise-le systématiquement : sa passive lui donne d\'excellents dégâts en PvE contre les zombies et les boss, quel que soit le code du jour.'
+            : 'If Mason is leveled, use him every time: his passive gives him excellent PvE damage against zombies and bosses, regardless of the day\'s code.'}
+        </Tip>
       </Block>
 
       <Block title={lang === 'fr' ? 'Boosts de dégâts supplémentaires' : 'Extra damage boosts'}>
