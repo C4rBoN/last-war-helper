@@ -34,7 +34,9 @@ const S6_SECTIONS = [
 ];
 
 const TIPS_SECTIONS = [
-  { id: 'alliance', icon: '🤝', fr: 'Alliance', en: 'Alliance' },
+  { id: 'alliance',        icon: '🤝', fr: 'Alliance',         en: 'Alliance'      },
+  { id: 'crystal_factory', icon: '🏭', fr: 'Usine de Cristal', en: 'Crystal Factory' },
+  { id: 'boss_wanted',     icon: '🎯', fr: 'Boss Recherché',   en: 'Wanted Boss'   },
 ];
 
 export function BottomNav() {
