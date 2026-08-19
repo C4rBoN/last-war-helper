@@ -63,11 +63,6 @@ export const FR: Record<string, string> = {
   'heroes.role.Tank défensif': 'Tank Déf.',
   'heroes.role.Support': 'Support',
 
-  // Teams
-  'heroes.team.T1': 'Équipe T1 — Tank',
-  'heroes.team.T2': 'Équipe T2 — Aérien',
-  'heroes.team.T3': 'Équipe T3 — Missile',
-
   // Gear slots
   'heroes.gear.canon': 'Canon',
   'heroes.gear.puce': 'Puce',

@@ -15,7 +15,6 @@ import { Card } from '../../components/ui/Card';
 import { SectionHeader } from '../../components/ui/SectionHeader';
 import styles from './Heroes.module.css';
 
-const TEAMS: HeroTeam[] = ['T1', 'T2', 'T3'];
 const GEAR_SLOTS: GearSlot[] = ['canon', 'puce', 'armor', 'radar'];
 
 // ─── Priorités par catégorie ──────────────────────────────────────────────────
@@ -31,10 +30,16 @@ const CATEGORY_CONFIG: Record<ActionCategory, { icon: string; titleKey: string }
   gear:   { icon: '🔧', titleKey: 'heroes.actions.cat.gear'    },
 };
 
-function CategorySection({ category, actions, lang }: {
+/** Libellé d'affichage T1/T2/T3 dérivé de la position de l'équipe dans l'ordre choisi par le joueur. */
+function displayTeamLabel(team: HeroTeam, teamOrder: HeroTeam[]): string {
+  return `T${teamOrder.indexOf(team) + 1}`;
+}
+
+function CategorySection({ category, actions, lang, teamOrder }: {
   category: ActionCategory;
   actions: UnifiedAction[];
   lang: Lang;
+  teamOrder: HeroTeam[];
 }) {
   const [open, setOpen] = useState(true);
   const [showDone, setShowDone] = useState(false);
@@ -67,7 +72,10 @@ function CategorySection({ category, actions, lang }: {
               <span className={styles.actionLabel}>{action.label}</span>
               <div className={styles.actionTags}>
                 {action.kind === 'threshold' && <span className={styles.tagT1}>Seuil T1</span>}
-                {action.team && <span className={styles[`tag${action.team}`]}>{action.team}</span>}
+                {action.team && (() => {
+                  const label = displayTeamLabel(action.team, teamOrder);
+                  return <span className={styles[`tag${label}`]}>{label}</span>;
+                })()}
                 {!action.isPrimary && <span className={styles.tagSecondary}>{t(lang, 'heroes.actions.secondary')}</span>}
               </div>
             </div>
@@ -90,13 +98,17 @@ function CategorySection({ category, actions, lang }: {
   );
 }
 
-function ActionsSection({ actions, lang }: { actions: Record<ActionCategory, UnifiedAction[]>; lang: Lang }) {
+function ActionsSection({ actions, lang, teamOrder }: {
+  actions: Record<ActionCategory, UnifiedAction[]>;
+  lang: Lang;
+  teamOrder: HeroTeam[];
+}) {
   return (
     <div className={styles.actionsSection}>
-      <CategorySection category="ew"     actions={actions.ew}     lang={lang} />
-      <CategorySection category="stars"  actions={actions.stars}  lang={lang} />
-      <CategorySection category="skills" actions={actions.skills} lang={lang} />
-      <CategorySection category="gear"   actions={actions.gear}   lang={lang} />
+      <CategorySection category="ew"     actions={actions.ew}     lang={lang} teamOrder={teamOrder} />
+      <CategorySection category="stars"  actions={actions.stars}  lang={lang} teamOrder={teamOrder} />
+      <CategorySection category="skills" actions={actions.skills} lang={lang} teamOrder={teamOrder} />
+      <CategorySection category="gear"   actions={actions.gear}   lang={lang} teamOrder={teamOrder} />
     </div>
   );
 }
@@ -254,22 +266,65 @@ function HeroCard({ hero }: { hero: HeroDefinition }) {
   );
 }
 
+// ─── Réorganisation des équipes ────────────────────────────────────────────────
+
+function TeamReorderButtons({ team, teamOrder, lang }: { team: HeroTeam; teamOrder: HeroTeam[]; lang: 'fr' | 'en' }) {
+  const { dispatch } = useAppContext();
+  const index = teamOrder.indexOf(team);
+
+  function move(delta: -1 | 1) {
+    const newOrder = [...teamOrder];
+    const target = index + delta;
+    [newOrder[index], newOrder[target]] = [newOrder[target], newOrder[index]];
+    dispatch({ type: 'SET_TEAM_ORDER', payload: newOrder });
+  }
+
+  return (
+    <div className={styles.reorderButtons}>
+      <button
+        className={styles.reorderBtn}
+        onClick={() => move(-1)}
+        disabled={index === 0}
+        title={lang === 'fr' ? 'Monter en priorité' : 'Move up'}
+      >▲</button>
+      <button
+        className={styles.reorderBtn}
+        onClick={() => move(1)}
+        disabled={index === teamOrder.length - 1}
+        title={lang === 'fr' ? 'Descendre en priorité' : 'Move down'}
+      >▼</button>
+    </div>
+  );
+}
+
 // ─── Main Heroes Page ─────────────────────────────────────────────────────────
 
 export function Heroes() {
   const { state } = useAppContext();
   const lang = state.language;
   const actions = useHeroData();
+  const teamOrder = state.teamOrder;
 
   return (
     <div className={styles.page}>
-      <ActionsSection actions={actions} lang={lang} />
+      <ActionsSection actions={actions} lang={lang} teamOrder={teamOrder} />
 
-      {TEAMS.map(team => {
+      <p className={styles.teamOrderHint}>
+        {lang === 'fr'
+          ? "Réordonne tes équipes avec ▲▼ : l'ordre détermine la priorité de tes recommandations. La 1ère équipe devient ton « T1 » — c'est elle qui doit remplir le seuil obligatoire avant les autres."
+          : "Reorder your teams with ▲▼: the order drives your recommendation priority. The 1st team becomes your «T1» — it's the one that must clear the mandatory threshold before the others."}
+      </p>
+
+      {teamOrder.map((team, i) => {
         const teamHeroes = HEROES.filter(h => h.team === team);
+        const teamType = teamHeroes[0]?.type;
+        const title = `${lang === 'fr' ? 'Équipe' : 'Team'} T${i + 1} — ${teamType ? t(lang, `heroes.type.${teamType}`) : ''}`;
         return (
           <div key={team} className={styles.teamSection}>
-            <SectionHeader title={t(lang, `heroes.team.${team}`)} />
+            <SectionHeader
+              title={title}
+              action={<TeamReorderButtons team={team} teamOrder={teamOrder} lang={lang} />}
+            />
             <div className={styles.heroList}>
               {teamHeroes.map(hero => (
                 <HeroCard key={hero.id} hero={hero} />

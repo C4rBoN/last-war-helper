@@ -1,10 +1,11 @@
 import { Lang, Theme } from '../types/player.types';
-import { GearSlot, GearSlotValue, PlayerHero, SkillLevels } from '../types/hero.types';
+import { GearSlot, GearSlotValue, HeroTeam, PlayerHero, SkillLevels } from '../types/hero.types';
 
 export type AppAction =
   | { type: 'SET_HQ_LEVEL'; payload: number }
   | { type: 'SET_LANGUAGE'; payload: Lang }
   | { type: 'SET_THEME'; payload: Theme }
+  | { type: 'SET_TEAM_ORDER'; payload: HeroTeam[] }
   | { type: 'COMPLETE_SETUP' }
   // Héros
   | { type: 'UPDATE_HERO'; payload: PlayerHero }

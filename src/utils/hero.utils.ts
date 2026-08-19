@@ -52,19 +52,19 @@ export function getNextEWMilestone(ew: number, ewTarget: number): number | null 
   return EW_MILESTONES.find(m => m <= ewTarget && m > ew) ?? null;
 }
 
-// ─── Seuils T1 ───────────────────────────────────────────────────────────────
+// ─── Seuil de l'équipe prioritaire ──────────────────────────────────────────────
 
 export type ActionCategory = 'ew' | 'stars' | 'skills' | 'gear';
 
-export interface T1ThresholdCheck {
+export interface TeamThresholdCheck {
   label: string;
   met: boolean;
   category: ActionCategory;
 }
 
-export interface T1ThresholdResult {
+export interface TeamThresholdResult {
   allMet: boolean;
-  checks: T1ThresholdCheck[];
+  checks: TeamThresholdCheck[];
   metCount: number;
 }
 
@@ -72,32 +72,63 @@ function getHero(heroes: PlayerHero[], id: string): PlayerHero {
   return heroes.find(h => h.heroId === id) ?? { heroId: id, level: 0, stars: 0, ew: 0, gear: { ...DEFAULT_GEAR }, skills: { ...DEFAULT_SKILLS } };
 }
 
-export function checkT1Thresholds(heroes: PlayerHero[]): T1ThresholdResult {
-  const kim  = getHero(heroes, 'kimberly');
-  const mur  = getHero(heroes, 'murphy');
-  const stet = getHero(heroes, 'stetmann');
-  const mar  = getHero(heroes, 'marshall');
-  const wil  = getHero(heroes, 'williams');
+/**
+ * Seuil obligatoire avant de pouvoir investir efficacement sur les autres équipes.
+ * S'applique à l'équipe placée en priorité #1 par le joueur (teamOrder[0]).
+ * Règle dérivée du seuil réel du jeu sur l'équipe Tank (Kimberly/Murphy/Stetmann/
+ * Marshall/Williams), généralisée aux 5 héros de n'importe quelle équipe : chaque
+ * DPS doit atteindre son AE cible + équipement offensif, le meilleur défenseur son
+ * équipement défensif, les autres juste leur AE cible.
+ */
+export function computeTeamThreshold(
+  heroes: HeroDefinition[],
+  playerHeroes: PlayerHero[],
+  team: HeroTeam
+): TeamThresholdResult {
+  const teamHeroes = heroes.filter(h => h.team === team).sort((a, b) => b.teamPriority - a.teamPriority);
+  const checks: TeamThresholdCheck[] = [];
 
-  const checks: T1ThresholdCheck[] = [
-    { category: 'ew',   label: 'Kimberly Arme Exclusive = 30',   met: kim.ew  >= 30 },
-    { category: 'ew',   label: 'Murphy Arme Exclusive ≥ 20',     met: mur.ew  >= 20 },
-    { category: 'ew',   label: 'Stetmann Arme Exclusive ≥ 20',   met: stet.ew >= 20 },
-    { category: 'ew',   label: 'Marshall Arme Exclusive ≥ 20',   met: mar.ew  >= 20 },
-    { category: 'ew',   label: 'Williams Arme Exclusive ≥ 20',   met: wil.ew  >= 20 },
-    { category: 'gear', label: 'Kimberly Canon niv.40 ≥ 3★ & Puce niv.40 ≥ 3★',
-                         met: kim.gear.canon.level >= 40 && kim.gear.canon.stars >= 3
-                           && kim.gear.puce.level  >= 40 && kim.gear.puce.stars  >= 3 },
-    { category: 'gear', label: 'Stetmann Canon niv.40 ≥ 3★ & Puce niv.40 ≥ 3★',
-                         met: stet.gear.canon.level >= 40 && stet.gear.canon.stars >= 3
-                           && stet.gear.puce.level  >= 40 && stet.gear.puce.stars  >= 3 },
-    { category: 'gear', label: 'Murphy Armor niv.40 ≥ 3★ & Radar niv.40 ≥ 3★',
-                         met: mur.gear.armor.level >= 40 && mur.gear.armor.stars >= 3
-                           && mur.gear.radar.level  >= 40 && mur.gear.radar.stars  >= 3 },
-  ];
+  for (const hero of teamHeroes) {
+    const ph = getHero(playerHeroes, hero.id);
+    checks.push({
+      category: 'ew',
+      label: `${hero.name} Arme Exclusive ${hero.ewTarget >= 30 ? '=' : '≥'} ${hero.ewTarget}`,
+      met: ph.ew >= hero.ewTarget,
+    });
+  }
+
+  for (const hero of teamHeroes.filter(h => h.role === 'DPS')) {
+    const ph = getHero(playerHeroes, hero.id);
+    checks.push({
+      category: 'gear',
+      label: `${hero.name} Canon niv.40 ≥ 3★ & Puce niv.40 ≥ 3★`,
+      met: ph.gear.canon.level >= 40 && ph.gear.canon.stars >= 3
+        && ph.gear.puce.level  >= 40 && ph.gear.puce.stars  >= 3,
+    });
+  }
+
+  const topTankDef = teamHeroes.find(h => h.role === 'Tank défensif');
+  if (topTankDef) {
+    const ph = getHero(playerHeroes, topTankDef.id);
+    checks.push({
+      category: 'gear',
+      label: `${topTankDef.name} Armor niv.40 ≥ 3★ & Radar niv.40 ≥ 3★`,
+      met: ph.gear.armor.level >= 40 && ph.gear.armor.stars >= 3
+        && ph.gear.radar.level  >= 40 && ph.gear.radar.stars  >= 3,
+    });
+  }
 
   const metCount = checks.filter(c => c.met).length;
   return { allMet: metCount === checks.length, checks, metCount };
+}
+
+// ─── Ordre des équipes (préférence joueur) ─────────────────────────────────────
+
+/** Poids par équipe dérivé de l'ordre de priorité choisi par le joueur (1ère = poids le plus haut). */
+export function getTeamWeights(teamOrder: HeroTeam[]): Record<HeroTeam, number> {
+  const weights = {} as Record<HeroTeam, number>;
+  teamOrder.forEach((team, i) => { weights[team] = teamOrder.length - i; });
+  return weights;
 }
 
 // ─── Recommandations ─────────────────────────────────────────────────────────
@@ -117,15 +148,17 @@ export interface HeroReco {
 export function computeHeroRecos(
   heroes: HeroDefinition[],
   playerHeroes: PlayerHero[],
-  t1ThresholdsMet: boolean
+  thresholdMet: boolean,
+  teamOrder: HeroTeam[] = ['T1', 'T2', 'T3']
 ): HeroReco[] {
   const recos: HeroReco[] = [];
+  const teamScore = getTeamWeights(teamOrder);
+  const priorityTeam = teamOrder[0];
 
   for (const hero of heroes) {
     const ph = getHero(playerHeroes, hero.id);
-    const teamScore: Record<HeroTeam, number> = { T1: 3, T2: 2, T3: 1 };
     const tScore = teamScore[hero.team];
-    const isT1 = hero.team === 'T1';
+    const isPriorityTeam = hero.team === priorityTeam;
 
     // ── EW ────────────────────────────────────────────────────────────────
     const nextEW = getNextEWMilestone(ph.ew, hero.ewTarget);
@@ -136,7 +169,7 @@ export function computeHeroRecos(
       const isEWUnlock = ph.ew === 0;
       // Exception Notion : débloquer EW niveau 1 sur T2/T3 est toujours autorisé (coût faible, base nécessaire)
       const isEWLevel1Exception = nextEW === 1;
-      const isPrimary = isT1 || t1ThresholdsMet || isEWUnlock || isEWLevel1Exception;
+      const isPrimary = isPriorityTeam || thresholdMet || isEWUnlock || isEWLevel1Exception;
       const score = isPrimary ? baseScore : baseScore * 0.2;
 
       recos.push({
@@ -164,7 +197,7 @@ export function computeHeroRecos(
       const progress = gearSlotProgress(sv); // 0–80
       const distanceFactor = progress + 1;   // 1–81
       const baseScore = tScore * hero.teamPriority * relevance * distanceFactor;
-      const isSecondary = !isT1 && !t1ThresholdsMet;
+      const isSecondary = !isPriorityTeam && !thresholdMet;
       const score = isSecondary ? baseScore * 0.5 : baseScore;
 
       // Label lisible — cible le prochain palier par 10 (règle Notion : 0→10→20→30→40)
@@ -217,13 +250,15 @@ export interface UnifiedAction {
 export function computeUnifiedActions(
   heroes: HeroDefinition[],
   playerHeroes: PlayerHero[],
+  teamOrder: HeroTeam[] = ['T1', 'T2', 'T3'],
 ): Record<ActionCategory, UnifiedAction[]> {
-  const t1Result = checkT1Thresholds(playerHeroes);
-  const recos    = computeHeroRecos(heroes, playerHeroes, t1Result.allMet);
+  const priorityTeam = teamOrder[0];
+  const thresholdResult = computeTeamThreshold(heroes, playerHeroes, priorityTeam);
+  const recos = computeHeroRecos(heroes, playerHeroes, thresholdResult.allMet, teamOrder);
   const all: UnifiedAction[] = [];
 
-  // ── Seuils T1 (EW + Gear) ─────────────────────────────────────────────────
-  t1Result.checks.forEach((check, i) => {
+  // ── Seuil de l'équipe prioritaire (EW + Gear) ───────────────────────────────
+  thresholdResult.checks.forEach((check, i) => {
     all.push({
       id: `threshold_${i}`,
       kind: 'threshold',
@@ -251,19 +286,19 @@ export function computeUnifiedActions(
   });
 
   // ── Recommandations Étoiles ────────────────────────────────────────────────
-  const teamScore: Record<HeroTeam, number> = { T1: 3, T2: 2, T3: 1 };
+  const teamScore = getTeamWeights(teamOrder);
 
   for (const hero of heroes) {
     const ph = getHero(playerHeroes, hero.id);
     if (ph.stars >= 5) continue;
 
     const tScore   = teamScore[hero.team];
-    const isT1     = hero.team === 'T1';
+    const isPriorityTeam = hero.team === priorityTeam;
     const nextStar = ph.stars + 1;
     const unlockEW = nextStar === 5; // 5★ débloque l'AE
     const starMult = unlockEW ? 8 : nextStar === 4 ? 3 : nextStar === 2 ? 2 : 1;
     const baseScore = tScore * hero.teamPriority * starMult * 10;
-    const isPrimary = isT1 || t1Result.allMet;
+    const isPrimary = isPriorityTeam || thresholdResult.allMet;
     const score     = isPrimary ? baseScore : baseScore * 0.3;
 
     const label = ph.stars === 0
@@ -275,7 +310,7 @@ export function computeUnifiedActions(
       kind: 'reco',
       category: 'stars',
       label,
-      urgency: unlockEW && isT1 ? 'urgent' : unlockEW ? 'recommended' : 'optional',
+      urgency: unlockEW && isPriorityTeam ? 'urgent' : unlockEW ? 'recommended' : 'optional',
       isPrimary,
       score,
       heroId: hero.id,
@@ -301,7 +336,7 @@ export function computeUnifiedActions(
     if (ph.stars < 2) continue; // skills non débloquées
 
     const tScore  = teamScore[hero.team];
-    const isT1    = hero.team === 'T1';
+    const isPriorityTeam = hero.team === priorityTeam;
     const maxSkill = maxSkillLevel(ph.ew);
 
     const skillKeys: (keyof SkillLevels)[] = ['tactics', 'autoAttack', 'passive'];
@@ -315,7 +350,7 @@ export function computeUnifiedActions(
       const prioScore = skillPrioScore(key, hero.role);
       const distance  = nextMilestone - level;
       const baseScore = tScore * hero.teamPriority * prioScore * (31 - distance);
-      const isPrimary = isT1 || t1Result.allMet;
+      const isPrimary = isPriorityTeam || thresholdResult.allMet;
       const score     = isPrimary ? baseScore : baseScore * 0.3;
 
       const label = `${hero.name} — ${SKILL_NAMES[key]} niv.${level} → ${nextMilestone}`;

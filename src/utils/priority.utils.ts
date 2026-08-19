@@ -6,14 +6,14 @@ import { RESEARCH_TREES } from '../data/research.data';
 import { getPlayerBuilding, getCompletedResearchIds, getInProgressResearchIds } from '../store/selectors';
 import { BUILDING_MAP } from '../data/buildings.data';
 import { getMissingPrereqs } from '../data/hqPrerequisites.data';
-import { checkT1Thresholds, computeHeroRecos } from './hero.utils';
+import { computeTeamThreshold, computeHeroRecos } from './hero.utils';
 
 // ─── Hero Priorities ──────────────────────────────────────────────────────────
 
 export function computeHeroPriorities(state: PlayerState): PriorityItem[] {
   const playerHeroes = state.heroes;
-  const t1Result = checkT1Thresholds(playerHeroes);
-  const recos = computeHeroRecos(HEROES, playerHeroes, t1Result.allMet);
+  const thresholdResult = computeTeamThreshold(HEROES, playerHeroes, state.teamOrder[0]);
+  const recos = computeHeroRecos(HEROES, playerHeroes, thresholdResult.allMet, state.teamOrder);
 
   return recos.filter(r => r.urgency !== 'optional').slice(0, 5).map(reco => ({
     id: `hero_${reco.heroId}_${reco.type}${reco.slot ? `_${reco.slot}` : ''}`,

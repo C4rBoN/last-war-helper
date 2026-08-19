@@ -1,4 +1,4 @@
-import { PlayerHero } from './hero.types';
+import { PlayerHero, HeroTeam } from './hero.types';
 import { PlayerBuilding } from './building.types';
 import { PlayerResearch } from './research.types';
 
@@ -15,6 +15,7 @@ export interface PlayerState {
   profile: PlayerProfile;
   language: Lang;
   theme: Theme;
+  teamOrder: HeroTeam[];
   heroes: PlayerHero[];
   buildings: PlayerBuilding[];
   research: PlayerResearch[];

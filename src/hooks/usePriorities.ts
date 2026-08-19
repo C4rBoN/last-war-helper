@@ -31,5 +31,5 @@ export function useTopPriorities() {
 
 export function useHeroData() {
   const { state } = useAppContext();
-  return useMemo(() => computeUnifiedActions(HEROES, state.heroes), [state.heroes]);
+  return useMemo(() => computeUnifiedActions(HEROES, state.heroes, state.teamOrder), [state.heroes, state.teamOrder]);
 }
