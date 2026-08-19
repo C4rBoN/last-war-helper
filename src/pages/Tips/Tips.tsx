@@ -394,10 +394,8 @@ function HeroSlot({ heroId, lang }: { heroId: string; lang: Lang }) {
     return (
       <div className={styles.heroSlot}>
         <img src={MASON_IMAGE_URL} alt="Mason" className={styles.heroSlotAvatar} loading="lazy" />
-        <div>
-          <div className={styles.heroSlotName}>Mason</div>
-          <Badge variant="type-tank" label={teamLabel('Tank', lang)} small />
-        </div>
+        <div className={styles.heroSlotName}>Mason</div>
+        <Badge variant="type-tank" label={teamLabel('Tank', lang)} small />
       </div>
     );
   }
@@ -407,10 +405,8 @@ function HeroSlot({ heroId, lang }: { heroId: string; lang: Lang }) {
       {hero.imageUrl
         ? <img src={hero.imageUrl} alt={hero.name} className={styles.heroSlotAvatar} loading="lazy" />
         : <span className={styles.heroSlotAvatarFallback}>{hero.name.slice(0, 2).toUpperCase()}</span>}
-      <div>
-        <div className={styles.heroSlotName}>{hero.name}</div>
-        <Badge variant={badgeVariant(hero.type)} label={teamLabel(hero.type, lang)} small />
-      </div>
+      <div className={styles.heroSlotName}>{hero.name}</div>
+      <Badge variant={badgeVariant(hero.type)} label={teamLabel(hero.type, lang)} small />
     </div>
   );
 }
@@ -424,49 +420,79 @@ function BossComposer({ lang }: { lang: Lang }) {
   const state = boss.teams[team][mason ? 'avec' : 'sans'];
 
   return (
-    <div>
-      <div className={styles.formationLabel}>{lang === 'fr' ? 'Code boss' : 'Boss code'}</div>
-      <div className={styles.composerChips}>
-        {([39, 64, 87] as BossCode[]).map(c => (
+    <div className={styles.composerPanel}>
+      <div className={styles.selectorGroup}>
+        <div className={styles.selectorLabel}>{lang === 'fr' ? 'Code boss' : 'Boss code'}</div>
+        <div className={styles.codeRow}>
+          {([39, 64, 87] as BossCode[]).map(c => (
+            <button
+              key={c}
+              className={`${styles.codeCard} ${code === c ? styles.codeCardActive : ''}`}
+              onClick={() => setCode(c)}
+            >
+              <span className={styles.codeCardTitle}>Code {c}</span>
+              <Badge variant={badgeVariant(FORMATION[c].weakness)} label={teamLabel(FORMATION[c].weakness, lang)} small />
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <div className={styles.selectorGroup}>
+        <div className={styles.selectorLabel}>{lang === 'fr' ? 'Ton équipe' : 'Your team'}</div>
+        <div className={styles.segmented}>
+          {(['Tank', 'Aircraft', 'Missile'] as TeamType[]).map(t => (
+            <button
+              key={t}
+              className={`${styles.segmentedItem} ${team === t ? styles.segmentedItemActive : ''}`}
+              onClick={() => setTeam(t)}
+            >
+              {teamLabel(t, lang)}
+              {t === boss.weakness && <span className={styles.matchStar} title={lang === 'fr' ? 'Bon type contre ce code' : 'Right type for this code'}>★</span>}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <div className={styles.selectorGroup}>
+        <div className={styles.selectorLabel}>Mason</div>
+        <div className={styles.segmented}>
           <button
-            key={c}
-            className={`${styles.chip} ${code === c ? styles.chipActive : ''}`}
-            onClick={() => setCode(c)}
+            className={`${styles.segmentedItem} ${!mason ? styles.segmentedItemActive : ''}`}
+            onClick={() => setMason(false)}
           >
-            Code {c}
-            <span className={styles.chipSub}>{teamLabel(FORMATION[c].weakness, lang)}</span>
+            {lang === 'fr' ? 'Sans' : 'Without'}
           </button>
-        ))}
-      </div>
-
-      <div className={styles.formationLabel}>{lang === 'fr' ? 'Ton équipe' : 'Your team'}</div>
-      <div className={styles.composerChips}>
-        {(['Tank', 'Aircraft', 'Missile'] as TeamType[]).map(t => (
           <button
-            key={t}
-            className={`${styles.chip} ${team === t ? styles.chipActive : ''}`}
-            onClick={() => setTeam(t)}
+            className={`${styles.segmentedItem} ${mason ? styles.segmentedItemActive : ''}`}
+            onClick={() => setMason(true)}
           >
-            {teamLabel(t, lang)}
-            {t === boss.weakness && <span className={styles.chipSub}>{lang === 'fr' ? 'bon type' : 'right type'}</span>}
+            {lang === 'fr' ? 'Avec' : 'With'}
           </button>
-        ))}
+        </div>
       </div>
 
-      <div className={styles.masonToggleRow}>
-        <button className={styles.masonSwitch} onClick={() => setMason(m => !m)}>
-          {mason ? (lang === 'fr' ? 'Avec Mason ⇄' : 'With Mason ⇄') : (lang === 'fr' ? 'Sans Mason ⇄' : 'Without Mason ⇄')}
-        </button>
-      </div>
+      <div className={styles.battlefield}>
+        <div>
+          <div className={styles.battlefieldHeader}>
+            <span>{lang === 'fr' ? 'Avant' : 'Front'}</span>
+            <span className={styles.battlefieldHint}>{lang === 'fr' ? 'ligne de front' : 'front line'}</span>
+          </div>
+          <div className={styles.formationGrid2}>
+            {state.avant.map(id => <HeroSlot key={id} heroId={id} lang={lang} />)}
+          </div>
+        </div>
 
-      <div className={styles.formationLabel}>{lang === 'fr' ? 'Avant' : 'Front'}</div>
-      <div className={styles.formationRow}>
-        {state.avant.map(id => <HeroSlot key={id} heroId={id} lang={lang} />)}
-      </div>
+        <div className={styles.battlefieldDivider} />
 
-      <div className={styles.formationLabel}>{lang === 'fr' ? 'Arrière' : 'Back'}</div>
-      <div className={styles.formationRow}>
-        {state.arriere.map(id => <HeroSlot key={id} heroId={id} lang={lang} />)}
+        <div>
+          <div className={styles.battlefieldHeader}>
+            <span>{lang === 'fr' ? 'Arrière' : 'Back'}</span>
+            <span className={styles.battlefieldHint}>{lang === 'fr' ? 'sécurisé, dégâts' : 'safe, damage'}</span>
+          </div>
+          <div className={styles.formationGrid3}>
+            {state.arriere.map(id => <HeroSlot key={id} heroId={id} lang={lang} />)}
+          </div>
+        </div>
       </div>
     </div>
   );
