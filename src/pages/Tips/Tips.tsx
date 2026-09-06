@@ -350,24 +350,24 @@ const FORMATION: Record<BossCode, { weakness: TeamType; teams: Record<TeamType, 
     weakness: 'Aircraft',
     teams: {
       Tank:     { sans: { avant: ['murphy', 'dva'],      arriere: ['kimberly', 'stetmann', 'marshall'] }, avec: { avant: ['dva', 'marshall'],    arriere: ['mason', 'kimberly', 'stetmann'] } },
-      Aircraft: { sans: { avant: ['lucius', 'carlie'],    arriere: ['dva', 'morrison', 'schuyler'] },      avec: { avant: ['lucius', 'schuyler'], arriere: ['mason', 'dva', 'morrison'] } },
-      Missile:  { sans: { avant: ['adam', 'dva'],         arriere: ['tesla', 'fiona', 'swift'] },          avec: { avant: ['dva', 'swift'],       arriere: ['mason', 'tesla', 'fiona'] } },
+      Aircraft: { sans: { avant: ['lucius', 'carlie'],    arriere: ['dva', 'morrison', 'schuyler'] },      avec: { avant: ['lucius', 'carlie'],   arriere: ['dva', 'morrison', 'schuyler'] } },
+      Missile:  { sans: { avant: ['adam', 'dva'],         arriere: ['tesla', 'fiona', 'swift'] },          avec: { avant: ['adam', 'dva'],        arriere: ['tesla', 'fiona', 'swift'] } },
     },
   },
   64: {
     weakness: 'Missile',
     teams: {
-      Missile:  { sans: { avant: ['adam', 'mcgregor'],    arriere: ['tesla', 'fiona', 'swift'] },          avec: { avant: ['adam', 'swift'],      arriere: ['mason', 'tesla', 'fiona'] } },
+      Missile:  { sans: { avant: ['adam', 'mcgregor'],    arriere: ['tesla', 'fiona', 'swift'] },          avec: { avant: ['adam', 'mcgregor'],   arriere: ['tesla', 'fiona', 'swift'] } },
       Tank:     { sans: { avant: ['murphy', 'tesla'],     arriere: ['kimberly', 'stetmann', 'marshall'] }, avec: { avant: ['tesla', 'marshall'],  arriere: ['mason', 'kimberly', 'stetmann'] } },
-      Aircraft: { sans: { avant: ['lucius', 'tesla'],     arriere: ['dva', 'morrison', 'schuyler'] },      avec: { avant: ['tesla', 'schuyler'],  arriere: ['mason', 'dva', 'morrison'] } },
+      Aircraft: { sans: { avant: ['lucius', 'tesla'],     arriere: ['dva', 'morrison', 'schuyler'] },      avec: { avant: ['lucius', 'tesla'],    arriere: ['dva', 'morrison', 'schuyler'] } },
     },
   },
   87: {
     weakness: 'Tank',
     teams: {
       Tank:     { sans: { avant: ['murphy', 'williams'],  arriere: ['kimberly', 'stetmann', 'marshall'] }, avec: { avant: ['murphy', 'marshall'], arriere: ['mason', 'kimberly', 'stetmann'] } },
-      Aircraft: { sans: { avant: ['lucius', 'kimberly'],  arriere: ['dva', 'morrison', 'schuyler'] },      avec: { avant: ['kimberly', 'schuyler'], arriere: ['mason', 'dva', 'morrison'] } },
-      Missile:  { sans: { avant: ['adam', 'kimberly'],    arriere: ['tesla', 'fiona', 'swift'] },          avec: { avant: ['kimberly', 'swift'],  arriere: ['mason', 'tesla', 'fiona'] } },
+      Aircraft: { sans: { avant: ['lucius', 'kimberly'],  arriere: ['dva', 'morrison', 'schuyler'] },      avec: { avant: ['lucius', 'kimberly'], arriere: ['dva', 'morrison', 'schuyler'] } },
+      Missile:  { sans: { avant: ['adam', 'kimberly'],    arriere: ['tesla', 'fiona', 'swift'] },          avec: { avant: ['adam', 'kimberly'],   arriere: ['tesla', 'fiona', 'swift'] } },
     },
   },
 };
