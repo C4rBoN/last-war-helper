@@ -444,7 +444,7 @@ function BossComposer({ lang }: { lang: Lang }) {
             <button
               key={t}
               className={`${styles.segmentedItem} ${team === t ? styles.segmentedItemActive : ''}`}
-              onClick={() => setTeam(t)}
+              onClick={() => { setTeam(t); if (t !== 'Tank') setMason(false); }}
             >
               {teamLabel(t, lang)}
               {t === boss.weakness && <span className={styles.matchStar} title={lang === 'fr' ? 'Bon type contre ce code' : 'Right type for this code'}>★</span>}
@@ -453,23 +453,25 @@ function BossComposer({ lang }: { lang: Lang }) {
         </div>
       </div>
 
-      <div className={styles.selectorGroup}>
-        <div className={styles.selectorLabel}>Mason</div>
-        <div className={styles.segmented}>
-          <button
-            className={`${styles.segmentedItem} ${!mason ? styles.segmentedItemActive : ''}`}
-            onClick={() => setMason(false)}
-          >
-            {lang === 'fr' ? 'Sans' : 'Without'}
-          </button>
-          <button
-            className={`${styles.segmentedItem} ${mason ? styles.segmentedItemActive : ''}`}
-            onClick={() => setMason(true)}
-          >
-            {lang === 'fr' ? 'Avec' : 'With'}
-          </button>
+      {team === 'Tank' && (
+        <div className={styles.selectorGroup}>
+          <div className={styles.selectorLabel}>Mason</div>
+          <div className={styles.segmented}>
+            <button
+              className={`${styles.segmentedItem} ${!mason ? styles.segmentedItemActive : ''}`}
+              onClick={() => setMason(false)}
+            >
+              {lang === 'fr' ? 'Sans' : 'Without'}
+            </button>
+            <button
+              className={`${styles.segmentedItem} ${mason ? styles.segmentedItemActive : ''}`}
+              onClick={() => setMason(true)}
+            >
+              {lang === 'fr' ? 'Avec' : 'With'}
+            </button>
+          </div>
         </div>
-      </div>
+      )}
 
       <div className={styles.battlefield}>
         <div>
